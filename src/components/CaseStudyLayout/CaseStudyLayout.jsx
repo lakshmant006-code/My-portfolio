@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { caseStudyNavConfig } from "../../data/caseStudyNavConfig";
 import { CASE_STUDY_SCROLL_OFFSET } from "../../constants/caseStudyScroll";
@@ -19,13 +19,20 @@ function CaseStudySpyNav({
   const trackRef = useRef(null);
   const listRef = useRef(null);
   const linkRefs = useRef([]);
+  const settleTimerRef = useRef(null);
   const sectionIds = sections.map((section) => section.id);
   const activeId = useScrollSpy(sectionIds);
   const { lenis, scrollToTop, scrollToElement } = useLenisScroll();
   const { pinStyle, atBottom } = usePinnedSpyNav(slotRef, mainRef, navRef);
   const isBlockParty = projectId === "blockparty";
 
+  useEffect(() => {
+    return () => window.clearTimeout(settleTimerRef.current);
+  }, []);
+
   const handleClick = (id, index) => {
+    window.clearTimeout(settleTimerRef.current);
+
     if (index === 0) {
       scrollToTop({ duration: 1.2, force: true });
       return;
@@ -36,11 +43,31 @@ function CaseStudySpyNav({
     ScrollTrigger.refresh();
     lenis?.resize?.();
 
+    const duration = 1.2;
     scrollToElement(el, {
       offset: -CASE_STUDY_SCROLL_OFFSET,
-      duration: 1.2,
+      duration,
       force: true,
     });
+
+    // Some pages briefly resettle scroll position right as this animation
+    // completes (e.g. async layout in embedded iframes), landing past the
+    // intended section. Re-verify once settled and snap back if it drifted.
+    settleTimerRef.current = window.setTimeout(() => {
+      const settledEl = document.getElementById(id);
+      if (!settledEl) return;
+      const targetY =
+        settledEl.getBoundingClientRect().top +
+        window.scrollY -
+        CASE_STUDY_SCROLL_OFFSET;
+      if (Math.abs(window.scrollY - targetY) > 24) {
+        if (lenis) {
+          lenis.scrollTo(targetY, { immediate: true, force: true });
+        } else {
+          window.scrollTo({ top: targetY, behavior: "auto" });
+        }
+      }
+    }, duration * 1000 + 200);
   };
 
   return (

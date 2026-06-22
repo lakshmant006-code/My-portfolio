@@ -81,6 +81,13 @@
   line-height: 1;
 }
 
+.moodle-hero-category {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #666;
+  margin: -1.25rem 0 0;
+}
+
 .moodle-hero-details {
   display: flex;
   flex-direction: column;
@@ -251,9 +258,8 @@
 }
 
 .moodle-hero-before .moodle-hero-image {
-  max-height: 32vh;
   object-fit: cover;
-  object-position: center;
+  object-position: center -100px;
   clip-path: inset(100% 0 0 0);
   animation: revealFromBottom 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
@@ -361,6 +367,35 @@
   font-weight: 600;
 }
 
+.moodle-requirements-label {
+  display: inline-block;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.8rem;
+  color: #49594b;
+  margin-bottom: 0.5rem;
+}
+
+.moodle-painpoints-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.625rem;
+  margin: -0.5rem auto 0;
+  max-width: 640px;
+}
+
+.moodle-painpoint-tag {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  background-color: rgba(73, 89, 75, 0.1);
+  color: #49594b;
+  border: 1px solid rgba(73, 89, 75, 0.25);
+}
+
 .moodle-context-image-container {
   width: 100%;
   /* Initial hidden state for GSAP animation */
@@ -394,6 +429,20 @@
   margin: 1rem 0 0 0;
   font-weight: 300;
   text-align: center;
+}
+
+.moodle-userflow-image-container {
+  width: 100%;
+  margin-bottom: 3.5rem;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.moodle-userflow-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
 }
 
 .moodle-context-impact {
@@ -476,6 +525,117 @@
   /* Initial hidden state for GSAP animation */
   opacity: 0;
   transform: translateY(30px);
+}
+
+.moodle-ideation-subsection {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.moodle-ideation-subheading {
+  font-family: "Crimson Pro", serif;
+  font-size: 2.25rem;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  color: #0f0f0f;
+  margin: 0 0 0.875rem;
+}
+
+.moodle-ideation-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #0f0f0f;
+  max-width: 720px;
+  margin: 0 auto 1.25rem;
+}
+
+.moodle-swatch-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.moodle-swatch {
+  width: 130px;
+}
+
+.moodle-swatch-block {
+  height: 80px;
+  border-radius: 8px;
+}
+
+.moodle-swatch-block-bordered {
+  border: 1px solid rgba(15, 15, 15, 0.15);
+}
+
+.moodle-swatch-hex {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #0f0f0f;
+  margin-top: 0.625rem;
+}
+
+.moodle-swatch-label {
+  font-size: 0.7rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+  margin-top: 0.125rem;
+}
+
+.moodle-type-sample-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5rem;
+  margin-top: 1.25rem;
+}
+
+.moodle-type-aa {
+  font-family: "Crimson Pro", serif;
+  font-size: 4rem;
+  font-weight: 500;
+  color: #49594b;
+  line-height: 1;
+}
+
+.moodle-type-aa-label {
+  font-size: 0.7rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+.moodle-type-variants {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.375rem;
+}
+
+.moodle-type-variants span {
+  font-size: 1.75rem;
+  font-weight: 300;
+  color: #0f0f0f;
+}
+
+.moodle-type-italic {
+  font-style: italic;
+}
+
+.moodle-type-bold {
+  font-weight: 600;
+}
+
+.moodle-type-bold-italic {
+  font-weight: 600;
+  font-style: italic;
 }
 
 .moodle-research-overview {
@@ -626,6 +786,32 @@
 
 .moodle-solution-visual-identity-medium-bold {
   font-weight: 600;
+}
+
+.moodle-solution-subsection {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.moodle-solution-subheading {
+  font-family: "Crimson Pro", serif;
+  font-size: 2.25rem;
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  color: #0f0f0f;
+  margin: 0 0 1.25rem;
+}
+
+.moodle-wireframe-container {
+  width: 100%;
+}
+
+.moodle-wireframe-frame {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  border: none;
 }
 
 .moodle-solution-visual-identity-grid {
@@ -1219,8 +1405,13 @@
     font-size: 4rem;
   }
 
+  .moodle-hero-category {
+    font-size: 1rem;
+  }
+
   .moodle-hero-details {
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 2rem;
   }
 
@@ -1258,10 +1449,6 @@
     left: 2px;
     width: 50px;
     height: 50px;
-  }
-
-  .moodle-hero-before .moodle-hero-image {
-    max-height: 40vh;
   }
 
   .moodle-context-section {
@@ -1573,10 +1760,6 @@
 
   .moodle-hero-subtitle {
     font-size: 1.25rem;
-  }
-
-  .moodle-hero-before .moodle-hero-image {
-    max-height: 48vh;
   }
 
   .moodle-context-section {

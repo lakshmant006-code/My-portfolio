@@ -25,11 +25,9 @@ export const caseStudyNavConfig = {
   moodle: {
     accentColor: "#49594b",
     sections: [
-      { id: "moodle-context", label: "Context" },
-      { id: "moodle-research", label: "Research" },
-      { id: "solution-section", label: "Solution" },
-      { id: "moodle-validation", label: "Validation" },
-      { id: "moodle-next-steps", label: "Next Steps" },
+      { id: "moodle-context", label: "Research" },
+      { id: "moodle-research", label: "Ideation" },
+      { id: "solution-section", label: "Development" },
       { id: "moodle-takeaways", label: "Takeaways" },
       { id: "moodle-see-next", label: "See Next" },
     ],

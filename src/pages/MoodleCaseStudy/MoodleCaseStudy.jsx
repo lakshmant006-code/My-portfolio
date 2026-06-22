@@ -29,54 +29,17 @@ const MoodleCaseStudy = () => {
   // Refs for scroll animations
   const contextWhatIsMoodleRef = useRef(null);
   const contextMyRoleRef = useRef(null);
+  const userFlowImageRef = useRef(null);
   const contextImpactTitleRef = useRef(null);
   const contextImpactMetricsRefs = useRef([]);
   const contextStatementTitleRef = useRef(null);
   const contextStatementContentRef = useRef(null);
-  const contextImage1Ref = useRef(null);
-  const contextImage2Ref = useRef(null);
   const researchTitleRef = useRef(null);
   const researchOverviewSubtitleRef = useRef(null);
-  const researchOverviewImage1Ref = useRef(null);
-  const researchBenchmarkingTextContainerRef = useRef(null);
-  const researchOverviewImage2Ref = useRef(null);
-  const researchFinding1TitleRef = useRef(null);
-  const researchFinding1ContentRef = useRef(null);
-  const researchFinding1ImageRef = useRef(null);
-  const researchFinding2TitleRef = useRef(null);
-  const researchFinding2ContentRef = useRef(null);
-  const researchFinding2ImageRef = useRef(null);
-  const researchFinding3TitleRef = useRef(null);
-  const researchFinding3ContentRef = useRef(null);
-  const researchFinding3ImageRef = useRef(null);
   const solutionTitleRef = useRef(null);
   const solutionVisualIdentityContentRef = useRef(null);
-  const solutionVisualIdentityImage1Ref = useRef(null);
-  const solutionVisualIdentityImage2Ref = useRef(null);
-  const solutionVisualIdentityImage3Ref = useRef(null);
-  const solution1TitleRef = useRef(null);
-  const solution1ContentRef = useRef(null);
-  const solution1VideoRef = useRef(null);
-  const solution1CaptionRef = useRef(null);
-  const solution2TitleRef = useRef(null);
-  const solution2ContentRef = useRef(null);
-  const solution2VideoRef = useRef(null);
-  const solution2CaptionRef = useRef(null);
-  const solution3TitleRef = useRef(null);
-  const solution3ContentRef = useRef(null);
-  const solution3VideoRef = useRef(null);
-  const solution3CaptionRef = useRef(null);
-  const validationTitleRef = useRef(null);
-  const validationContentRef = useRef(null);
-  const validationImageRef = useRef(null);
-  const validationMethodsRef = useRef(null);
-  const validationResultsTitleRef = useRef(null);
-  const validationResultsImageRef = useRef(null);
-  const validationResultsTextRef = useRef(null);
   const takeawaysTitleRef = useRef(null);
   const takeawaysItemsRefs = useRef([]);
-  const nextStepsTitleRef = useRef(null);
-  const nextStepsItemsRefs = useRef([]);
   const seeNextTitleRef = useRef(null);
   const seeNextGridRef = useRef(null);
   const seeNextCardsRefs = useRef([]);
@@ -91,21 +54,21 @@ const MoodleCaseStudy = () => {
   const metrics = useMemo(
     () => [
       {
-        value: 133,
-        prefix: "",
-        suffix: "%",
+        value: 60,
+        prefix: "28-",
+        suffix: "",
         elementRef: metricRefs,
         index: 0,
       },
       {
-        value: 82,
+        value: 100,
         prefix: "",
-        suffix: "",
+        suffix: "%",
         elementRef: metricRefs,
         index: 1,
       },
       {
-        value: 16.7,
+        value: 30,
         prefix: "",
         suffix: "%",
         elementRef: metricRefs,
@@ -158,6 +121,7 @@ const MoodleCaseStudy = () => {
     // Context Section
     createScrollAnimation(contextWhatIsMoodleRef);
     createScrollAnimation(contextMyRoleRef, 0.1);
+    createScrollAnimation(userFlowImageRef, 0.1);
     createScrollAnimation(contextImpactTitleRef, 0.2);
     // Impact metrics with stagger
     contextImpactMetricsRefs.current.forEach((ref, index) => {
@@ -182,85 +146,18 @@ const MoodleCaseStudy = () => {
     });
     createScrollAnimation(contextStatementTitleRef);
     createScrollAnimation(contextStatementContentRef, 0.1);
-    createScrollAnimation(contextImage1Ref, 0.2);
-    createScrollAnimation(contextImage2Ref, 0.3);
 
     // Research Section
     createScrollAnimation(researchTitleRef);
     createScrollAnimation(researchOverviewSubtitleRef, 0.1);
-    createScrollAnimation(researchOverviewImage1Ref, 0.2);
-    createScrollAnimation(researchBenchmarkingTextContainerRef, 0.25);
-    createScrollAnimation(researchOverviewImage2Ref, 0.3);
-    // Finding 1
-    createScrollAnimation(researchFinding1TitleRef);
-    createScrollAnimation(researchFinding1ContentRef, 0.1);
-    createScrollAnimation(researchFinding1ImageRef, 0.2);
-    // Finding 2
-    createScrollAnimation(researchFinding2TitleRef);
-    createScrollAnimation(researchFinding2ContentRef, 0.1);
-    createScrollAnimation(researchFinding2ImageRef, 0.2);
-    // Finding 3
-    createScrollAnimation(researchFinding3TitleRef);
-    createScrollAnimation(researchFinding3ContentRef, 0.1);
-    createScrollAnimation(researchFinding3ImageRef, 0.2);
 
-    // Solution Section
+    // Development Section
     createScrollAnimation(solutionTitleRef);
     createScrollAnimation(solutionVisualIdentityContentRef, 0.1);
-    createScrollAnimation(solutionVisualIdentityImage1Ref, 0.2);
-    createScrollAnimation(solutionVisualIdentityImage2Ref, 0.3);
-    createScrollAnimation(solutionVisualIdentityImage3Ref, 0.25);
-    // Solution 1
-    createScrollAnimation(solution1TitleRef);
-    createScrollAnimation(solution1ContentRef, 0.1);
-    createScrollAnimation(solution1VideoRef, 0.2);
-    createScrollAnimation(solution1CaptionRef, 0.3);
-    // Solution 2
-    createScrollAnimation(solution2TitleRef);
-    createScrollAnimation(solution2ContentRef, 0.1);
-    createScrollAnimation(solution2VideoRef, 0.2);
-    createScrollAnimation(solution2CaptionRef, 0.3);
-    // Solution 3
-    createScrollAnimation(solution3TitleRef);
-    createScrollAnimation(solution3ContentRef, 0.1);
-    createScrollAnimation(solution3VideoRef, 0.2);
-    createScrollAnimation(solution3CaptionRef, 0.3);
-
-    // Validation Study Section
-    createScrollAnimation(validationTitleRef);
-    createScrollAnimation(validationContentRef, 0.1);
-    createScrollAnimation(validationImageRef, 0.2);
-    createScrollAnimation(validationMethodsRef, 0.3);
-    createScrollAnimation(validationResultsTitleRef);
-    createScrollAnimation(validationResultsImageRef, 0.1);
-    createScrollAnimation(validationResultsTextRef, 0.2);
 
     // Key Takeaways Section
     createScrollAnimation(takeawaysTitleRef);
     takeawaysItemsRefs.current.forEach((ref, index) => {
-      if (ref) {
-        gsap.set(ref, { opacity: 0, y: 30 });
-        const trigger = ScrollTrigger.create({
-          trigger: ref,
-          start: "top 80%",
-          once: true,
-          onEnter: () => {
-            gsap.to(ref, {
-              opacity: 1,
-              y: 0,
-              duration: 1,
-              ease: "power2.out",
-              delay: index * 0.1,
-            });
-          },
-        });
-        scrollTriggers.push(trigger);
-      }
-    });
-
-    // Next Steps Section
-    createScrollAnimation(nextStepsTitleRef);
-    nextStepsItemsRefs.current.forEach((ref, index) => {
       if (ref) {
         gsap.set(ref, { opacity: 0, y: 30 });
         const trigger = ScrollTrigger.create({
@@ -298,9 +195,10 @@ const MoodleCaseStudy = () => {
           {/* Hero Before Image - Visual welcome */}
           <div className="moodle-hero-image-container moodle-hero-before">
             <img
-              src="/work/moodle/hero-before.png"
-              alt="Moodle AI-Powered Feline Pain Detection"
+              src="/work/moodle/iMac_Mockup_3.png"
+              alt="Time Management"
               className="moodle-hero-image"
+              style={{ height: "600px" }}
             />
           </div>
 
@@ -308,25 +206,40 @@ const MoodleCaseStudy = () => {
           <div className="moodle-hero-content">
             {/* Left Column */}
             <div className="moodle-hero-left">
-              <h1 className="moodle-hero-title">
-                Moodle: AI-Powered Feline Pain Detection for Cat Owners
-              </h1>
+              <h1 className="moodle-hero-title">Time Management</h1>
+              <p className="moodle-hero-category">
+                Time tracking Web Application
+              </p>
               <div className="moodle-hero-details">
                 <div className="moodle-hero-detail-item">
-                  <div className="moodle-hero-detail-label">ROLE</div>
+                  <div className="moodle-hero-detail-label">TIMELINE</div>
                   <div className="moodle-hero-detail-value">
-                    Product Designer
+                    Feb — March 2020
                   </div>
                 </div>
                 <div className="moodle-hero-detail-item">
-                  <div className="moodle-hero-detail-label">DURATION</div>
+                  <div className="moodle-hero-detail-label">ROLE</div>
                   <div className="moodle-hero-detail-value">
-                    Oct — Dec 2025 (7 Weeks)
+                    UX Researcher
+                    <br />
+                    UX Designer
+                    <br />
+                    Interaction Designer
+                    <br />
+                    Full Stack Developer
                   </div>
                 </div>
                 <div className="moodle-hero-detail-item">
                   <div className="moodle-hero-detail-label">TOOLS</div>
-                  <div className="moodle-hero-detail-value">Figma</div>
+                  <div className="moodle-hero-detail-value">
+                    Figma
+                    <br />
+                    VS Code
+                    <br />
+                    Cursor AI
+                    <br />
+                    Supabase SQL
+                  </div>
                 </div>
               </div>
             </div>
@@ -334,13 +247,15 @@ const MoodleCaseStudy = () => {
             {/* Right Column */}
             <div className="moodle-hero-right">
               <p className="moodle-hero-subtitle">
-                Making clinical-grade pain monitoring accessible to cat owners
-                through intuitive mobile design and privacy-first AI.
+                This is a web application that allows the company to track
+                their employees' productivity and helps analyze the insights
+                and increase employees' productivity.
               </p>
               <div className="moodle-hero-tags">
-                <span className="moodle-hero-tag">Mobile</span>
-                <span className="moodle-hero-tag">User Research</span>
-                <span className="moodle-hero-tag">AI/ML</span>
+                <span className="moodle-hero-tag">Human Interface Design</span>
+                <span className="moodle-hero-tag">UX Research</span>
+                <span className="moodle-hero-tag">Data Application</span>
+                <span className="moodle-hero-tag">Web Development</span>
               </div>
               <button
                 className="moodle-skip-to-solution-btn"
@@ -364,21 +279,18 @@ const MoodleCaseStudy = () => {
                     />
                   </svg>
                 </div>
-                <span className="moodle-skip-text">SKIP TO SOLUTION</span>
+                <span className="moodle-skip-text">SKIP TO DEVELOPMENT</span>
               </button>
             </div>
           </div>
 
-          {/* Hero After Video - After all text */}
+          {/* Hero After Image - After all text */}
           <div className="moodle-hero-image-container moodle-hero-after">
-            <video
-              src="/work/moodle/thumbnail.mp4"
+            <img
+              src="/work/moodle/hero.png"
+              alt="Time Management"
               className="moodle-hero-image"
-              autoPlay
-              loop
-              muted
-              playsInline
-              aria-label="Moodle AI-Powered Feline Pain Detection"
+              style={{ aspectRatio: "1305 / 646" }}
             />
           </div>
         </section>
@@ -389,24 +301,44 @@ const MoodleCaseStudy = () => {
             {/* Top Row - Two Columns */}
             <div className="moodle-context-top">
               <div className="moodle-context-item" ref={contextWhatIsMoodleRef}>
-                <h2 className="moodle-context-title">What is Moodle?</h2>
+                <h2 className="moodle-context-title">Goal</h2>
                 <p className="moodle-context-description">
-                  Moodle is an AI-powered mobile app that brings the validated
-                  Feline Grimace Scale to cat owners, turning smartphones into
-                  clinical-grade pain monitoring tools.
+                  The goal is to create an intuitive and easy experience for
+                  the company to track and oversee the logins and the work
+                  load of their employees.
                 </p>
               </div>
               <div className="moodle-context-item" ref={contextMyRoleRef}>
-                <h2 className="moodle-context-title">My Role</h2>
+                <h2 className="moodle-context-title">User Research</h2>
                 <p className="moodle-context-description">
-                  As the Product Designer of a two-person team, I led all user
-                  research (6 formative interviews, 7-participant user
-                  evaluation study), designed the core user flows (photo
-                  analysis, historical tracking, and search), and defined
-                  privacy-first design principles that shaped our technical
-                  architecture.
+                  The application was something I was pretty confident of
+                  from the start. The client gave me all the requirements,
+                  and I immediately started giving him ideas, but he wanted a{" "}
+                  <span style={{ fontWeight: 600 }}>
+                    simple, not sophisticated and easy to navigate
+                  </span>{" "}
+                  and intuitive design. So I made sure to apply minimalist
+                  principles in designing the web application and started
+                  designing in Figma.
+                </p>
+                <p className="moodle-context-description">
+                  But before that, I had to decide the different roles of
+                  employees that would be using the application. Then I
+                  defined the user flow and came up with a development plan
+                  for{" "}
+                  <span style={{ fontWeight: 600 }}>over 3 weeks</span>.
                 </p>
               </div>
+            </div>
+
+            {/* User Flow Diagram */}
+            <div className="moodle-userflow-image-container" ref={userFlowImageRef}>
+              <img
+                src="/work/moodle/user-flow.png"
+                alt="Time Management Requirements, User Flow, and Roles Diagram"
+                className="moodle-userflow-image"
+                style={{ aspectRatio: "1360 / 438" }}
+              />
             </div>
 
             {/* Bottom Row - Impact Metrics */}
@@ -423,12 +355,9 @@ const MoodleCaseStudy = () => {
                     className="moodle-impact-value"
                     ref={(el) => (metricRefs.current[0] = el)}
                   >
-                    0%
+                    28-0
                   </div>
-                  <div className="moodle-impact-label">
-                    confidence increase for novice cat owners in pain assessment
-                    accuracy
-                  </div>
+                  <div className="moodle-impact-label">AGE GROUP</div>
                 </div>
                 <div
                   className="moodle-impact-metric"
@@ -438,12 +367,9 @@ const MoodleCaseStudy = () => {
                     className="moodle-impact-value"
                     ref={(el) => (metricRefs.current[1] = el)}
                   >
-                    0
+                    0%
                   </div>
-                  <div className="moodle-impact-label">
-                    SUS score achieved (above the <i>excellent</i> usability
-                    threshold of 80.3)
-                  </div>
+                  <div className="moodle-impact-label">USAGE</div>
                 </div>
                 <div
                   className="moodle-impact-metric"
@@ -456,7 +382,7 @@ const MoodleCaseStudy = () => {
                     0%
                   </div>
                   <div className="moodle-impact-label">
-                    less mental effort required when using AI assistance
+                    INCREASE IN PRODUCTIVITY
                   </div>
                 </div>
               </div>
@@ -468,68 +394,58 @@ const MoodleCaseStudy = () => {
                 className="moodle-context-statement-title"
                 ref={contextStatementTitleRef}
               >
-                CONTEXT
+                REQUIREMENTS & USERS
               </h3>
-              <div
-                className="moodle-context-image-container"
-                ref={contextImage1Ref}
-              >
-                <img
-                  src="/work/moodle/two-cats.png"
-                  alt="Can you tell which cat is in pain?"
-                  className="moodle-context-image"
-                />
-              </div>
               <CaseStudyStatement
                 ref={contextStatementContentRef}
                 variant="wide"
               >
-                <div className="moodle-context-statement-question-group">
-                  <CaseStudyStatementHeadline>
-                    Can you tell
-                    <span className="moodle-accent-text">
-                      which cat is in pain?
-                    </span>
-                  </CaseStudyStatementHeadline>
-                  <p className="moodle-context-statement-answer">
-                    (It's the right one!)
-                  </p>
-                </div>
-                <CaseStudyStatementBody className="moodle-context-statement-bold">
-                  <span className="moodle-accent-text">
-                    Most cat owners can't either.
+                <CaseStudyStatementBody>
+                  <span className="moodle-requirements-label">
+                    REQUIREMENTS
+                  </span>
+                  <br />
+                  The client wanted an intuitive and{" "}
+                  <span style={{ fontWeight: 600 }}>better performing</span>{" "}
+                  time tracking app that can enable real-time data storage
+                  and view sites of his employees and potentially see higher
+                  growth in his{" "}
+                  <span style={{ fontWeight: 600 }}>
+                    employees' productivity
+                  </span>
+                  .
+                </CaseStudyStatementBody>
+                <CaseStudyStatementBody>
+                  <span className="moodle-requirements-label">USERS</span>
+                  <br />
+                  Individuals with a well-versed skill set in the
+                  construction business and Microsoft applications. This
+                  user group is predominantly male, though participation is
+                  increasing.
+                </CaseStudyStatementBody>
+                <CaseStudyStatementBody>
+                  <span className="moodle-requirements-label">
+                    MOTIVATIONS
+                  </span>
+                  <br />
+                  A platform that can handle multiple functions within a
+                  single application to save time.
+                </CaseStudyStatementBody>
+                <CaseStudyStatementBody>
+                  <span className="moodle-requirements-label">
+                    PAINPOINTS
                   </span>
                 </CaseStudyStatementBody>
-                <CaseStudyStatementBody>
-                  Cats are famously good at hiding their pain, leaving{" "}
-                  <i>95 million</i> U.S. cat owners facing unnecessary expensive
-                  vet visits or preventable disease progression in their cats.
-                </CaseStudyStatementBody>
-                <CaseStudyStatementBody>
-                  Veterinarians use the{" "}
-                  <span className="moodle-context-statement-medium-bold">
-                    Feline Grimace Scale
-                  </span>{" "}
-                  to objectively detect pain through facial features. But cat
-                  owners don't have access to this clinical knowledge.
-                </CaseStudyStatementBody>
               </CaseStudyStatement>
-              <div
-                className="moodle-context-image-container"
-                ref={contextImage2Ref}
-              >
-                <img
-                  src="/work/moodle/FGS.png"
-                  alt="Feline Grimace Scale"
-                  className="moodle-context-image"
-                />
-                <p className="moodle-context-image-caption">
-                  So we simplified the clinical Feline Grimace Scale into an{" "}
-                  <span className="moodle-context-statement-medium-bold">
-                    accessible
-                  </span>{" "}
-                  format for everyday cat owners.
-                </p>
+              <div className="moodle-painpoints-tags">
+                <span className="moodle-painpoint-tag">Lack of good UX</span>
+                <span className="moodle-painpoint-tag">
+                  Better user flow
+                </span>
+                <span className="moodle-painpoint-tag">Save time</span>
+                <span className="moodle-painpoint-tag">
+                  Security concerns
+                </span>
               </div>
             </div>
           </div>
@@ -539,463 +455,154 @@ const MoodleCaseStudy = () => {
         <section id="moodle-research" className="moodle-research-section">
           <div className="moodle-research-content">
             <h3 className="moodle-research-title" ref={researchTitleRef}>
-              RESEARCH
+              IDEATION
             </h3>
 
-            <div className="moodle-research-overview">
-              <CaseStudyStatement ref={researchOverviewSubtitleRef}>
-                <CaseStudyStatementHeadline as="h4">
-                  Discovery Phase
-                </CaseStudyStatementHeadline>
-              </CaseStudyStatement>
-              <div className="moodle-research-benchmarking">
-                <div
-                  className="moodle-research-image-container"
-                  ref={researchOverviewImage1Ref}
-                >
-                  <img
-                    src="/work/moodle/technical-benchmarking.png"
-                    alt="Technical Benchmarking"
-                    className="moodle-research-image"
+            <CaseStudyStatement ref={researchOverviewSubtitleRef}>
+              <CaseStudyStatementBody>
+                During the ideation process, I came up with different types
+                of screens, but{" "}
+                <span style={{ fontWeight: 600 }}>the client</span> wanted
+                the most{" "}
+                <span style={{ fontWeight: 600 }}>
+                  simplistic and easy to navigate
+                </span>{" "}
+                and intuitive design.
+              </CaseStudyStatementBody>
+              <CaseStudyStatementBody>
+                So I followed Apple's guidelines to provide the best
+                experience for the client.
+              </CaseStudyStatementBody>
+              <CaseStudyStatementBody>
+                But one interesting feature was to give our different{" "}
+                <span style={{ fontWeight: 600 }}>
+                  skillsets to employees
+                </span>{" "}
+                to improve the skill that they select over time. It helped
+                the employees a lot to{" "}
+                <span style={{ fontWeight: 600 }}>
+                  focus on what they were actually lacking
+                </span>{" "}
+                in.
+              </CaseStudyStatementBody>
+            </CaseStudyStatement>
+
+            <div className="moodle-ideation-subsection">
+              <h4 className="moodle-ideation-subheading">Color Palette</h4>
+              <p className="moodle-ideation-text">
+                This project adopted a minimalistic visual style, using
+                primary blue and white to build the brand and also convey
+                trust. I also followed the 60-30-10 rule to maintain a
+                better visual balance.
+              </p>
+              <div className="moodle-swatch-row">
+                <div className="moodle-swatch">
+                  <div
+                    className="moodle-swatch-block"
+                    style={{ background: "#1A56DB" }}
                   />
+                  <div className="moodle-swatch-hex">#1A56DB</div>
+                  <div className="moodle-swatch-label">PRIMARY</div>
                 </div>
-                <div
-                  className="moodle-research-benchmarking-text-container"
-                  ref={researchBenchmarkingTextContainerRef}
-                >
-                  <p className="moodle-research-benchmarking-title">
-                    Technical Benchmarking
-                  </p>
-                  <p className="moodle-research-benchmarking-text">
-                    Evaluated existing cat pain detection tools to identify gaps
-                    in accuracy, usability, and user trust.
-                  </p>
+                <div className="moodle-swatch">
+                  <div
+                    className="moodle-swatch-block moodle-swatch-block-bordered"
+                    style={{ background: "#FFFFFF" }}
+                  />
+                  <div className="moodle-swatch-hex">#FFFFFF</div>
+                  <div className="moodle-swatch-label">PRIMARY</div>
                 </div>
-              </div>
-              <div
-                className="moodle-research-image-container"
-                ref={researchOverviewImage2Ref}
-              >
-                <img
-                  src="/work/moodle/research-participants.png"
-                  alt="6 Formative Interviews"
-                  className="moodle-research-image"
-                />
+                <div className="moodle-swatch">
+                  <div
+                    className="moodle-swatch-block"
+                    style={{ background: "#000000" }}
+                  />
+                  <div className="moodle-swatch-hex">#000000</div>
+                  <div className="moodle-swatch-label">SECONDARY</div>
+                </div>
+                <div className="moodle-swatch">
+                  <div
+                    className="moodle-swatch-block"
+                    style={{ background: "#D9D9D9" }}
+                  />
+                  <div className="moodle-swatch-hex">#D9D9D9</div>
+                  <div className="moodle-swatch-label">SECONDARY</div>
+                </div>
               </div>
             </div>
 
-            {/* Key Finding #1 */}
-            <div className="moodle-research-finding">
-              <h4
-                className="moodle-research-finding-title"
-                ref={researchFinding1TitleRef}
-              >
-                Key Finding #1: The tool needs to build confidence, not just
-                provide answers.
-              </h4>
-              <CaseStudyStatement ref={researchFinding1ContentRef}>
-                <CaseStudyStatementHeadline>
-                  100% of participants{" "}
-                  <span className="moodle-accent-text">struggled</span> to
-                  identify pain in their cats, even after years of ownership.
-                </CaseStudyStatementHeadline>
-              </CaseStudyStatement>
-              <div
-                className="moodle-research-image-container"
-                ref={researchFinding1ImageRef}
-              >
-                <img
-                  src="/work/moodle/finding-1.png"
-                  alt="Key Finding #1"
-                  className="moodle-research-image"
-                />
-              </div>
-            </div>
-
-            {/* Key Finding #2 */}
-            <div className="moodle-research-finding">
-              <h4
-                className="moodle-research-finding-title"
-                ref={researchFinding2TitleRef}
-              >
-                Key Finding #2: Show users the "why" behind every score, not
-                just the result.
-              </h4>
-              <CaseStudyStatement ref={researchFinding2ContentRef}>
-                <CaseStudyStatementHeadline>
-                  When asked about using AI to assess their cat's health,
-                  participants{" "}
-                  <span className="moodle-accent-text">
-                    expressed skepticism
+            <div className="moodle-ideation-subsection">
+              <h4 className="moodle-ideation-subheading">Typography</h4>
+              <p className="moodle-ideation-text">
+                I used San Serif for this web application for its easy to
+                understand, approachable design that aligns with the
+                application's clean and emerging aesthetic.
+              </p>
+              <div className="moodle-type-sample-row">
+                <div>
+                  <div className="moodle-type-aa">Aa</div>
+                  <div className="moodle-type-aa-label">San Serif</div>
+                </div>
+                <div className="moodle-type-variants">
+                  <span>Time Management</span>
+                  <span className="moodle-type-italic">Time Management</span>
+                  <span className="moodle-type-bold">Time Management</span>
+                  <span className="moodle-type-bold-italic">
+                    Time Management
                   </span>
-                  .
-                </CaseStudyStatementHeadline>
-              </CaseStudyStatement>
-              <div
-                className="moodle-research-image-container"
-                ref={researchFinding2ImageRef}
-              >
-                <img
-                  src="/work/moodle/finding-2.png"
-                  alt="Key Finding #2"
-                  className="moodle-research-image"
-                />
-              </div>
-            </div>
-
-            {/* Key Finding #3 */}
-            <div className="moodle-research-finding">
-              <h4
-                className="moodle-research-finding-title"
-                ref={researchFinding3TitleRef}
-              >
-                Key Finding #3: Historical Tracking Matters More Than Individual
-                Scores
-              </h4>
-              <CaseStudyStatement ref={researchFinding3ContentRef}>
-                <CaseStudyStatementHeadline>
-                  Participants valued seeing{" "}
-                  <span className="moodle-accent-text">patterns over time</span>{" "}
-                  more than individual pain scores.
-                </CaseStudyStatementHeadline>
-              </CaseStudyStatement>
-              <div
-                className="moodle-research-image-container"
-                ref={researchFinding3ImageRef}
-              >
-                <img
-                  src="/work/moodle/finding-3.png"
-                  alt="Key Finding #3"
-                  className="moodle-research-image"
-                />
+                </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Solution Section */}
+        {/* Development Section */}
         <section id="solution-section" className="moodle-solution-section">
           <div className="moodle-solution-content">
             <h3 className="moodle-solution-title" ref={solutionTitleRef}>
-              SOLUTION
+              DEVELOPMENT
             </h3>
-
-            {/* Visual Identity */}
-            <div className="moodle-solution-visual-identity">
-              <div
-                className="moodle-solution-visual-identity-content"
-                ref={solutionVisualIdentityContentRef}
-              >
-                <p className="moodle-solution-visual-identity-text">
-                  I designed Moodle's visual identity to feel{" "}
-                  <span className="moodle-solution-visual-identity-medium-bold">
-                    approachable yet trustworthy
-                  </span>
-                  —balancing medical reliability with friendly design.
-                </p>
-              </div>
-              <div className="moodle-solution-visual-identity-grid">
-                <div
-                  className="moodle-solution-image-container moodle-solution-image-left"
-                  ref={solutionVisualIdentityImage1Ref}
-                >
-                  <img
-                    src="/work/moodle/design-1.png"
-                    alt="Moodle Visual Identity"
-                    className="moodle-solution-image"
-                  />
-                </div>
-                <div className="moodle-solution-visual-identity-right-column">
-                  <div
-                    className="moodle-solution-image-container moodle-solution-image-right-top"
-                    ref={solutionVisualIdentityImage3Ref}
-                  >
-                    <img
-                      src="/work/moodle/design-3.png"
-                      alt="Moodle Visual Identity"
-                      className="moodle-solution-image"
-                    />
-                  </div>
-                  <div
-                    className="moodle-solution-image-container moodle-solution-image-right-bottom"
-                    ref={solutionVisualIdentityImage2Ref}
-                  >
-                    <img
-                      src="/work/moodle/design-2.png"
-                      alt="Moodle Visual Identity"
-                      className="moodle-solution-image"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Key Features */}
-            <div className="moodle-solution-key-features">
-              {/* Solution #1 */}
-              <div className="moodle-solution-item">
-                <h4
-                  className="moodle-solution-item-title"
-                  ref={solution1TitleRef}
-                >
-                  Feature #1: Analysis That Reveals the Why
-                </h4>
-                <CaseStudyStatement ref={solution1ContentRef}>
-                  <CaseStudyStatementHeadline>
-                    Users{" "}
-                    <span className="moodle-accent-text">see exactly how</span>{" "}
-                    the AI measures pain through eyes, ears, and muzzle
-                    analysis.
-                  </CaseStudyStatementHeadline>
-                </CaseStudyStatement>
-                <div className="moodle-solution-media">
-                  <div
-                    className="moodle-solution-video-container"
-                    ref={solution1VideoRef}
-                  >
-                    <video
-                      src="/work/moodle/sol-1.mp4"
-                      className="moodle-solution-video"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                    />
-                  </div>
-                  <p
-                    className="moodle-solution-caption"
-                    ref={solution1CaptionRef}
-                  >
-                    Built-in image guidelines and expandable score breakdowns
-                    address two critical needs: teaching users{" "}
-                    <span className="moodle-solution-caption-bold">
-                      what makes a good photo
-                    </span>{" "}
-                    and showing{" "}
-                    <span className="moodle-solution-caption-bold">
-                      how every score is calculated
-                    </span>
-                    .
-                  </p>
-                </div>
-              </div>
-
-              {/* Solution #2 */}
-              <div className="moodle-solution-item">
-                <h4
-                  className="moodle-solution-item-title"
-                  ref={solution2TitleRef}
-                >
-                  Feature #2: Search That Surfaces Patterns
-                </h4>
-                <CaseStudyStatement ref={solution2ContentRef}>
-                  <CaseStudyStatementHeadline>
-                    Search past entries to{" "}
-                    <span className="moodle-accent-text">
-                      quickly find relevant
-                    </span>{" "}
-                    symptoms and health events.
-                  </CaseStudyStatementHeadline>
-                </CaseStudyStatement>
-                <div className="moodle-solution-media">
-                  <div
-                    className="moodle-solution-video-container"
-                    ref={solution2VideoRef}
-                  >
-                    <video
-                      src="/work/moodle/sol-2.mp4"
-                      className="moodle-solution-video"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                    />
-                  </div>
-                  <p
-                    className="moodle-solution-caption"
-                    ref={solution2CaptionRef}
-                  >
-                    Search enables users to{" "}
-                    <span className="moodle-solution-caption-semi-bold">
-                      track recurring issues
-                    </span>{" "}
-                    across time—turning scattered observations into actionable
-                    health patterns.
-                  </p>
-                </div>
-              </div>
-
-              {/* Solution #3 */}
-              <div className="moodle-solution-item">
-                <h4
-                  className="moodle-solution-item-title"
-                  ref={solution3TitleRef}
-                >
-                  Feature #3: Calendar That Reveals Trends
-                </h4>
-                <CaseStudyStatement ref={solution3ContentRef}>
-                  <CaseStudyStatementHeadline>
-                    Filter historical records by critical factors to{" "}
-                    <span className="moodle-accent-text">
-                      visualize patterns at a glance
-                    </span>
-                    .
-                  </CaseStudyStatementHeadline>
-                </CaseStudyStatement>
-                <div className="moodle-solution-media">
-                  <div
-                    className="moodle-solution-video-container"
-                    ref={solution3VideoRef}
-                  >
-                    <video
-                      src="/work/moodle/sol-3.mp4"
-                      className="moodle-solution-video"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                    />
-                  </div>
-                  <p
-                    className="moodle-solution-caption"
-                    ref={solution3CaptionRef}
-                  >
-                    Calendar view with filtering transforms point-in-time
-                    assessments into longitudinal insights—enabling users to{" "}
-                    <span className="moodle-solution-caption-semi-bold">
-                      spot trends
-                    </span>{" "}
-                    over weeks and months.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Validation Study Section */}
-        <section id="moodle-validation" className="moodle-validation-section">
-          <div className="moodle-validation-content">
-            <h3 className="moodle-validation-title" ref={validationTitleRef}>
-              VALIDATION STUDY
-            </h3>
-
-            <div className="moodle-validation-intro" ref={validationContentRef}>
-              <h4 className="moodle-validation-intro-title">
-                Measuring Impact
-              </h4>
-            </div>
 
             <div
-              className="moodle-validation-image-container"
-              ref={validationImageRef}
+              className="moodle-solution-visual-identity-content"
+              ref={solutionVisualIdentityContentRef}
             >
-              <img
-                src="/work/moodle/subject-study.png"
-                alt="Validation Study"
-                className="moodle-validation-image"
-              />
+              <p className="moodle-solution-visual-identity-text">
+                I love{" "}
+                <span className="moodle-solution-visual-identity-medium-bold">
+                  designing applications
+                </span>{" "}
+                and seeing them come alive. But I'll tell you, development is
+                something out of my league—at least that's what I thought
+                until I worked on this project. I learned how databases
+                work, and how to code while still maintaining the UI, so it
+                doesn't compromise the client's vision.
+              </p>
+              <p className="moodle-solution-visual-identity-text">
+                In this process I also learned how to{" "}
+                <span className="moodle-solution-visual-identity-medium-bold">
+                  vibe code
+                </span>
+                . Although I don't use AI for idea generation, using it as a
+                tool to build a more functional web application was
+                something I enjoyed experimenting with.
+              </p>
             </div>
 
-            <div
-              className="moodle-validation-image-container"
-              ref={validationMethodsRef}
-            >
-              <img
-                src="/work/moodle/method-analysis.png"
-                alt="Methods and Analysis"
-                className="moodle-validation-image"
-              />
-            </div>
-
-            <div className="moodle-validation-results">
-              <h4
-                className="moodle-validation-results-title"
-                ref={validationResultsTitleRef}
-              >
-                Results
+            <div className="moodle-solution-subsection">
+              <h4 className="moodle-solution-subheading">
+                Low Fidelity Prototypes
               </h4>
-              <div className="moodle-validation-results-content">
-                <div
-                  className="moodle-validation-results-image-container"
-                  ref={validationResultsImageRef}
-                >
-                  <img
-                    src="/work/moodle/sus-score.png"
-                    alt="SUS Score Results"
-                    className="moodle-validation-results-image"
-                  />
-                </div>
-                <div
-                  className="moodle-validation-results-text"
-                  ref={validationResultsTextRef}
-                >
-                  <p className="moodle-validation-results-description">
-                    Moodle achieved strong usability with the greatest impact on{" "}
-                    <span className="moodle-validation-results-medium-bold moodle-accent-text">
-                      novice owners
-                    </span>{" "}
-                    who saw over{" "}
-                    <span className="moodle-validation-results-medium-bold moodle-accent-text">
-                      133%
-                    </span>{" "}
-                    <span className="moodle-validation-results-medium-bold moodle-accent-text">
-                      confidence gains
-                    </span>
-                    .
-                  </p>
-                  <p className="moodle-validation-results-description">
-                    However, our validation study confirmed early concerns—
-                    <span className="moodle-validation-results-medium-bold">
-                      6 out of 7 users wouldn't fully trust AI without
-                      veterinary validation.
-                    </span>
-                  </p>
-                </div>
+              <div className="moodle-wireframe-container">
+                <iframe
+                  src="/work/moodle/wireframe-lofi-prototypes.html"
+                  title="Lo-Fi Wireframes – Time Management"
+                  className="moodle-wireframe-frame"
+                  style={{ height: "1130px" }}
+                  scrolling="no"
+                />
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Next Steps Section */}
-        <section id="moodle-next-steps" className="moodle-next-steps-section">
-          <div className="moodle-next-steps-content">
-            <h3 className="moodle-next-steps-title" ref={nextStepsTitleRef}>
-              WHERE MOODLE GOES FROM HERE
-            </h3>
-            <ul className="moodle-next-steps-list">
-              <li
-                className="moodle-next-steps-item"
-                ref={(el) => (nextStepsItemsRefs.current[0] = el)}
-              >
-                <span style={{ fontWeight: 600 }}>Partner</span> with veterinary
-                clinics to validate AI scores and build user trust through
-                professional endorsement
-              </li>
-              <li
-                className="moodle-next-steps-item"
-                ref={(el) => (nextStepsItemsRefs.current[1] = el)}
-              >
-                <span style={{ fontWeight: 600 }}>Add</span> image-specific
-                explanations that show users exactly what the AI detected in
-                their cat's photo
-              </li>
-              <li
-                className="moodle-next-steps-item"
-                ref={(el) => (nextStepsItemsRefs.current[2] = el)}
-              >
-                <span style={{ fontWeight: 600 }}>Expand</span> tracking
-                features with symptom clustering, trend charts, and behavioral
-                notes
-              </li>
-              <li
-                className="moodle-next-steps-item"
-                ref={(el) => (nextStepsItemsRefs.current[3] = el)}
-              >
-                <span style={{ fontWeight: 600 }}>Connect</span> users to vets
-                through telehealth integration for high pain scores
-              </li>
-            </ul>
           </div>
         </section>
 
@@ -1003,35 +610,16 @@ const MoodleCaseStudy = () => {
         <section id="moodle-takeaways" className="moodle-takeaways-section">
           <div className="moodle-takeaways-content">
             <h3 className="moodle-takeaways-title" ref={takeawaysTitleRef}>
-              KEY TAKEAWAYS
+              PROJECT TAKEAWAYS
             </h3>
             <div
               className="moodle-takeaways-item"
               ref={(el) => (takeawaysItemsRefs.current[0] = el)}
             >
-              <h4 className="moodle-takeaways-title-text">
-                Design for the least confident users, not the most experienced.
-              </h4>
               <p className="moodle-takeaways-description">
-                Moodle's impact varied dramatically by expertise—novice owners
-                saw significant confidence gains, while experienced owners still
-                relied on their own judgment. Designing for those who struggle
-                most creates the greatest value and impact.
-              </p>
-            </div>
-            <div
-              className="moodle-takeaways-item"
-              ref={(el) => (takeawaysItemsRefs.current[1] = el)}
-            >
-              <h4 className="moodle-takeaways-title-text">
-                Usability alone doesn't build trust in health apps.
-              </h4>
-              <p className="moodle-takeaways-description">
-                Despite achieving an 82 SUS score, almost every user wouldn't
-                fully trust AI without veterinary validation. I learned that in
-                medical applications, clinical endorsement is
-                essential—excellent design can't overcome trust barriers without
-                professional backing.
+                Working in this application has really pushed my limits on
+                how to execute a Web Application from the most early stages
+                of designing to execution.
               </p>
             </div>
           </div>

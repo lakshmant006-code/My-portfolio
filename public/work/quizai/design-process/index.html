@@ -263,6 +263,29 @@
       document.fonts.ready.then(resizeFrame);
     }
     new ResizeObserver(resizeFrame).observe(document.body);
+
+    // Forward wheel scrolling to the parent page so its Lenis smooth-scroll
+    // handles it consistently instead of the browser's native scroll-chaining.
+    (function () {
+      const parentWin = window.parent;
+      if (!parentWin || parentWin === window) return;
+      window.addEventListener(
+        "wheel",
+        (e) => {
+          e.preventDefault();
+          parentWin.dispatchEvent(
+            new parentWin.WheelEvent("wheel", {
+              deltaX: e.deltaX,
+              deltaY: e.deltaY,
+              deltaMode: e.deltaMode,
+              bubbles: true,
+              cancelable: true,
+            }),
+          );
+        },
+        { passive: false },
+      );
+    })();
   </script>
 </body>
 </html>

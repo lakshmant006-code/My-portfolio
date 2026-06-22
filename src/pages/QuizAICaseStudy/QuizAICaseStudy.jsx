@@ -1,10 +1,11 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useScrollReset from "../../hooks/useScrollReset";
 import { useLenisScroll } from "../../hooks/useLenisScroll";
 import { useCardUnfurling } from "../../hooks/useCardUnfurling";
+import { useCountupAnimation } from "../../hooks/useCountupAnimation";
 import Footer from "../../components/Footer/Footer";
 import CursorPill from "../../components/CursorPill/CursorPill";
 import CaseStudyLayout from "../../components/CaseStudyLayout/CaseStudyLayout";
@@ -25,6 +26,9 @@ const QuizAICaseStudy = () => {
   // Refs for scroll animations
   const contextWhatIsQuizAIRef = useRef(null);
   const contextMyRoleRef = useRef(null);
+  const impactSectionRef = useRef(null);
+  const metricRefs = useRef([]);
+  const contextImpactMetricsRefs = useRef([]);
   const researchTitleRef = useRef(null);
   const researchOverviewSubtitleRef = useRef(null);
   const researchOverviewImageRef = useRef(null);
@@ -36,6 +40,9 @@ const QuizAICaseStudy = () => {
   const designApproach2TitleRef = useRef(null);
   const designApproach2ContentRef = useRef(null);
   const designApproach2Image1Ref = useRef(null);
+  const designApproachHighFiTitleRef = useRef(null);
+  const designApproachHighFiContentRef = useRef(null);
+  const designApproachHighFiImagesRef = useRef(null);
   const designApproach3TitleRef = useRef(null);
   const designApproach3ContentRef = useRef(null);
   const designApproach3ImageRef = useRef(null);
@@ -47,19 +54,40 @@ const QuizAICaseStudy = () => {
   const solution2ContentRef = useRef(null);
   const solution2VideoRef = useRef(null);
   const solution2CaptionRef = useRef(null);
-  const solution3TitleRef = useRef(null);
-  const solution3ContentRef = useRef(null);
-  const solution3VideoRef = useRef(null);
-  const solution3CaptionRef = useRef(null);
-  const solution4TitleRef = useRef(null);
-  const solution4ContentRef = useRef(null);
-  const solution4VideoRef = useRef(null);
-  const solution4CaptionRef = useRef(null);
   const reflectionTitleRef = useRef(null);
   const reflectionContentRef = useRef(null);
   const seeNextTitleRef = useRef(null);
   const seeNextGridRef = useRef(null);
   const seeNextCardsRefs = useRef([]);
+
+  const metrics = useMemo(
+    () => [
+      {
+        value: 24,
+        prefix: "15-",
+        suffix: "",
+        elementRef: metricRefs,
+        index: 0,
+      },
+      {
+        value: 100,
+        prefix: "",
+        suffix: "%",
+        elementRef: metricRefs,
+        index: 1,
+      },
+      {
+        value: 30,
+        prefix: "",
+        suffix: "%",
+        elementRef: metricRefs,
+        index: 2,
+      },
+    ],
+    [],
+  );
+
+  useCountupAnimation(impactSectionRef, metrics);
 
   // Use card unfurling hook for See Next section
   useCardUnfurling({
@@ -108,6 +136,27 @@ const QuizAICaseStudy = () => {
     // Context Section
     createScrollAnimation(contextWhatIsQuizAIRef);
     createScrollAnimation(contextMyRoleRef, 0.1);
+    // Impact metrics with stagger
+    contextImpactMetricsRefs.current.forEach((ref, index) => {
+      if (ref) {
+        gsap.set(ref, { opacity: 0, y: 30 });
+        const trigger = ScrollTrigger.create({
+          trigger: ref,
+          start: "top 80%",
+          once: true,
+          onEnter: () => {
+            gsap.to(ref, {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power2.out",
+              delay: 0.3 + index * 0.1,
+            });
+          },
+        });
+        scrollTriggers.push(trigger);
+      }
+    });
 
     // Research Section
     createScrollAnimation(researchTitleRef);
@@ -125,6 +174,10 @@ const QuizAICaseStudy = () => {
     createScrollAnimation(designApproach2TitleRef);
     createScrollAnimation(designApproach2ContentRef, 0.1);
     createScrollAnimation(designApproach2Image1Ref, 0.2);
+    // Design Approach High-Fi Frames
+    createScrollAnimation(designApproachHighFiTitleRef);
+    createScrollAnimation(designApproachHighFiContentRef, 0.1);
+    createScrollAnimation(designApproachHighFiImagesRef, 0.2);
     // Design Approach 3
     createScrollAnimation(designApproach3TitleRef);
     createScrollAnimation(designApproach3ContentRef, 0.1);
@@ -141,17 +194,6 @@ const QuizAICaseStudy = () => {
     createScrollAnimation(solution2ContentRef, 0.1);
     createScrollAnimation(solution2VideoRef, 0.2);
     createScrollAnimation(solution2CaptionRef, 0.3);
-    // Solution 3
-    createScrollAnimation(solution3TitleRef);
-    createScrollAnimation(solution3ContentRef, 0.1);
-    createScrollAnimation(solution3VideoRef, 0.2);
-    createScrollAnimation(solution3CaptionRef, 0.3);
-    // Solution 4
-    createScrollAnimation(solution4TitleRef);
-    createScrollAnimation(solution4ContentRef, 0.1);
-    createScrollAnimation(solution4VideoRef, 0.2);
-    createScrollAnimation(solution4CaptionRef, 0.3);
-
     // Reflection Section
     createScrollAnimation(reflectionTitleRef);
     createScrollAnimation(reflectionContentRef, 0.1);
@@ -284,6 +326,49 @@ const QuizAICaseStudy = () => {
             </div>
           </div>
 
+          <div className="quizai-context-impact" ref={impactSectionRef}>
+            <div className="quizai-impact-metrics">
+              <div
+                className="quizai-impact-metric"
+                ref={(el) => (contextImpactMetricsRefs.current[0] = el)}
+              >
+                <div
+                  className="quizai-impact-value"
+                  ref={(el) => (metricRefs.current[0] = el)}
+                >
+                  15-0
+                </div>
+                <div className="quizai-impact-label">AGE GROUP</div>
+              </div>
+              <div
+                className="quizai-impact-metric"
+                ref={(el) => (contextImpactMetricsRefs.current[1] = el)}
+              >
+                <div
+                  className="quizai-impact-value"
+                  ref={(el) => (metricRefs.current[1] = el)}
+                >
+                  0%
+                </div>
+                <div className="quizai-impact-label">USAGE</div>
+              </div>
+              <div
+                className="quizai-impact-metric"
+                ref={(el) => (contextImpactMetricsRefs.current[2] = el)}
+              >
+                <div
+                  className="quizai-impact-value"
+                  ref={(el) => (metricRefs.current[2] = el)}
+                >
+                  0%
+                </div>
+                <div className="quizai-impact-label">
+                  INCREASE IN PRODUCTIVITY
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -399,8 +484,8 @@ const QuizAICaseStudy = () => {
               ref={designApproach1ImageRef}
             >
               <img
-                src="/work/quizai/redesigned-approval-flowchart.png"
-                alt="Redesigned Approval Flowchart"
+                src="/work/quizai/user-journey-mapping-frame-1.svg"
+                alt="QuizAI User Flow"
                 className="quizai-design-approach-image"
               />
             </div>
@@ -437,6 +522,51 @@ const QuizAICaseStudy = () => {
                 className="quizai-design-approach-image quizai-wireframe-frame"
                 style={{ height: "650px" }}
                 scrolling="no"
+              />
+            </div>
+          </div>
+
+          {/* Design Approach High-Fi Frames */}
+          <div className="quizai-design-approach-item">
+            <CaseStudyStatement
+              ref={designApproachHighFiContentRef}
+              className="quizai-design-approach-statement"
+            >
+              <CaseStudyStatementHeadline
+                as="h4"
+                ref={designApproachHighFiTitleRef}
+              >
+                High Fidelity Frames
+              </CaseStudyStatementHeadline>
+              <CaseStudyStatementBody>
+                With the lo-fi structure validated, I translated each flow into{" "}
+                <span style={{ fontWeight: 600 }}>
+                  polished, ready-to-build screens
+                </span>{" "}
+                covering sign-in, quiz history, and study session summaries.
+              </CaseStudyStatementBody>
+            </CaseStudyStatement>
+            <div
+              className="quizai-highfi-frames-grid"
+              ref={designApproachHighFiImagesRef}
+            >
+              <img
+                src="/work/quizai/highfi-login.png"
+                alt="QuizAI High Fidelity Sign In Screen"
+                className="quizai-highfi-frame-image"
+                style={{ aspectRatio: "493 / 271" }}
+              />
+              <img
+                src="/work/quizai/highfi-quiz-history.png"
+                alt="QuizAI High Fidelity Quiz History Screen"
+                className="quizai-highfi-frame-image"
+                style={{ aspectRatio: "559 / 271" }}
+              />
+              <img
+                src="/work/quizai/highfi-study-session.png"
+                alt="QuizAI High Fidelity Study Session Summaries Screen"
+                className="quizai-highfi-frame-image"
+                style={{ aspectRatio: "555 / 270" }}
               />
             </div>
           </div>
@@ -479,12 +609,12 @@ const QuizAICaseStudy = () => {
           {/* Solution #1 */}
           <div className="quizai-solution-item">
             <h4 className="quizai-solution-item-title" ref={solution1TitleRef}>
-              Solution #1: Dedicated Approval Section
+              Solution #1: Centralized Study Dashboard
             </h4>
             <CaseStudyStatement ref={solution1ContentRef}>
               <CaseStudyStatementHeadline>
-                All approval actions live in{" "}
-                <span className="quizai-accent-text">one interface</span>.
+                All study materials live in{" "}
+                <span className="quizai-accent-text">one dashboard</span>.
               </CaseStudyStatementHeadline>
             </CaseStudyStatement>
             <div className="quizai-solution-media">
@@ -493,7 +623,7 @@ const QuizAICaseStudy = () => {
                 ref={solution1VideoRef}
               >
                 <video
-                  src="/work/quizai/sol-1.mp4"
+                  src="/work/quizai/quizai-dashboard-v1.mp4"
                   className="quizai-solution-video"
                   autoPlay
                   loop
@@ -502,10 +632,14 @@ const QuizAICaseStudy = () => {
                 />
               </div>
               <p className="quizai-solution-caption" ref={solution1CaptionRef}>
-                The dedicated approval section reduced navigation from{" "}
-                <span style={{ fontWeight: 600 }}>5+ clicks to 1</span>, cutting
-                discovery time by{" "}
-                <span className="quizai-solution-caption-bold">73%</span>.
+                The dashboard section brings every study material, upload,
+                and AI-generated summary into a{" "}
+                <span style={{ fontWeight: 600 }}>
+                  single, organized view
+                </span>
+                . This centralized structure let students pick up exactly
+                where they left off, without digging through scattered files
+                or tabs.
               </p>
             </div>
           </div>
@@ -513,13 +647,13 @@ const QuizAICaseStudy = () => {
           {/* Solution #2 */}
           <div className="quizai-solution-item">
             <h4 className="quizai-solution-item-title" ref={solution2TitleRef}>
-              Solution #2: Visual Multi-Tier Flow Builder
+              Solution #2: One-Click AI Quiz Generation
             </h4>
             <CaseStudyStatement ref={solution2ContentRef}>
               <CaseStudyStatementHeadline>
-                The flow builder transforms from single-step logic to{" "}
+                Any uploaded document transforms into a{" "}
                 <span className="quizai-accent-text">
-                  flexible, multi-tier approval chains
+                  ready-to-take quiz
                 </span>
                 .
               </CaseStudyStatementHeadline>
@@ -530,7 +664,7 @@ const QuizAICaseStudy = () => {
                 ref={solution2VideoRef}
               >
                 <video
-                  src="/work/quizai/sol-2.mp4"
+                  src="/work/quizai/quiz-generation.mp4"
                   className="quizai-solution-video"
                   autoPlay
                   loop
@@ -539,90 +673,18 @@ const QuizAICaseStudy = () => {
                 />
               </div>
               <p className="quizai-solution-caption" ref={solution2CaptionRef}>
-                The visual flow builder prevents workflow breakdowns by making
-                complex approval logic{" "}
+                Students can generate a quiz directly from any uploaded
+                document with one click, turning dense readings into{" "}
                 <span style={{ fontWeight: 600 }}>
-                  transparent and manageable
+                  instant, testable practice
                 </span>
-                .
+                . An AI chat assistant sits alongside it for follow-up
+                questions, removing the manual work of writing study
+                questions by hand.
               </p>
             </div>
           </div>
 
-          {/* Solution #3 */}
-          <div className="quizai-solution-item">
-            <h4 className="quizai-solution-item-title" ref={solution3TitleRef}>
-              Solution #3: Comprehensive Audit Trails
-            </h4>
-            <CaseStudyStatement ref={solution3ContentRef}>
-              <CaseStudyStatementHeadline>
-                Every deduction displays{" "}
-                <span className="quizai-accent-text">complete history</span>{" "}
-                with timestamps, actions, and decision context.
-              </CaseStudyStatementHeadline>
-            </CaseStudyStatement>
-            <div className="quizai-solution-media">
-              <div
-                className="quizai-solution-video-container"
-                ref={solution3VideoRef}
-              >
-                <video
-                  src="/work/quizai/sol-3.mp4"
-                  className="quizai-solution-video"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                />
-              </div>
-              <p className="quizai-solution-caption" ref={solution3CaptionRef}>
-                Comprehensive audit trails eliminated guesswork by giving
-                analysts{" "}
-                <span style={{ fontWeight: 600 }}>
-                  full context at a glance
-                </span>
-                .
-              </p>
-            </div>
-          </div>
-
-          {/* Solution #4 */}
-          <div className="quizai-solution-item">
-            <h4 className="quizai-solution-item-title" ref={solution4TitleRef}>
-              Solution #4: Stopping Endless Cycles
-            </h4>
-            <CaseStudyStatement ref={solution4ContentRef}>
-              <CaseStudyStatementHeadline>
-                Users can{" "}
-                <span className="quizai-accent-text">
-                  flag misassigned deductions
-                </span>{" "}
-                and <span className="quizai-accent-text">reroute</span> them.
-              </CaseStudyStatementHeadline>
-            </CaseStudyStatement>
-            <div className="quizai-solution-media">
-              <div
-                className="quizai-solution-video-container"
-                ref={solution4VideoRef}
-              >
-                <video
-                  src="/work/quizai/sol-4.mp4"
-                  className="quizai-solution-video"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                />
-              </div>
-              <p className="quizai-solution-caption" ref={solution4CaptionRef}>
-                <span style={{ fontWeight: 600 }}>
-                  Clear misassignment handling
-                </span>{" "}
-                eliminated the confusion that caused 35% of deductions to cycle
-                back for multiple reviews.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -638,14 +700,20 @@ const QuizAICaseStudy = () => {
               both product design and development.
             </h4>
             <p className="quizai-reflection-description">
-              Without design mentorship in an unfamiliar domain (CPG brands) and
-              learning Ruby on the fly, I had to define my own pace and trust my
-              instincts—a stark shift from structured internships. Collaborating
-              directly with engineering and customer success also taught me to
-              communicate design decisions effectively and gave me genuine input
-              on product direction. This environment proved I could bridge
-              design and development while delivering a complete 0→1 overhaul.{" "}
-              <span style={{ fontWeight: 600 }}>Thank you Quiz AI!</span>
+              Working in this application has really pushed my limits on how
+              to execute a Web Application from the most early stages of
+              designing to execution.
+            </p>
+            <p className="quizai-reflection-subheading">
+              Universal Learning, Not Just Equal Learning
+            </p>
+            <p className="quizai-reflection-description">
+              This project deepened my understanding of equity in education
+              technology. QuizAI isn&apos;t just built for everyone—it&apos;s
+              built to support individual learning styles, especially for
+              those who may not thrive in traditional environments. This
+              balance between universal access and personalized engagement
+              shaped the core of my design choices.
             </p>
           </div>
         </div>
@@ -676,6 +744,7 @@ const QuizAICaseStudy = () => {
                   <video
                     src="/work/moodle/thumbnail.mp4"
                     className="quizai-see-next-image"
+                    style={{ aspectRatio: "1920 / 1438" }}
                     autoPlay
                     loop
                     muted
@@ -683,11 +752,11 @@ const QuizAICaseStudy = () => {
                   />
                 </div>
                 <h4 className="quizai-see-next-card-title">
-                  Moodle: AI-Powered Feline Pain Detection for Cat Owners
+                  Time Management: A Productivity Tracking Web App
                 </h4>
                 <p className="quizai-see-next-card-description">
-                  Making clinical-grade pain monitoring accessible to cat owners
-                  through intuitive mobile design and privacy-first AI.
+                  Helping a company track employee productivity through an
+                  intuitive, easy-to-navigate time management dashboard.
                 </p>
               </div>
             </Link>
@@ -705,6 +774,7 @@ const QuizAICaseStudy = () => {
                   <video
                     src="/work/venmo/thumbnail.mp4"
                     className="quizai-see-next-image"
+                    style={{ aspectRatio: "1920 / 1080" }}
                     autoPlay
                     loop
                     muted

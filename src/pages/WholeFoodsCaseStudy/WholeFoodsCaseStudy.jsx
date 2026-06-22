@@ -983,11 +983,11 @@ const WholeFoodsCaseStudy = () => {
                   />
                 </div>
                 <h4 className="wholefoods-see-next-card-title">
-                  Moodle: AI-Powered Feline Pain Detection for Cat Owners
+                  Time Management: A Productivity Tracking Web App
                 </h4>
                 <p className="wholefoods-see-next-card-description">
-                  Making clinical-grade pain monitoring accessible to cat owners
-                  through intuitive mobile design and privacy-first AI.
+                  Helping a company track employee productivity through an
+                  intuitive, easy-to-navigate time management dashboard.
                 </p>
               </div>
             </Link>

@@ -37,11 +37,11 @@ const workProjects = [
   },
   {
     id: "moodle-pain-detection",
-    title: "Moodle: AI-Powered Feline Pain Detection for Cat Owners",
-    role: "Product Designer",
-    tags: ["UX Research", "AI/ML"],
+    title: "Time Management: A Productivity Tracking Web App",
+    role: "UX Researcher, Full Stack Developer",
+    tags: ["UX Research", "Web Development"],
     summary:
-      "Making clinical-grade pain monitoring accessible to cat owners through intuitive mobile design and privacy-first AI.",
+      "Helping a company track employee productivity through an intuitive, easy-to-navigate time management dashboard.",
     video: "/work/moodle/thumbnail.mp4",
     thumbnailImage: "/work/moodle/thumbnail-frame.jpg",
     category: "case-study",
