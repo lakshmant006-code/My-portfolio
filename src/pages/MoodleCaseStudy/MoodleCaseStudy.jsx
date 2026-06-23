@@ -38,6 +38,14 @@ const MoodleCaseStudy = () => {
   const researchOverviewSubtitleRef = useRef(null);
   const solutionTitleRef = useRef(null);
   const solutionVisualIdentityContentRef = useRef(null);
+  const solutionItem1TitleRef = useRef(null);
+  const solutionItem1ContentRef = useRef(null);
+  const solutionItem1VideoRef = useRef(null);
+  const solutionItem1CaptionRef = useRef(null);
+  const solutionItem2TitleRef = useRef(null);
+  const solutionItem2ContentRef = useRef(null);
+  const solutionItem2VideoRef = useRef(null);
+  const solutionItem2CaptionRef = useRef(null);
   const takeawaysTitleRef = useRef(null);
   const takeawaysItemsRefs = useRef([]);
   const seeNextTitleRef = useRef(null);
@@ -45,7 +53,7 @@ const MoodleCaseStudy = () => {
   const seeNextCardsRefs = useRef([]);
 
   const handleSkipToSolution = () => {
-    scrollToElement(document.getElementById("solution-section"), {
+    scrollToElement(document.getElementById("moodle-solutions"), {
       duration: 1.2,
     });
   };
@@ -154,6 +162,16 @@ const MoodleCaseStudy = () => {
     // Development Section
     createScrollAnimation(solutionTitleRef);
     createScrollAnimation(solutionVisualIdentityContentRef, 0.1);
+
+    createScrollAnimation(solutionItem1TitleRef);
+    createScrollAnimation(solutionItem1ContentRef, 0.1);
+    createScrollAnimation(solutionItem1VideoRef, 0.2);
+    createScrollAnimation(solutionItem1CaptionRef, 0.3);
+
+    createScrollAnimation(solutionItem2TitleRef);
+    createScrollAnimation(solutionItem2ContentRef, 0.1);
+    createScrollAnimation(solutionItem2VideoRef, 0.2);
+    createScrollAnimation(solutionItem2CaptionRef, 0.3);
 
     // Key Takeaways Section
     createScrollAnimation(takeawaysTitleRef);
@@ -279,7 +297,7 @@ const MoodleCaseStudy = () => {
                     />
                   </svg>
                 </div>
-                <span className="moodle-skip-text">SKIP TO DEVELOPMENT</span>
+                <span className="moodle-skip-text">SKIP TO SOLUTIONS</span>
               </button>
             </div>
           </div>
@@ -591,6 +609,150 @@ const MoodleCaseStudy = () => {
                   scrolling="no"
                 />
               </div>
+            </div>
+
+            <div className="moodle-solution-subsection">
+              <h4 className="moodle-solution-subheading">
+                High Fidelity Prototypes
+              </h4>
+              <div className="moodle-hifi-gallery">
+                <img
+                  src="/work/moodle/final-login.png"
+                  alt="High-fidelity Login screen"
+                  className="moodle-hifi-image"
+                  style={{ aspectRatio: "1440 / 1024" }}
+                />
+                <img
+                  src="/work/moodle/final-client-registration.png"
+                  alt="High-fidelity Register New Client screen"
+                  className="moodle-hifi-image"
+                  style={{ aspectRatio: "1440 / 1668" }}
+                />
+                <img
+                  src="/work/moodle/final-admin-client-registration.png"
+                  alt="High-fidelity Register New Client screen, admin variant"
+                  className="moodle-hifi-image"
+                  style={{ aspectRatio: "1440 / 1484" }}
+                />
+                <img
+                  src="/work/moodle/final-user-dashboard.png"
+                  alt="High-fidelity User Dashboard screen"
+                  className="moodle-hifi-image"
+                  style={{ aspectRatio: "1440 / 1024" }}
+                />
+                <img
+                  src="/work/moodle/final-admin-dashboard.png"
+                  alt="High-fidelity Admin Dashboard screen"
+                  className="moodle-hifi-image"
+                  style={{ aspectRatio: "1440 / 1024" }}
+                />
+              </div>
+              <p className="moodle-hifi-caption">
+                These high-fidelity screens show the final, coded product: a
+                branded login gate, two variations of the Register New Client
+                form that capture company details, billing, and portal
+                access, and role-specific dashboards for Users and Admins.
+                The User Dashboard surfaces day-to-day tools like client and
+                project registration, while the Admin Dashboard streamlines
+                navigation down to Clients, Time Tracking, and Settings for
+                higher-level oversight. Together they reflect the clean,
+                minimal visual language defined earlier in the style guide,
+                carried through from wireframe to working interface.
+              </p>
+            </div>
+
+            <div id="moodle-solutions">
+            <div className="moodle-solution-item">
+              <h4
+                className="moodle-solution-item-title"
+                ref={solutionItem1TitleRef}
+              >
+                Solution #1: Centralized Organization & User Management
+              </h4>
+              <CaseStudyStatement ref={solutionItem1ContentRef}>
+                <CaseStudyStatementHeadline>
+                  Organization details and the full team roster live in{" "}
+                  <span className="moodle-accent-text">one admin view</span>.
+                </CaseStudyStatementHeadline>
+              </CaseStudyStatement>
+              <div className="moodle-solution-media">
+                <div
+                  className="moodle-solution-video-container"
+                  ref={solutionItem1VideoRef}
+                >
+                  <video
+                    src="/work/moodle/organization-user-management.mp4"
+                    className="moodle-solution-video"
+                    style={{ aspectRatio: "1920 / 1080" }}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                </div>
+                <p
+                  className="moodle-solution-caption"
+                  ref={solutionItem1CaptionRef}
+                >
+                  Admins can edit organization details and manage the entire
+                  user roster from one screen, with the table{" "}
+                  <span className="moodle-solution-caption-semi-bold">
+                    updating live
+                  </span>{" "}
+                  as records change. This pulled what used to be scattered
+                  admin tasks into the single application the client asked
+                  for, saving time on everyday account management.
+                </p>
+              </div>
+            </div>
+
+            <div className="moodle-solution-item">
+              <h4
+                className="moodle-solution-item-title"
+                ref={solutionItem2TitleRef}
+              >
+                Solution #2: Employee Skill Tracking
+              </h4>
+              <CaseStudyStatement ref={solutionItem2ContentRef}>
+                <CaseStudyStatementHeadline>
+                  Every employee profile tracks{" "}
+                  <span className="moodle-accent-text">
+                    real skills and proficiency
+                  </span>
+                  .
+                </CaseStudyStatementHeadline>
+              </CaseStudyStatement>
+              <div className="moodle-solution-media">
+                <div
+                  className="moodle-solution-video-container"
+                  ref={solutionItem2VideoRef}
+                >
+                  <video
+                    src="/work/moodle/employee-skill-tracking.mp4"
+                    className="moodle-solution-video"
+                    style={{ aspectRatio: "1892 / 864" }}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                  />
+                </div>
+                <p
+                  className="moodle-solution-caption"
+                  ref={solutionItem2CaptionRef}
+                >
+                  Every user profile includes a Skills section where admins
+                  can add a skill and set a proficiency level, alongside
+                  address and employment details in the same form. This was
+                  one of the more interesting ideas to come out of
+                  ideation:{" "}
+                  <span className="moodle-solution-caption-semi-bold">
+                    giving employees a clear view of where they stood
+                  </span>{" "}
+                  so they could focus on what they were actually lacking.
+                </p>
+              </div>
+            </div>
             </div>
           </div>
         </section>
