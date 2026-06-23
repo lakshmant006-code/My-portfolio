@@ -404,24 +404,21 @@ const MoodleCaseStudy = () => {
                   <span className="moodle-requirements-label">
                     REQUIREMENTS
                   </span>
-                  <br />
-                  The client wanted an intuitive and{" "}
-                  <span style={{ fontWeight: 600 }}>better performing</span>{" "}
-                  time tracking app that can enable real-time data storage
-                  and view sites of his employees and potentially see higher
-                  growth in his{" "}
-                  <span style={{ fontWeight: 600 }}>
-                    employees' productivity
-                  </span>
-                  .
+                  <img
+                    src="/work/moodle/frame-145.png"
+                    alt="Time Management Requirements"
+                    className="moodle-requirements-image"
+                    style={{ aspectRatio: "1336 / 400" }}
+                  />
                 </CaseStudyStatementBody>
                 <CaseStudyStatementBody>
                   <span className="moodle-requirements-label">USERS</span>
-                  <br />
-                  Individuals with a well-versed skill set in the
-                  construction business and Microsoft applications. This
-                  user group is predominantly male, though participation is
-                  increasing.
+                  <img
+                    src="/work/moodle/frame-147.png"
+                    alt="Time Management Users"
+                    className="moodle-requirements-image"
+                    style={{ aspectRatio: "1460 / 340" }}
+                  />
                 </CaseStudyStatementBody>
                 <CaseStudyStatementBody>
                   <span className="moodle-requirements-label">
@@ -538,20 +535,12 @@ const MoodleCaseStudy = () => {
                 understand, approachable design that aligns with the
                 application's clean and emerging aesthetic.
               </p>
-              <div className="moodle-type-sample-row">
-                <div>
-                  <div className="moodle-type-aa">Aa</div>
-                  <div className="moodle-type-aa-label">San Serif</div>
-                </div>
-                <div className="moodle-type-variants">
-                  <span>Time Management</span>
-                  <span className="moodle-type-italic">Time Management</span>
-                  <span className="moodle-type-bold">Time Management</span>
-                  <span className="moodle-type-bold-italic">
-                    Time Management
-                  </span>
-                </div>
-              </div>
+              <img
+                src="/work/moodle/frame-156.png"
+                alt="Time Management Typography"
+                className="moodle-type-sample-image"
+                style={{ aspectRatio: "807 / 575" }}
+              />
             </div>
           </div>
         </section>

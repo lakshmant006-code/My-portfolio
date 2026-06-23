@@ -199,9 +199,6 @@ const DandiCaseStudy = () => {
         <div className="dandi-hero-content">
           <div className="dandi-hero-left">
             <div className="dandi-hero-title-group">
-              <p className="dandi-hero-award">
-                🏅 Most Impact Winner – FigBuild 2026
-              </p>
               <h1 className="dandi-hero-title">
                 Dandi: A Bio-Smart Wearable for PCOS
               </h1>

@@ -33,7 +33,6 @@ const workProjects = [
     video: "/work/dandi/thumbnail.mp4",
     thumbnailImage: "/work/dandi/thumbnail-frame.png",
     category: "case-study",
-    awardLine: "🏅 Most Impact Winner – FigBuild 2026",
   },
   {
     id: "moodle-pain-detection",

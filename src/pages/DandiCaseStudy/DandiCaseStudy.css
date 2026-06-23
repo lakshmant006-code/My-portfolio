@@ -87,18 +87,6 @@
   line-height: 1;
 }
 
-.dandi-hero-award {
-  font-family: "Satoshi", sans-serif;
-  font-size: 0.8125rem;
-  font-weight: 500;
-  font-style: italic;
-  letter-spacing: 0.02em;
-  color: #e86fa5;
-  margin: 0;
-  line-height: 1.35;
-  text-transform: uppercase;
-}
-
 .dandi-hero-details {
   display: flex;
   flex-direction: column;
@@ -316,10 +304,6 @@
     font-size: 4rem;
   }
 
-  .dandi-hero-award {
-    font-size: 0.875rem;
-  }
-
   .dandi-hero-details {
     flex-direction: row;
     flex-wrap: wrap;
@@ -382,10 +366,6 @@
 
   .dandi-hero-title {
     font-size: 5rem;
-  }
-
-  .dandi-hero-award {
-    font-size: 0.9375rem;
   }
 
   .dandi-hero-subtitle {
