@@ -4,7 +4,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { experiences } from "../../data/experiences";
 
 import TimelineItem from "./TimelineItem";
-import AwardsRack from "../AwardsRack/AwardsRack";
 import "./ExperienceTimeline.css";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -117,9 +116,6 @@ const ExperienceTimeline = ({ revealEarlier = false }) => {
             />
           ))}
         </div>
-
-        {/* Awards — two-tier vinyl rack */}
-        <AwardsRack />
       </div>
     </section>
   );

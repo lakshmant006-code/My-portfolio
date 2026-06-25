@@ -23,35 +23,35 @@ const DANDI_FLOWER_IMAGES = [1, 2, 3, 4, 5, 6].map(
 const DANDI_FEATURES = [
   {
     video: "/work/dandi/sol1.mp4",
-    title: "Feature #1: Health tracking that feels like self-care",
-    headlineLead: "Your garden ",
-    headlineHighlight: "reflects your body.",
+    title: "Mobile View 1: Login/Explore",
+    headlineLead: "One login, ",
+    headlineHighlight: "every trail open.",
     caption:
-      "Heart rate, sleep, glucose, and body temp each visualized as an animated flower that blooms when you're thriving.",
+      "A clean, simple login and explore screen gets users from sign-in to discovering nearby trails in seconds — no clutter, no friction.",
   },
   {
     video: "/work/dandi/sol2.mp4",
-    title: "Feature #2: Supplements delivered hands-free",
-    headlineLead: "No pills. ",
-    headlineHighlight: "No thinking.",
+    title: "Mobile View 2: Trails",
+    headlineLead: "Find a trail, ",
+    headlineHighlight: "see what it's really like.",
     caption:
-      "The earring reads your real-time biometrics and automatically micro-doses exactly what your body needs through the skin.",
+      "Real photos, ratings, and trail info pulled together so hikers know exactly what to expect before they ever leave the house.",
   },
   {
     video: "/work/dandi/sol3.mp4",
-    title: "Feature #3: See your whole health in one place",
-    headlineLead: "Everything your body is doing, ",
-    headlineHighlight: "at a glance.",
+    title: "Mobile View 3: Communities",
+    headlineLead: "Find your people, ",
+    headlineHighlight: "not just your path.",
     caption:
-      "Key biometrics, medication intake, and cycle tracking — designed to feel like a morning check-in, not a medical dashboard.",
+      "Campus clubs like the ASU Outdoors Club get a home inside the app — members, trip plans, and shared experiences all in one place.",
   },
   {
     video: "/work/dandi/sol4.mp4",
-    title: "Feature #4: You are not alone",
-    headlineLead: "Peer supported, ",
-    headlineHighlight: "clinically vetted.",
+    title: "Mobile View 4: Shop",
+    headlineLead: "The right gear, ",
+    headlineHighlight: "without buying it outright.",
     caption:
-      'A community forum where every post marked "Reviewed" has been verified by a medical and nutrition advisory team.',
+      "A built-in shop lets users rent or buy hiking and camping gear directly through the community they're already part of, keeping costs down for students.",
   },
 ];
 
@@ -62,10 +62,6 @@ const DandiCaseStudy = () => {
 
   const contextWhatIsRef = useRef(null);
   const contextMyRoleRef = useRef(null);
-  const contextImpactTitleRef = useRef(null);
-  const contextImpactStatementRef = useRef(null);
-  const contextImpactPromptRef = useRef(null);
-  const contextImpactImageRef = useRef(null);
   const whereWeBeganTitleRef = useRef(null);
   const whereWeBeganText1Ref = useRef(null);
   const whereWeBeganVideoRef = useRef(null);
@@ -79,13 +75,8 @@ const DandiCaseStudy = () => {
   const visualIdentityRef = useRef(null);
   const physicalComponentRef = useRef(null);
   const featureItemRefs = useRef([]);
-  const nextStepsTitleRef = useRef(null);
-  const nextStepsItemRef = useRef(null);
   const takeawaysTitleRef = useRef(null);
   const takeawaysItemRef = useRef(null);
-  const learnMoreTitleRef = useRef(null);
-  const learnMoreEmbedRef = useRef(null);
-  const learnMoreLinksRef = useRef(null);
   const seeNextTitleRef = useRef(null);
   const seeNextGridRef = useRef(null);
   const seeNextCardsRefs = useRef([]);
@@ -133,10 +124,6 @@ const DandiCaseStudy = () => {
 
     createScrollAnimation(contextWhatIsRef, 0.08);
     createScrollAnimation(contextMyRoleRef, 0.12);
-    createScrollAnimation(contextImpactTitleRef, 0.18);
-    createScrollAnimation(contextImpactStatementRef, 0.22);
-    createScrollAnimation(contextImpactPromptRef, 0.24);
-    createScrollAnimation(contextImpactImageRef, 0.28);
     createScrollAnimation(whereWeBeganTitleRef, 0.06);
     createScrollAnimation(whereWeBeganText1Ref, 0.1);
     createScrollAnimation(whereWeBeganVideoRef, 0.14);
@@ -149,13 +136,8 @@ const DandiCaseStudy = () => {
     createScrollAnimation(solutionTitleRef, 0.06);
     createScrollAnimation(visualIdentityRef, 0.1);
     createScrollAnimation(physicalComponentRef, 0.14);
-    createScrollAnimation(nextStepsTitleRef, 0.06);
-    createScrollAnimation(nextStepsItemRef, 0.1);
     createScrollAnimation(takeawaysTitleRef, 0.06);
     createScrollAnimation(takeawaysItemRef, 0.1);
-    createScrollAnimation(learnMoreTitleRef, 0.06);
-    createScrollAnimation(learnMoreEmbedRef, 0.1);
-    createScrollAnimation(learnMoreLinksRef, 0.14);
     createScrollAnimation(seeNextTitleRef, 0.06);
 
     featureItemRefs.current.forEach((node, index) => {
@@ -191,7 +173,7 @@ const DandiCaseStudy = () => {
         <div className="dandi-hero-image-container dandi-hero-before">
           <img
             src="/work/dandi/hero-before.png"
-            alt="Dandi — bio-smart wearable for PCOS"
+            alt="Hiku — a mobile application for hiking enthusiasts"
             className="dandi-hero-image"
           />
         </div>
@@ -200,38 +182,37 @@ const DandiCaseStudy = () => {
           <div className="dandi-hero-left">
             <div className="dandi-hero-title-group">
               <h1 className="dandi-hero-title">
-                Dandi: A Bio-Smart Wearable for PCOS
+                Hiku: A Mobile Application for Hiking Enthusiasts
               </h1>
             </div>
             <div className="dandi-hero-details">
               <div className="dandi-hero-detail-item">
                 <div className="dandi-hero-detail-label">ROLE</div>
                 <div className="dandi-hero-detail-value">
-                  Product Designer & Engineer
+                  UX Researcher, UX Designer
                 </div>
               </div>
               <div className="dandi-hero-detail-item">
                 <div className="dandi-hero-detail-label">DURATION</div>
-                <div className="dandi-hero-detail-value">Mar 6–9, 2026</div>
+                <div className="dandi-hero-detail-value">Nov – Mar 2024</div>
               </div>
               <div className="dandi-hero-detail-item">
                 <div className="dandi-hero-detail-label">TOOLS</div>
-                <div className="dandi-hero-detail-value">
-                  Figma, Figma Make, React, TypeScript
-                </div>
+                <div className="dandi-hero-detail-value">Figma</div>
               </div>
             </div>
           </div>
 
           <div className="dandi-hero-right">
             <p className="dandi-hero-subtitle">
-              Making hormonal health accessible for women through
-              emotionally-resonant design and real-time biosensing.
+              Connecting hiking and camping enthusiasts through community,
+              shared experiences, and a convenient way to buy or rent the
+              gear they need for their next adventure.
             </p>
             <div className="dandi-hero-tags">
               <span className="dandi-hero-tag">Mobile</span>
-              <span className="dandi-hero-tag">Wearable</span>
-              <span className="dandi-hero-tag">Women&apos;s Health</span>
+              <span className="dandi-hero-tag">Human Interface Design</span>
+              <span className="dandi-hero-tag">UX Research</span>
             </div>
             <button
               type="button"
@@ -257,7 +238,7 @@ const DandiCaseStudy = () => {
                   />
                 </svg>
               </div>
-              <span className="dandi-skip-text">SKIP TO SOLUTION</span>
+              <span className="dandi-skip-text">SKIP TO FEATURES</span>
             </button>
           </div>
         </div>
@@ -265,7 +246,7 @@ const DandiCaseStudy = () => {
         <div className="dandi-hero-image-container dandi-hero-after">
           <img
             src="/work/dandi/hero-after.png"
-            alt="Dandi — bio-smart wearable for PCOS"
+            alt="Hiku — a mobile application for hiking enthusiasts"
             className="dandi-hero-image"
           />
         </div>
@@ -280,69 +261,25 @@ const DandiCaseStudy = () => {
           <div className="dandi-context-top">
             <div className="dandi-context-item" ref={contextWhatIsRef}>
               <h3 id="dandi-context-heading" className="dandi-context-title">
-                What is Dandi?
+                What is Hiku?
               </h3>
               <p className="dandi-context-description">
-                Dandi is a speculative bio-smart ear cuff and companion app that
-                makes the invisible signals of Polycystic Ovary Syndrome (PCOS)
-                visible — continuously tracking hormones, glucose, and sleep in
-                real time, and translating them into clear patterns and
-                actionable insights.
+                Hiku is a mobile application that connects hiking and camping
+                enthusiasts, making it easy to build communities and share
+                outdoor experiences. It provides a convenient platform to buy
+                or rent hiking and camping gear, ensuring users are
+                well-prepared for their next adventure.
               </p>
             </div>
             <div className="dandi-context-item" ref={contextMyRoleRef}>
               <h3 className="dandi-context-title">My Role</h3>
               <p className="dandi-context-description">
-                As part of a four-person team, I contributed to ideation and
-                problem research, then led the design and development of the
-                Insights page — iterating from lo-fi wireframes through hi-fi
-                design to a coded prototype in React. I also helped put together
-                the cross-feature prototype with Figma Make and code.
+                As UX Researcher and Designer, I led user interviews and a
+                quantitative survey to understand hikers&apos; needs, then
+                translated those findings into wireframes and high-fidelity
+                screens — focusing on simple, intuitive navigation from the
+                very first screen.
               </p>
-            </div>
-          </div>
-
-          <div className="dandi-context-impact">
-            <h3 className="dandi-impact-title" ref={contextImpactTitleRef}>
-              Context
-            </h3>
-            <p
-              className="dandi-context-impact-statement"
-              ref={contextImpactStatementRef}
-            >
-              Dandi won <span className="dandi-accent-text">Most Impact</span>{" "}
-              at{" "}
-              <a
-                href="https://figbuild2026.devpost.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="dandi-context-impact-link"
-              >
-                FigBuild 2026
-              </a>{" "}
-              — Figma for Edu&apos;s annual student design competition — out of{" "}
-              <span className="dandi-accent-text">688</span> submissions from{" "}
-              <span className="dandi-accent-text">2,100+</span> students across
-              the US, Canada, India, and Australia.
-            </p>
-            <p
-              className="dandi-context-impact-prompt"
-              ref={contextImpactPromptRef}
-            >
-              This year, FigBuild 2026 asked teams to design a speculative tool
-              that tracks and influences something intangible about the human
-              sensory experience, supporting wellness or behavioral change.
-            </p>
-            <div
-              className="dandi-context-impact-image-container"
-              ref={contextImpactImageRef}
-            >
-              <img
-                src="/work/dandi/impact.png"
-                alt="FigBuild 2026 Most Impact award for Dandi"
-                className="dandi-context-impact-image"
-                loading="lazy"
-              />
             </div>
           </div>
         </div>
@@ -359,16 +296,18 @@ const DandiCaseStudy = () => {
             className="dandi-impact-title dandi-where-we-began-heading"
             ref={whereWeBeganTitleRef}
           >
-            Where We Began
+            User Research
           </h2>
           <p
             className="dandi-where-we-began-body dandi-where-we-began-body--above-video"
             ref={whereWeBeganText1Ref}
           >
-            She had always had irregular periods, stubborn acne, and a gut
-            feeling something was wrong. For years she assumed,{" "}
+            The research process involved conducting audio interviews with 20
+            to 55 year olds, focusing on understanding their experience and
+            challenges related to hiking and camping. By asking thoughtful
+            questions, I was able to{" "}
             <span className="dandi-accent-text">
-              &ldquo;This is just how my body is.&rdquo;
+              empathize with their needs and gain valuable insights.
             </span>
           </p>
           <div
@@ -382,26 +321,26 @@ const DandiCaseStudy = () => {
               loop
               muted
               playsInline
-              aria-label="Ambient motion for the origin story"
+              aria-label="Ambient motion for the research section"
             />
           </div>
           <p
             className="dandi-where-we-began-body dandi-where-we-began-body--below-video"
             ref={whereWeBeganText2Ref}
           >
-            It wasn&apos;t until a routine checkup that a doctor mentioned PCOS
-            almost in passing, but she still had{" "}
+            The process also included a quantitative assessment, where
+            students were asked whether they&apos;d use the app&apos;s
+            planned features and products —{" "}
             <span className="dandi-accent-text">
-              no real understanding of what it meant or why she had been feeling
-              this way her whole life.
+              giving further clarity on their preferences and needs.
             </span>
           </p>
           <p
             className="dandi-where-we-began-body dandi-where-we-began-body--closing"
             ref={whereWeBeganText3Ref}
           >
-            This story belonged to someone close to our team — and it became the
-            foundation of Dandi.
+            Combined with the interviews, this ensured a well-rounded
+            understanding of what the target audience actually wanted.
           </p>
         </div>
       </section>
@@ -417,16 +356,16 @@ const DandiCaseStudy = () => {
             className="dandi-impact-title"
             ref={whatWeFoundTitleRef}
           >
-            What We Found
+            Who&apos;s Our Audience?
           </h2>
           <CaseStudyStatement
             ref={whatWeFoundStatRef}
             className="dandi-what-we-found-statement"
           >
             <CaseStudyStatementHeadline>
-              As of 2021, there are approximately{" "}
-              <span className="dandi-accent-text">65.77 million</span> women
-              worldwide living with PCOS.
+              Hiku&apos;s core audience spans{" "}
+              <span className="dandi-accent-text">18 to 55</span> year
+              olds — young adults and lifelong hiking enthusiasts alike.
             </CaseStudyStatementHeadline>
           </CaseStudyStatement>
           <div className="dandi-what-we-found-stats" ref={whatWeFoundStatsRef}>
@@ -434,26 +373,27 @@ const DandiCaseStudy = () => {
               <div className="dandi-what-we-found-stat-media">
                 <img
                   src="/work/dandi/stat-1.png"
-                  alt="Illustration for diagnostic delay among women with PCOS"
+                  alt="Illustration for student usage interest in Hiku"
                   className="dandi-what-we-found-stat-image"
                   loading="lazy"
                 />
               </div>
               <figcaption className="dandi-what-we-found-stat-copy">
-                <p className="dandi-what-we-found-stat-lead">Yet,</p>
+                <p className="dandi-what-we-found-stat-lead">In fact,</p>
                 <p className="dandi-stat-metric-line">
-                  <span className="dandi-stat-metric">1 in 2</span>
+                  <span className="dandi-stat-metric">40%</span>
                 </p>
                 <p className="dandi-what-we-found-stat-body">
-                  women see 3+ doctors before receiving a diagnosis,
+                  of students surveyed said they&apos;d actively use the
+                  app&apos;s core features,
                 </p>
               </figcaption>
             </figure>
             <figure className="dandi-what-we-found-stat dandi-what-we-found-stat--text-left">
               <div className="dandi-what-we-found-stat-media">
                 <img
-                  src="/work/dandi/stat-2.png"
-                  alt="Illustration for undiagnosed insulin resistance in PCOS"
+                  src="/work/dandi/stat-11.png"
+                  alt="Illustration for reduced trip-planning time with Hiku"
                   className="dandi-what-we-found-stat-image"
                   loading="lazy"
                 />
@@ -461,10 +401,11 @@ const DandiCaseStudy = () => {
               <figcaption className="dandi-what-we-found-stat-copy">
                 <p className="dandi-what-we-found-stat-lead">and</p>
                 <p className="dandi-stat-metric-line">
-                  <span className="dandi-stat-metric">70%</span>
+                  <span className="dandi-stat-metric">20%</span>
                 </p>
                 <p className="dandi-what-we-found-stat-body">
-                  have insulin resistance without even knowing it.
+                  said it would meaningfully cut down their trip-planning
+                  time.
                 </p>
               </figcaption>
             </figure>
@@ -473,10 +414,11 @@ const DandiCaseStudy = () => {
             className="dandi-context-description dandi-what-we-found-lede"
             ref={whatWeFoundBodyRef}
           >
-            The body of a person with PCOS is constantly sending signals. The
-            problem is that{" "}
+            Many are students living in dorms, looking for activities and
+            clubs that are active on campus — plus community members who
+            already love hiking and want{" "}
             <span className="dandi-accent-text">
-              no tool has ever existed to read them.
+              like-minded people to share it with.
             </span>
           </p>
         </div>
@@ -493,7 +435,7 @@ const DandiCaseStudy = () => {
             className="dandi-solution-title"
             ref={solutionTitleRef}
           >
-            SOLUTION
+            FEATURES
           </h3>
 
           <div
@@ -502,9 +444,12 @@ const DandiCaseStudy = () => {
           >
             <h4 className="dandi-visual-identity-subtitle">Visual Identity</h4>
             <p className="dandi-visual-identity-description">
-              Dandi&apos;s visual identity uses an earthy palette of forest
-              greens, warm creams, and coral pinks with hand-drawn floral motifs
-              — designed to feel like self-care, not a doctor&apos;s office.
+              This project followed a clean and natural visual style, using
+              earthy greens and soft neutrals to fit outdoor exploration. We
+              followed the 60-30-10 rule to balance visual hierarchy and
+              emphasize call-to-action buttons, creating a seamless and
+              engaging user journey. I used Average Sans throughout for its
+              easy to understand, approachable feel.
             </p>
             <div className="dandi-visual-identity-flowers">
               {DANDI_FLOWER_IMAGES.map((src, index) => (
@@ -525,23 +470,33 @@ const DandiCaseStudy = () => {
           </div>
 
           <div className="dandi-physical-component" ref={physicalComponentRef}>
-            <h4 className="dandi-visual-identity-subtitle">The Ear Cuff</h4>
+            <h4 className="dandi-visual-identity-subtitle">
+              Wire Frames (High Fidelity)
+            </h4>
             <p className="dandi-visual-identity-description">
-              We designed Dandi as a wearable ear cuff so it could be
-              fashionable enough to wear without a second thought, discreet
-              enough to never signal a medical condition, and functional enough
-              to deliver supplements directly into the bloodstream without any
-              effort from the user.
+              Before any visual polish, I mapped out the core flows — trail
+              discovery, gear rental, and community check-ins — as
+              high-fidelity wireframes to validate navigation and make sure
+              every screen earned its place.
             </p>
             <div className="dandi-physical-component-image-container">
               <img
                 src="/work/dandi/ear-cuff.png"
-                alt="Dandi wearable ear cuff concept"
+                alt="Hiku high-fidelity wireframes"
                 className="dandi-physical-component-image"
                 loading="lazy"
               />
             </div>
           </div>
+
+          <p className="dandi-visual-identity-description dandi-features-intro">
+            I love designing experiences that bring people closer to nature.
+            This app blends community, commerce, and the outdoors into one
+            experience — and that&apos;s exactly what changed with Hiku. I
+            learned how to structure an app not just around aesthetics, but
+            around function and emotion: how to map trails, connect people,
+            and help them prepare for a trip into the wild.
+          </p>
 
           {DANDI_FEATURES.map((feature, index) => (
             <div
@@ -578,115 +533,21 @@ const DandiCaseStudy = () => {
         </div>
       </section>
 
-      {/* Next Steps Section */}
-      <section id="dandi-next-steps" className="dandi-next-steps-section">
-        <div className="dandi-next-steps-content">
-          <h3 className="dandi-solution-title" ref={nextStepsTitleRef}>
-            WHAT&apos;S NEXT FOR DANDI
-          </h3>
-          <div className="dandi-next-steps-item" ref={nextStepsItemRef}>
-            <h4 className="dandi-next-steps-title-text">
-              Validate, expand, and scale.
-            </h4>
-            <p className="dandi-next-steps-description">
-              The immediate next step is clinical validation — partnering with
-              endocrinologists to test whether signal-based cycle prediction
-              outperforms existing apps for irregular cycles. From there, we
-              want to run a pilot with diagnosed PCOS patients and eventually
-              expand Dandi&apos;s model to other conditions where the body
-              signals continuously but the patient can&apos;t decode it:
-              endometriosis, thyroid disorders, and perimenopause.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Key Takeaway Section */}
       <section id="dandi-takeaways" className="dandi-takeaways-section">
         <div className="dandi-takeaways-content">
           <h3 className="dandi-solution-title" ref={takeawaysTitleRef}>
-            KEY TAKEAWAY
+            PROJECT TAKEAWAYS
           </h3>
           <div className="dandi-takeaways-item" ref={takeawaysItemRef}>
             <h4 className="dandi-takeaways-title-text">
-              Data means nothing without clarity.
+              From a simple idea to something people could use in the wild.
             </h4>
             <p className="dandi-takeaways-description">
-              The hardest part wasn't collecting the biometrics — it was making
-              them understandable. I learned that plain language and emotional
-              design matter just as much as the technical architecture itself.
+              Working on this application has really pushed my limits on how
+              to execute a mobile application from the most early stages of
+              designing to execution.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Learn More Section */}
-      <section id="dandi-learn-more" className="dandi-learn-more-section">
-        <div className="dandi-learn-more-content">
-          <div className="dandi-solution-learn-more">
-            <h4
-              className="dandi-feature-item-title dandi-solution-learn-more-title"
-              ref={learnMoreTitleRef}
-            >
-              Learn More About Dandi
-            </h4>
-            <div
-              className="dandi-solution-demo-embed"
-              aria-label="Dandi demo video"
-              ref={learnMoreEmbedRef}
-            >
-              <iframe
-                src="https://www.youtube.com/embed/ARy32Mv2iKg?autoplay=1&mute=1&loop=1&playlist=ARy32Mv2iKg&playsinline=1"
-                title="Dandi demo"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="strict-origin-when-cross-origin"
-              />
-            </div>
-            <div
-              className="dandi-solution-links"
-              role="navigation"
-              aria-label="Project links"
-              ref={learnMoreLinksRef}
-            >
-              <a
-                href="https://devpost.com/software/dandi-iczt68"
-                className="dandi-solution-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span
-                  className="dandi-solution-link-icon-wrap"
-                  aria-hidden="true"
-                >
-                  <img
-                    src="/work/dandi/icon.png"
-                    alt=""
-                    className="dandi-solution-link-icon"
-                  />
-                </span>
-                <span className="dandi-solution-link-label">Devpost</span>
-              </a>
-              <a
-                href="https://figbuild-2026-dandi.vercel.app"
-                className="dandi-solution-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <span
-                  className="dandi-solution-link-icon-wrap"
-                  aria-hidden="true"
-                >
-                  <img
-                    src="/work/dandi/icon.png"
-                    alt=""
-                    className="dandi-solution-link-icon"
-                  />
-                </span>
-                <span className="dandi-solution-link-label">Prototype</span>
-              </a>
-            </div>
           </div>
         </div>
       </section>

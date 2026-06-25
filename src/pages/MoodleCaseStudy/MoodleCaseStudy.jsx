@@ -308,7 +308,7 @@ const MoodleCaseStudy = () => {
               src="/work/moodle/hero.png"
               alt="Time Management"
               className="moodle-hero-image"
-              style={{ aspectRatio: "1305 / 646" }}
+              style={{ height: "400px" }}
             />
           </div>
         </section>

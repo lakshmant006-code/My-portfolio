@@ -25,11 +25,11 @@ const workProjects = [
   },
   {
     id: "dandi-bio-smart-wearable",
-    title: "Dandi: A Bio-Smart Wearable for PCOS",
-    role: "Product Designer & Engineer",
-    tags: ["Wearable", "Women's Health"],
+    title: "Hiku: A Mobile Application for Hiking Enthusiasts",
+    role: "UX Researcher, UX Designer",
+    tags: ["Mobile", "Outdoor Recreation"],
     summary:
-      "Making hormonal health accessible for women through emotionally-resonant design and real-time biosensing.",
+      "Connecting hiking and camping enthusiasts through community, shared experiences, and a convenient way to buy or rent outdoor gear.",
     video: "/work/dandi/thumbnail.mp4",
     thumbnailImage: "/work/dandi/thumbnail-frame.png",
     category: "case-study",

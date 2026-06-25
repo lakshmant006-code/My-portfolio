@@ -30,7 +30,7 @@
   position: absolute;
   left: 50%;
   top: 0;
-  width: 2280px; /* 11 * 200 + 10 * 8 */
+  width: 1656px; /* 8 * 200 + 7 * 8 */
   height: 260px;
   backface-visibility: hidden;
   transform: translateZ(0);

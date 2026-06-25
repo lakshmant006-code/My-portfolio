@@ -1,43 +1,43 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, animate } from "framer-motion";
-import img0 from "../../assets/img/about-pictures/0.png";
-import img1 from "../../assets/img/about-pictures/1.png";
-import img2 from "../../assets/img/about-pictures/2.png";
-import img3 from "../../assets/img/about-pictures/3.png";
-import img4 from "../../assets/img/about-pictures/4.png";
-import img5 from "../../assets/img/about-pictures/5.png";
-import img6 from "../../assets/img/about-pictures/6.png";
-import img7 from "../../assets/img/about-pictures/7.png";
-import img8 from "../../assets/img/about-pictures/8.png";
-import img9 from "../../assets/img/about-pictures/9.png";
-import img10 from "../../assets/img/about-pictures/10.png";
+import enjoy1 from "../../assets/img/about-pictures/enjoy 1.jpeg";
+import enjoy2 from "../../assets/img/about-pictures/enjoy 2.jpeg";
+import enjoy3 from "../../assets/img/about-pictures/enjoy 3.jpeg";
+import enjoy4 from "../../assets/img/about-pictures/enjoy 4.jpeg";
+import enjoy5 from "../../assets/img/about-pictures/enjoy 5.jpeg";
+import enjoy6 from "../../assets/img/about-pictures/enjoy 6.jpeg";
+import enjoy7 from "../../assets/img/about-pictures/enjoy 7.jpeg";
+import enjoy8 from "../../assets/img/about-pictures/enjoy 8.jpeg";
 import "./ExpandingPhotoRow.css";
 
-const images = [img0, img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
+const images = [enjoy1, enjoy2, enjoy3, enjoy4, enjoy5, enjoy6, enjoy7, enjoy8];
 
 const cardW = 200;
 const gap = 8;
 const slotW = cardW + gap; // 208
-const rowW = 11 * cardW + 10 * gap; // 2280 — same in both states so x is one coordinate system
+const rowW = images.length * cardW + (images.length - 1) * gap; // same in both states so x is one coordinate system
 const ROW_HEIGHT = 260;
 const cy = ROW_HEIGHT / 2 - cardW / 2; // 30
 
-// Collapsed trio: center card must match expanded position (5 * slotW) so it doesn't jump; left/right symmetric around it
-const collapsedCenter = 5 * slotW; // same as expanded index 5 (middle of 11)
+// Collapsed trio: center card must match expanded position so it doesn't jump; left/right symmetric around it
+const centerIndex = Math.floor(images.length / 2); // middle index
+const leftIndex = centerIndex - 1;
+const rightIndex = centerIndex + 1;
+const collapsedCenter = centerIndex * slotW; // same as expanded center index
 const collapsedFanOffset = Math.round(110 * (cardW / 180)); // ~122 for 200px — spacing for fan
 const collapsedLeft = collapsedCenter - collapsedFanOffset;
 const collapsedRight = collapsedCenter + collapsedFanOffset;
 const centerX = -rowW / 2;
 
 function getCollapsedStyle(index) {
-  if (index === 4) return { opacity: 1, scale: 1, x: collapsedLeft, y: cy, rotateZ: -12, zIndex: 2 };
-  if (index === 5) return { opacity: 1, scale: 1, x: collapsedCenter, y: cy, rotateZ: 0, zIndex: 3 };
-  if (index === 6) return { opacity: 1, scale: 1, x: collapsedRight, y: cy, rotateZ: 12, zIndex: 2 };
+  if (index === leftIndex) return { opacity: 1, scale: 1, x: collapsedLeft, y: cy, rotateZ: -12, zIndex: 2 };
+  if (index === centerIndex) return { opacity: 1, scale: 1, x: collapsedCenter, y: cy, rotateZ: 0, zIndex: 3 };
+  if (index === rightIndex) return { opacity: 1, scale: 1, x: collapsedRight, y: cy, rotateZ: 12, zIndex: 2 };
   return { opacity: 0, scale: 1, x: collapsedCenter, y: cy, rotateZ: 0, zIndex: 1 };
 }
 
 function getExpandedStyle(index) {
-  const zIndex = index === 5 ? 3 : index === 4 || index === 6 ? 2 : 1;
+  const zIndex = index === centerIndex ? 3 : index === leftIndex || index === rightIndex ? 2 : 1;
   return { opacity: 1, scale: 1, x: index * slotW, y: cy, rotateZ: 0, zIndex };
 }
 
@@ -90,12 +90,12 @@ function ExpandingPhotoRow() {
 
   const getStyle = (index) => {
     if (isHovered) return getExpandedStyle(index);
-    if (isFadingOut && index !== 4 && index !== 5 && index !== 6) return getFadingOutStyle(index);
+    if (isFadingOut && index !== leftIndex && index !== centerIndex && index !== rightIndex) return getFadingOutStyle(index);
     return getCollapsedStyle(index);
   };
 
   const getTransition = (index) => {
-    const isSkewedCard = index === 4 || index === 6;
+    const isSkewedCard = index === leftIndex || index === rightIndex;
     if (isSkewedCard) {
       return { type: "tween", ease: "easeInOut", duration: 0.35 };
     }

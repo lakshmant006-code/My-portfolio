@@ -1,46 +1,35 @@
 // Experience Timeline Data
-import confidoExp from "../assets/img/experience-pictures/confido-exp.png";
-import codingLabExp from "../assets/img/experience-pictures/codinglab-exp.jpeg";
-import uxClubExp from "../assets/img/experience-pictures/uxcnyu-exp.JPG";
-import salesforceExp from "../assets/img/experience-pictures/salesforce-exp.jpeg";
+import arcadiaExp from "../assets/img/experience-pictures/arcadia-exp.png";
+import ddsExp from "../assets/img/experience-pictures/23dds-exp.png";
+import ubcImpexExp from "../assets/img/experience-pictures/ubc-impex-exp.png";
 
 export const experiences = [
   {
-    id: "1",
-    title: "Product Designer & Engineer (Internship)",
-    company: "Confido",
-    timeframe: "June 2025 – August 2025",
-    imageUrl: confidoExp,
-    link: "https://www.confidotech.com/",
-    description: "Check out my case study under Work!",
-  },
-  {
-    id: "2",
-    title: "Coding Lab Mentor & Co-Lead",
-    company: "NYU",
-    timeframe: "August 2024 – May 2026",
-    imageUrl: codingLabExp,
-    link: "https://codinglab.itp.io/",
+    id: "5",
+    title: "UX Researcher & 3D Modeler",
+    company: "Arcadia Custom Builders",
+    timeframe: "February 2026 – Present",
+    imageUrl: arcadiaExp,
+    link: "https://www.arcadiabuildersllc.com/",
     description:
-      "I lead the help desk that supports NYU students in de-🐛-ing their code.",
+      "Researching homeowner needs and building 3D models that bring custom home designs to life.",
   },
   {
-    id: "3",
-    title: "Co-Founder / Co-President",
-    company: "UX Club @ NYU",
-    timeframe: "October 2024 – May 2026",
-    imageUrl: uxClubExp,
-    link: "https://www.instagram.com/uxcnyu",
-    description:
-      "I build spaces where people who enjoy design can learn and design together.",
+    id: "6",
+    title: "Architectural Intern",
+    company: "23dds",
+    timeframe: "2024",
+    imageUrl: ddsExp,
+    link: "https://www.instagram.com/23degreesdesignshift/?hl=en",
+    description: "Interned on architectural design and visualization work.",
   },
   {
-    id: "4",
-    title: "Software Engineer",
-    company: "Salesforce",
-    timeframe: "March 2020 – July 2023",
-    imageUrl: salesforceExp,
-    link: "https://www.salesforce.com",
-    description: "Back when I lived and breathed code (⸝⸝>﹏<⸝⸝)",
+    id: "7",
+    title: "Product Developer",
+    company: "UBC Impex",
+    timeframe: "2020 – 2022",
+    imageUrl: ubcImpexExp,
+    link: "https://ubcbim.com/",
+    description: "Built BIM-driven product workflows for construction and design teams.",
   },
 ];

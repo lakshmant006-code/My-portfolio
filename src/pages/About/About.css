@@ -18,6 +18,46 @@
   margin: 0 auto; /* zero vertical margin so section padding owns the gaps */
 }
 
+.about-sandbox-hi-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-sandbox-hi-video {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 640 / 480;
+  height: auto;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+.about-sandbox-hi-caption {
+  margin: 0.75rem 0 0;
+  min-height: 2.9rem;
+  max-width: 440px;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #555;
+  text-align: center;
+  pointer-events: none;
+}
+
+.about-sandbox-hi-cursor {
+  display: inline-block;
+  margin-left: 1px;
+  animation: about-hi-cursor-blink 0.8s steps(1) infinite;
+}
+
+@keyframes about-hi-cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 .about-sandbox-polaroid-wrapper {
   position: relative;
   overflow: visible;
@@ -78,21 +118,8 @@
   font-weight: 300;
 }
 
-/* ----- How I got here (below polaroid) ----- */
-.about-sandbox-how-section {
-  padding: 0 1.5rem 5rem; /* top 0 — gap above = polaroid padding-bottom (5rem); bottom 5rem = gap before Where */
-  overflow: visible;
-  position: relative;
-}
-
-.about-sandbox-how-inner {
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-/* Narrow column for title and text only (stickers stay at outer 700px positions) */
-.about-sandbox-how-text,
-.about-sandbox-text-wrap {
+/* Narrow column for section title */
+.about-sandbox-how-text {
   max-width: 560px;
   margin-left: auto;
   margin-right: auto;
@@ -122,7 +149,7 @@
 
 /* ----- Where I've been (experience section) ----- */
 .about-sandbox-where-section {
-  padding: 0 1.5rem 5rem; /* top 0 — gap above = how-section padding-bottom (5rem); bottom 5rem = gap before What I enjoy */
+  padding: 0 1.5rem 5rem; /* top 0 — gap above = polaroid padding-bottom (5rem); bottom 5rem = gap before What I enjoy */
   overflow: visible;
   position: relative;
 }
@@ -477,165 +504,3 @@
   font-weight: 300;
 }
 
-/* ----- Awards rack: light mode ----- */
-.about-sandbox-where-section .awards-rack-section {
-  padding: 3rem 0 1rem;
-  margin-inline: auto;
-  max-width: 100%;
-}
-.about-sandbox-where-section .awards-rack-caption-title {
-  color: #1e1e1e !important;
-}
-.about-sandbox-where-section .awards-rack-caption-meta,
-.about-sandbox-where-section .awards-rack-caption-hint {
-  color: #525252 !important;
-}
-
-.about-sandbox-content {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.about-sandbox-paragraph-wrapper {
-  position: relative;
-  overflow: visible;
-}
-
-.about-sandbox-text {
-  font-family: "Satoshi", sans-serif;
-  font-size: clamp(1rem, 1.5vw, 1.125rem);
-  line-height: 1.6;
-  color: #374151;
-  margin: 0;
-  font-weight: 300;
-}
-
-.about-sandbox-subtitle {
-  font-weight: 500;
-  color: inherit;
-}
-
-.about-sandbox-accent {
-  font-weight: 500;
-  color: inherit;
-}
-
-.about-sandbox-link {
-  position: relative;
-  text-decoration: none;
-  color: inherit;
-  font-weight: 500;
-  cursor: pointer;
-  transition: color 0.2s ease;
-}
-
-/* Institution links (Purdue, Salesforce, NYU): italic only, no font-weight change */
-.about-sandbox-link-institution {
-  font-weight: inherit;
-  font-style: italic;
-}
-
-.about-sandbox-link::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: currentColor;
-  transition: width 0.3s ease;
-}
-
-.about-sandbox-link:hover::after {
-  width: 100%;
-}
-
-/* Sticker positioning (peeling animation from StickerPeel.css) */
-.about-sandbox-sticker {
-  position: absolute;
-  z-index: 1;
-  overflow: visible;
-}
-
-.about-sandbox-sticker-purdue {
-  top: 15px;
-  left: -45px;
-}
-
-.about-sandbox-sticker-salesforce {
-  top: 40%;
-  right: -45px;
-  transform: translateY(-50%);
-}
-
-.about-sandbox-sticker-nyu {
-  top: -15px;
-  left: -45px;
-}
-
-.about-sandbox-sticker-confido {
-  top: 40%;
-  right: -45px;
-  transform: translateY(-50%);
-}
-
-.about-sandbox-sticker-react {
-  top: 15px;
-  left: -45px;
-}
-
-.about-sandbox-sticker-figma {
-  top: 40%;
-  right: -45px;
-  transform: translateY(-50%);
-}
-
-@media (max-width: 1023px) {
-  .about-sandbox-sticker-purdue,
-  .about-sandbox-sticker-nyu,
-  .about-sandbox-sticker-react {
-    left: -40px;
-  }
-
-  .about-sandbox-sticker-salesforce,
-  .about-sandbox-sticker-confido,
-  .about-sandbox-sticker-figma {
-    right: -40px;
-  }
-
-  .about-sandbox-sticker-purdue .sticker-image,
-  .about-sandbox-sticker-nyu .sticker-image,
-  .about-sandbox-sticker-salesforce .sticker-image,
-  .about-sandbox-sticker-confido .sticker-image,
-  .about-sandbox-sticker-react .sticker-image,
-  .about-sandbox-sticker-figma .sticker-image {
-    width: 50px !important;
-  }
-}
-
-/* Tablet: bring stickers closer to the text blurbs */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .about-sandbox-sticker-purdue,
-  .about-sandbox-sticker-nyu,
-  .about-sandbox-sticker-react {
-    left: -8px;
-  }
-
-  .about-sandbox-sticker-salesforce,
-  .about-sandbox-sticker-confido,
-  .about-sandbox-sticker-figma {
-    right: -8px;
-  }
-}
-
-@media (max-width: 425px) {
-  .about-sandbox-sticker-purdue,
-  .about-sandbox-sticker-nyu,
-  .about-sandbox-sticker-react,
-  .about-sandbox-sticker-salesforce,
-  .about-sandbox-sticker-confido,
-  .about-sandbox-sticker-figma {
-    display: none !important;
-  }
-}

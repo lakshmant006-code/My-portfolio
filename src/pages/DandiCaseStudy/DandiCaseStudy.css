@@ -156,21 +156,21 @@
   background-image:
     repeating-linear-gradient(
       0deg,
-      rgba(232, 111, 165, 0.12) 0px,
+      rgba(58, 146, 105, 0.12) 0px,
       transparent 1px,
       transparent 2px,
-      rgba(232, 111, 165, 0.12) 3px
+      rgba(58, 146, 105, 0.12) 3px
     ),
     repeating-linear-gradient(
       90deg,
-      rgba(232, 111, 165, 0.12) 0px,
+      rgba(58, 146, 105, 0.12) 0px,
       transparent 1px,
       transparent 2px,
-      rgba(232, 111, 165, 0.12) 3px
+      rgba(58, 146, 105, 0.12) 3px
     );
   background-size: 4px 4px;
-  color: #e86fa5;
-  border: 1px solid rgba(232, 111, 165, 0.35);
+  color: #3A9269;
+  border: 1px solid rgba(58, 146, 105, 0.35);
   border-radius: 9999px;
   font-size: 0.875rem;
   font-weight: 500;
@@ -212,7 +212,7 @@
 }
 
 .dandi-skip-text {
-  color: #e86fa5;
+  color: #3A9269;
   position: relative;
   z-index: 2;
   transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -225,7 +225,7 @@
   top: 2px;
   width: 44px;
   height: 44px;
-  background-color: #e86fa5;
+  background-color: #3A9269;
   border-radius: 50%;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1;
@@ -487,14 +487,10 @@
 }
 
 .dandi-accent-text {
-  color: #e86fa5;
+  color: #3A9269;
   font-style: italic;
   font-weight: 600;
   margin: 0 0.05em;
-}
-
-.dandi-where-we-began-section .dandi-accent-text {
-  color: #ec1313;
 }
 
 /* Same underline as Home landing hero company links (Home.css .home-landing-company-link) */
@@ -524,7 +520,7 @@
 }
 
 .dandi-context-impact-link:focus-visible {
-  outline: 2px solid #e86fa5;
+  outline: 2px solid #3A9269;
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -612,6 +608,10 @@
   max-width: none;
 }
 
+.dandi-features-intro {
+  margin-bottom: 2rem;
+}
+
 .dandi-visual-identity-flowers {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -634,7 +634,7 @@
 }
 
 .dandi-visual-identity-flower-wrap:focus-visible {
-  outline: 2px solid #e86fa5;
+  outline: 2px solid #3A9269;
   outline-offset: 3px;
 }
 
@@ -699,8 +699,8 @@
   height: 100%;
   background: radial-gradient(
     circle,
-    rgba(232, 111, 165, 0.55) 0%,
-    rgba(232, 111, 165, 0.35) 30%,
+    rgba(58, 146, 105, 0.55) 0%,
+    rgba(58, 146, 105, 0.35) 30%,
     transparent 60%
   );
   border-radius: 50%;
@@ -711,7 +711,7 @@
 .dandi-feature-video {
   width: 100%;
   height: auto;
-  max-height: 580px;
+  max-height: 660px;
   display: block;
   border-radius: 8px;
   object-fit: contain;
@@ -787,13 +787,13 @@
 }
 
 .dandi-solution-link:hover {
-  color: #e86fa5;
+  color: #3A9269;
   font-weight: 400;
 }
 
 .dandi-solution-link:focus-visible {
-  color: #e86fa5;
-  outline: 2px solid #e86fa5;
+  color: #3A9269;
+  outline: 2px solid #3A9269;
   outline-offset: 3px;
   border-radius: 2px;
 }
@@ -1140,7 +1140,7 @@
   font-size: 2.5rem;
   line-height: 1.2;
   letter-spacing: -0.02em;
-  color: #e86fa5;
+  color: #3A9269;
 }
 
 .dandi-what-we-found-stat-body {
@@ -1316,13 +1316,13 @@
   }
 
   .dandi-feature-media {
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1.7fr 1fr;
+    gap: 3rem;
     align-items: center;
   }
 
   .dandi-feature-video {
-    max-height: 650px;
+    max-height: 740px;
   }
 
   .dandi-feature-caption {
