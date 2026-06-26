@@ -587,6 +587,20 @@
   object-fit: cover;
 }
 
+.dandi-wireframe-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.dandi-wireframe-frame {
+  width: 100%;
+  max-width: 360px;
+  display: block;
+  border: none;
+  border-radius: 8px;
+}
+
 .dandi-visual-identity-subtitle {
   font-family: "Crimson Pro", serif;
   font-size: 2.5rem;

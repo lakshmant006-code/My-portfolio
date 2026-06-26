@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import flowerIcon from "../../assets/img/flower.png";
+import flowerIcon from "../../assets/img/spiraL.png";
 import { initGrassGlobe } from "./grassGlobeScene";
 import "./GrassGlobe.css";
 

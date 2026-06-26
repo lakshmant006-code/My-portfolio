@@ -12,7 +12,7 @@ import {
 import "./Nav.css";
 import darkLogo from "../../assets/img/dark-logo.png";
 import lightLogo from "../../assets/img/light-logo.png";
-import flowerIcon from "../../assets/img/flower.png";
+import flowerIcon from "../../assets/img/spiraL.png";
 
 const Nav = () => {
   const location = useLocation();

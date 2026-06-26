@@ -73,6 +73,7 @@ const DandiCaseStudy = () => {
   const whatWeFoundBodyRef = useRef(null);
   const solutionTitleRef = useRef(null);
   const visualIdentityRef = useRef(null);
+  const lofiWireframesRef = useRef(null);
   const physicalComponentRef = useRef(null);
   const featureItemRefs = useRef([]);
   const takeawaysTitleRef = useRef(null);
@@ -135,7 +136,8 @@ const DandiCaseStudy = () => {
     createScrollAnimation(whatWeFoundBodyRef, 0.18);
     createScrollAnimation(solutionTitleRef, 0.06);
     createScrollAnimation(visualIdentityRef, 0.1);
-    createScrollAnimation(physicalComponentRef, 0.14);
+    createScrollAnimation(lofiWireframesRef, 0.14);
+    createScrollAnimation(physicalComponentRef, 0.18);
     createScrollAnimation(takeawaysTitleRef, 0.06);
     createScrollAnimation(takeawaysItemRef, 0.1);
     createScrollAnimation(seeNextTitleRef, 0.06);
@@ -466,6 +468,27 @@ const DandiCaseStudy = () => {
                   />
                 </div>
               ))}
+            </div>
+          </div>
+
+          <div className="dandi-physical-component" ref={lofiWireframesRef}>
+            <h4 className="dandi-visual-identity-subtitle">
+              Wire Frames (Low Fidelity)
+            </h4>
+            <p className="dandi-visual-identity-description">
+              Early low-fidelity wireframes mapped out the splash, filtering,
+              map, registration, shop, and community screens — quick
+              grayscale sketches used to test flow and structure before any
+              visual design began.
+            </p>
+            <div className="dandi-wireframe-container">
+              <iframe
+                src="/work/dandi/wireframe-lofi-prototypes.html"
+                title="Lo-Fi Wireframes – Hiking App"
+                className="dandi-wireframe-frame"
+                style={{ height: "760px" }}
+                scrolling="no"
+              />
             </div>
           </div>
 
