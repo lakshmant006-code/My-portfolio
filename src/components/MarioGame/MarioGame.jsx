@@ -19,7 +19,6 @@ const COIN_SIZE = 20;
 const SQUISH_FRAMES = 14;
 const SPIKE_W = TILE * 2;
 const SPIKE_H = 18;
-const PLATFORM_HEIGHT = TILE * 2;
 
 const ASSET_BASE = "/mario/";
 const SPRITES = {
@@ -49,20 +48,6 @@ const KEY_MAP = {
 };
 
 function createLevel(groundY) {
-  const platformDefs = [
-    { x: 380, w: 3, hOff: 56 },
-    { x: 760, w: 3, hOff: 80 },
-    { x: 1180, w: 4, hOff: 56 },
-    { x: 1560, w: 3, hOff: 68 },
-  ];
-
-  const platforms = platformDefs.map((p) => ({
-    x: p.x,
-    y: groundY - p.hOff,
-    w: p.w * TILE,
-    h: PLATFORM_HEIGHT,
-  }));
-
   const goombaDefs = [
     [260, 200, 360],
     [900, 820, 1020],
@@ -105,11 +90,10 @@ function createLevel(groundY) {
     collected: false,
   }));
 
-  return { platforms, goombas, coins, spikes: [] };
+  return { goombas, coins, spikes: [] };
 }
 
 function generateChunk(startX, groundY, scoreVal) {
-  const platforms = [];
   const goombas = [];
   const coins = [];
   const spikes = [];
@@ -126,19 +110,11 @@ function generateChunk(startX, groundY, scoreVal) {
 
   if (Math.random() < 0.7) {
     const hOff = [56, 68, 80][Math.floor(Math.random() * 3)];
-    const platformW = 3 + Math.floor(Math.random() * 3);
-    const platformX = startX + 140;
-    platforms.push({
-      x: platformX,
-      y: groundY - hOff,
-      w: platformW * TILE,
-      h: PLATFORM_HEIGHT,
-    });
-
+    const clusterX = startX + 140;
     const coinCount = 2 + Math.floor(Math.random() * 3);
     for (let i = 0; i < coinCount; i++) {
       coins.push({
-        x: platformX + 16 + i * 32,
+        x: clusterX + 16 + i * 32,
         y: groundY - hOff - 22,
         collected: false,
       });
@@ -194,7 +170,7 @@ function generateChunk(startX, groundY, scoreVal) {
     }
   }
 
-  return { platforms, goombas, coins, spikes };
+  return { goombas, coins, spikes };
 }
 
 function createMario(groundY) {
@@ -291,7 +267,7 @@ const MarioGame = () => {
     let width = container.clientWidth;
     let height = container.clientHeight;
     let groundY = height - TILE;
-    let { platforms, goombas, coins, spikes } = createLevel(groundY);
+    let { goombas, coins, spikes } = createLevel(groundY);
     let mario = createMario(groundY);
     let camera = 0;
     let generatedUpTo = 2048;
@@ -313,9 +289,6 @@ const MarioGame = () => {
       const dy = newGroundY - groundY;
       if (dy !== 0) {
         mario.y += dy;
-        platforms.forEach((p) => {
-          p.y += dy;
-        });
         goombas.forEach((g) => {
           g.y += dy;
         });
@@ -373,49 +346,14 @@ const MarioGame = () => {
       const lookahead = width + CHUNK_WIDTH * 2;
       while (generatedUpTo < mario.x + lookahead) {
         const chunk = generateChunk(generatedUpTo, groundY, scoreVal);
-        platforms.push(...chunk.platforms);
         goombas.push(...chunk.goombas);
         coins.push(...chunk.coins);
         spikes.push(...chunk.spikes);
         generatedUpTo += CHUNK_WIDTH;
       }
 
-      const prevTop = mario.y;
-      const prevBottom = mario.y + MARIO_H;
       mario.y += mario.vy * dt;
       mario.onGround = false;
-      if (mario.vy >= 0) {
-        for (const p of platforms) {
-          const newBottom = mario.y + MARIO_H;
-          const horizOverlap =
-            mario.x + MARIO_W > p.x && mario.x < p.x + p.w;
-          if (horizOverlap && prevBottom <= p.y + 0.5 && newBottom >= p.y) {
-            mario.y = p.y - MARIO_H;
-            mario.vy = 0;
-            mario.onGround = true;
-            break;
-          }
-        }
-      } else {
-        // Jumping up into the underside of a platform: bonk and stop,
-        // same as landing on top — solid blocks can't be passed through
-        // from either direction.
-        for (const p of platforms) {
-          const platformBottom = p.y + p.h;
-          const newTop = mario.y;
-          const horizOverlap =
-            mario.x + MARIO_W > p.x && mario.x < p.x + p.w;
-          if (
-            horizOverlap &&
-            prevTop >= platformBottom - 0.5 &&
-            newTop <= platformBottom
-          ) {
-            mario.y = platformBottom;
-            mario.vy = 0;
-            break;
-          }
-        }
-      }
       if (mario.y < 0) {
         mario.y = 0;
         mario.vy = 0;
@@ -450,9 +388,6 @@ const MarioGame = () => {
       // Drop anything that's scrolled well behind the camera so the
       // entity arrays stay bounded over an endless play session.
       const pruneCutoff = camera - width;
-      for (let i = platforms.length - 1; i >= 0; i--) {
-        if (platforms[i].x + platforms[i].w < pruneCutoff) platforms.splice(i, 1);
-      }
       for (let i = goombas.length - 1; i >= 0; i--) {
         if (goombas[i].x + GOOMBA_W < pruneCutoff) goombas.splice(i, 1);
       }
@@ -557,22 +492,6 @@ const MarioGame = () => {
         const groundEndX = camera + width;
         for (let x = groundStartX; x < groundEndX; x += TILE) {
           ctx.drawImage(images.brick, x, groundY, TILE, TILE);
-        }
-
-        for (const p of platforms) {
-          const tilesAcross = Math.ceil(p.w / TILE);
-          const tilesDown = Math.ceil(p.h / TILE);
-          for (let row = 0; row < tilesDown; row++) {
-            for (let col = 0; col < tilesAcross; col++) {
-              ctx.drawImage(
-                images.brick,
-                p.x + col * TILE,
-                p.y + row * TILE,
-                TILE,
-                TILE,
-              );
-            }
-          }
         }
 
         for (const s of spikes) {
