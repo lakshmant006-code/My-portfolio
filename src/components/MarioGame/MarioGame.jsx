@@ -7,8 +7,9 @@ const JUMP_VELOCITY = -12.5;
 const BOUNCE_VELOCITY = -7;
 const MOVE_SPEED = 2.6;
 const MAX_FALL = 14;
-const LEVEL_WIDTH = TILE * 64;
-const FLAG_X = LEVEL_WIDTH - 70;
+const CHUNK_WIDTH = TILE * 16;
+const SPEED_UP_SCORE = 4000;
+const SPEED_UP_MULTIPLIER = 1.5;
 const MARIO_W = 26;
 const MARIO_H = 30;
 const GOOMBA_W = 28;
@@ -51,15 +52,12 @@ function createLevel(groundY) {
     { x: 1560, w: 3, hOff: 68 },
   ];
 
-  const platforms = [
-    { x: 0, y: groundY, w: LEVEL_WIDTH, h: TILE },
-    ...platformDefs.map((p) => ({
-      x: p.x,
-      y: groundY - p.hOff,
-      w: p.w * TILE,
-      h: TILE,
-    })),
-  ];
+  const platforms = platformDefs.map((p) => ({
+    x: p.x,
+    y: groundY - p.hOff,
+    w: p.w * TILE,
+    h: TILE,
+  }));
 
   const goombaDefs = [
     [260, 200, 360],
@@ -106,6 +104,59 @@ function createLevel(groundY) {
   return { platforms, goombas, coins };
 }
 
+function generateChunk(startX, groundY) {
+  const platforms = [];
+  const goombas = [];
+  const coins = [];
+
+  if (Math.random() < 0.7) {
+    const hOff = [56, 68, 80][Math.floor(Math.random() * 3)];
+    const platformW = 3 + Math.floor(Math.random() * 3);
+    const platformX = startX + 140;
+    platforms.push({
+      x: platformX,
+      y: groundY - hOff,
+      w: platformW * TILE,
+      h: TILE,
+    });
+
+    const coinCount = 2 + Math.floor(Math.random() * 3);
+    for (let i = 0; i < coinCount; i++) {
+      coins.push({
+        x: platformX + 16 + i * 32,
+        y: groundY - hOff - 22,
+        collected: false,
+      });
+    }
+  }
+
+  if (Math.random() < 0.55) {
+    coins.push({
+      x: startX + 60 + Math.random() * (CHUNK_WIDTH - 120),
+      y: groundY - 50,
+      collected: false,
+    });
+  }
+
+  if (Math.random() < 0.85) {
+    const minX = startX + 60;
+    const maxX = startX + CHUNK_WIDTH - 60;
+    goombas.push({
+      x: (minX + maxX) / 2,
+      minX,
+      maxX,
+      y: groundY - GOOMBA_H,
+      vx: 1.1,
+      alive: true,
+      squish: 0,
+      animTimer: 0,
+      animFrame: 0,
+    });
+  }
+
+  return { platforms, goombas, coins };
+}
+
 function createMario(groundY) {
   return {
     x: 40,
@@ -148,6 +199,7 @@ const CLOUD_SPOTS = [
   [1500, 18],
   [1820, 26],
 ];
+const CLOUD_PERIOD = 2200;
 
 const MarioGame = () => {
   const containerRef = useRef(null);
@@ -188,6 +240,7 @@ const MarioGame = () => {
     let { platforms, goombas, coins } = createLevel(groundY);
     let mario = createMario(groundY);
     let camera = 0;
+    let generatedUpTo = 2048;
     let scoreVal = 0;
     let hintDismissed = false;
     let status = "playing";
@@ -237,6 +290,8 @@ const MarioGame = () => {
     const input = inputRef.current;
 
     function update(dt) {
+      dt *= scoreVal >= SPEED_UP_SCORE ? SPEED_UP_MULTIPLIER : 1;
+
       const jumpPressed = input.jumpQueued;
       input.jumpQueued = false;
 
@@ -258,7 +313,17 @@ const MarioGame = () => {
       mario.vy = Math.min(mario.vy + GRAVITY * dt, MAX_FALL);
 
       mario.x += mario.vx * dt;
-      mario.x = Math.max(0, Math.min(mario.x, LEVEL_WIDTH - MARIO_W));
+      mario.x = Math.max(0, mario.x);
+
+      // Endless level: keep building chunks ahead of Mario forever
+      const lookahead = width + CHUNK_WIDTH * 2;
+      while (generatedUpTo < mario.x + lookahead) {
+        const chunk = generateChunk(generatedUpTo, groundY);
+        platforms.push(...chunk.platforms);
+        goombas.push(...chunk.goombas);
+        coins.push(...chunk.coins);
+        generatedUpTo += CHUNK_WIDTH;
+      }
 
       const prevBottom = mario.y + MARIO_H;
       mario.y += mario.vy * dt;
@@ -281,11 +346,10 @@ const MarioGame = () => {
         mario.vy = 0;
       }
 
-      // Safety net: the ground platform spans the full level, so Mario's
-      // top should never end up below it. If a resize/visibility glitch
-      // ever lets him slip through, snap him back onto solid ground
-      // instead of letting him fall forever and vanish off-screen.
-      if (mario.y > groundY) {
+      // Ground is an infinite plane rather than a platform entry, since the
+      // level scrolls forever and a finite ground platform would need
+      // regenerating/extending right along with everything else.
+      if (mario.y + MARIO_H > groundY) {
         mario.y = groundY - MARIO_H;
         mario.vy = 0;
         mario.onGround = true;
@@ -306,7 +370,20 @@ const MarioGame = () => {
       }
 
       const targetCam = mario.x - width * 0.4;
-      camera = Math.max(0, Math.min(targetCam, Math.max(0, LEVEL_WIDTH - width)));
+      camera = Math.max(0, targetCam);
+
+      // Drop anything that's scrolled well behind the camera so the
+      // entity arrays stay bounded over an endless play session.
+      const pruneCutoff = camera - width;
+      for (let i = platforms.length - 1; i >= 0; i--) {
+        if (platforms[i].x + platforms[i].w < pruneCutoff) platforms.splice(i, 1);
+      }
+      for (let i = goombas.length - 1; i >= 0; i--) {
+        if (goombas[i].x + GOOMBA_W < pruneCutoff) goombas.splice(i, 1);
+      }
+      for (let i = coins.length - 1; i >= 0; i--) {
+        if (coins[i].x + COIN_SIZE < pruneCutoff) coins.splice(i, 1);
+      }
 
       for (const g of goombas) {
         if (!g.alive) {
@@ -357,11 +434,6 @@ const MarioGame = () => {
         }
       }
 
-      if (status === "playing" && mario.x + MARIO_W >= FLAG_X) {
-        status = "won";
-        setGameStatus("won");
-      }
-
       if (!hintDismissed && (jumpPressed || input.left || input.right)) {
         hintDismissed = true;
         setShowHint(false);
@@ -377,25 +449,28 @@ const MarioGame = () => {
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, width, height);
 
-      CLOUD_SPOTS.forEach(([cx, cy]) => {
-        drawCloud(ctx, cx - camera * 0.3, cy);
-      });
+      const cloudParallax = camera * 0.3;
+      const cloudBandStart = Math.floor((cloudParallax - 100) / CLOUD_PERIOD) - 1;
+      const cloudBandEnd =
+        Math.floor((cloudParallax + width + 100) / CLOUD_PERIOD) + 1;
+      for (let band = cloudBandStart; band <= cloudBandEnd; band++) {
+        CLOUD_SPOTS.forEach(([cx, cy]) => {
+          drawCloud(ctx, cx + band * CLOUD_PERIOD - cloudParallax, cy);
+        });
+      }
 
       ctx.save();
       ctx.translate(-camera, 0);
 
-      const poleH = Math.max(60, Math.min(120, groundY - 20));
-      ctx.fillStyle = "#e6e6e6";
-      ctx.fillRect(FLAG_X, groundY - poleH, 4, poleH);
-      ctx.fillStyle = status === "won" ? "#ffd23f" : "#43b047";
-      ctx.beginPath();
-      ctx.moveTo(FLAG_X + 4, groundY - poleH + 6);
-      ctx.lineTo(FLAG_X + 34, groundY - poleH + 16);
-      ctx.lineTo(FLAG_X + 4, groundY - poleH + 26);
-      ctx.closePath();
-      ctx.fill();
-
       if (imagesReady) {
+        // Ground has no platform entry (it's an infinite collision plane),
+        // so draw it as a tiled strip spanning whatever's in view instead.
+        const groundStartX = Math.floor(camera / TILE) * TILE;
+        const groundEndX = camera + width;
+        for (let x = groundStartX; x < groundEndX; x += TILE) {
+          ctx.drawImage(images.brick, x, groundY, TILE, TILE);
+        }
+
         for (const p of platforms) {
           const tilesAcross = Math.ceil(p.w / TILE);
           for (let i = 0; i < tilesAcross; i++) {
@@ -551,13 +626,8 @@ const MarioGame = () => {
       {gameStatus !== "playing" ? (
         <div className="mario-overlay">
           <div className="mario-overlay-card">
-            <h3>{gameStatus === "won" ? "You Win! 🏁" : "Game Over"}</h3>
-            <p>
-              {gameStatus === "won"
-                ? "You reached the flag!"
-                : "A Goomba got you!"}{" "}
-              Score: {score}
-            </p>
+            <h3>Game Over</h3>
+            <p>A Goomba got you! Score: {score}</p>
             <button
               type="button"
               className="mario-restart-btn"
