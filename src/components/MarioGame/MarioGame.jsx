@@ -19,6 +19,7 @@ const COIN_SIZE = 20;
 const SQUISH_FRAMES = 14;
 const SPIKE_W = TILE * 2;
 const SPIKE_H = 18;
+const PLATFORM_HEIGHT = TILE * 2;
 
 const ASSET_BASE = "/mario/";
 const SPRITES = {
@@ -59,7 +60,7 @@ function createLevel(groundY) {
     x: p.x,
     y: groundY - p.hOff,
     w: p.w * TILE,
-    h: TILE,
+    h: PLATFORM_HEIGHT,
   }));
 
   const goombaDefs = [
@@ -131,7 +132,7 @@ function generateChunk(startX, groundY, scoreVal) {
       x: platformX,
       y: groundY - hOff,
       w: platformW * TILE,
-      h: TILE,
+      h: PLATFORM_HEIGHT,
     });
 
     const coinCount = 2 + Math.floor(Math.random() * 3);
@@ -379,6 +380,7 @@ const MarioGame = () => {
         generatedUpTo += CHUNK_WIDTH;
       }
 
+      const prevTop = mario.y;
       const prevBottom = mario.y + MARIO_H;
       mario.y += mario.vy * dt;
       mario.onGround = false;
@@ -391,6 +393,25 @@ const MarioGame = () => {
             mario.y = p.y - MARIO_H;
             mario.vy = 0;
             mario.onGround = true;
+            break;
+          }
+        }
+      } else {
+        // Jumping up into the underside of a platform: bonk and stop,
+        // same as landing on top — solid blocks can't be passed through
+        // from either direction.
+        for (const p of platforms) {
+          const platformBottom = p.y + p.h;
+          const newTop = mario.y;
+          const horizOverlap =
+            mario.x + MARIO_W > p.x && mario.x < p.x + p.w;
+          if (
+            horizOverlap &&
+            prevTop >= platformBottom - 0.5 &&
+            newTop <= platformBottom
+          ) {
+            mario.y = platformBottom;
+            mario.vy = 0;
             break;
           }
         }
@@ -540,8 +561,17 @@ const MarioGame = () => {
 
         for (const p of platforms) {
           const tilesAcross = Math.ceil(p.w / TILE);
-          for (let i = 0; i < tilesAcross; i++) {
-            ctx.drawImage(images.brick, p.x + i * TILE, p.y, TILE, TILE);
+          const tilesDown = Math.ceil(p.h / TILE);
+          for (let row = 0; row < tilesDown; row++) {
+            for (let col = 0; col < tilesAcross; col++) {
+              ctx.drawImage(
+                images.brick,
+                p.x + col * TILE,
+                p.y + row * TILE,
+                TILE,
+                TILE,
+              );
+            }
           }
         }
 
