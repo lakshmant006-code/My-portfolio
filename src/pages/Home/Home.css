@@ -29,13 +29,28 @@
   z-index: 1;
 }
 
-/* Grid: left = title/subtitle, right = PixelCat (column on small) */
+/* Grid: left = title/subtitle, right = game (column on small). */
 .home-landing-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
+  grid-template-areas:
+    "title"
+    "bio"
+    "cat";
+  row-gap: 0;
+  column-gap: 16px;
   align-items: start;
   width: 100%;
+}
+
+.home-hero {
+  grid-area: title;
+}
+.home-bio {
+  grid-area: bio;
+}
+.home-landing-cat {
+  grid-area: cat;
 }
 
 /* Mobile: column layout, each child full width; cat needs min-height so absolute scene is visible */
@@ -45,13 +60,12 @@
   }
   .home-landing-grid {
     width: 100%;
-    gap: 0;
   }
-  .home-landing-inner,
   .home-landing-cat {
     width: 100%;
     min-width: 0;
     max-width: 100%;
+    margin-top: 2rem;
   }
   .pixel-cat-scene {
     height: 140px;
@@ -63,12 +77,16 @@
   }
 }
 
-/* Desktop/tablet: text left, cat right; align row to end so cat's walking surface lines up with subtitle bottom */
+/* Desktop/tablet: text left, game right; game spans the full text-column
+   height and top-aligns — it's far taller than the heading alone. */
 @media (min-width: 768px) {
   .home-landing-grid {
     grid-template-columns: minmax(0, 28rem) 1fr;
-    gap: 16px;
-    align-items: end;
+    grid-template-areas:
+      "title cat"
+      "bio   cat";
+    column-gap: 16px;
+    align-items: start;
   }
 }
 
@@ -100,30 +118,37 @@
   }
 }
 
-.home-landing-inner {
-  max-width: 100%;
-  min-width: 0;
-}
-
 /* PixelCat: scene clips in PixelCat.css; overflow visible for label stack */
 .home-landing-cat {
   position: relative;
   width: 100%;
   max-width: none;
   min-width: 0;
-  min-height: 140px;
-  justify-self: stretch;
-  align-self: stretch;
   overflow: visible;
   opacity: 0;
 }
 
+/* Pac-Man embed has a fixed 812x720 native size; the wrap reserves the
+   scaled-down height (set in JS) while overflow:hidden crops the iframe's
+   own unscaled box, and the iframe is scaled via transform to fit. */
+.home-landing-cat-game-wrap {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: var(--bento-card-radius, 16px);
+}
+
+.home-landing-cat-game {
+  display: block;
+  width: 812px;
+  height: 720px;
+  border: none;
+  transform-origin: top left;
+}
+
 /* Desktop/tablet: room for tall scene anchored to bottom */
 @media (min-width: 768px) {
-  .home-landing-cat {
-    min-height: 200px;
-  }
-
   .home-landing-cat > .pixel-cat-scene {
     position: absolute;
     inset: auto 0 -30px 0;
@@ -182,7 +207,7 @@
   font-weight: 500;
 }
 
-/* Subtitle — full width of .home-landing-inner text column */
+/* Subtitle — full width of the title's grid column */
 .home-bio {
   width: 100%;
   max-width: 100%;

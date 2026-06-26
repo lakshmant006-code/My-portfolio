@@ -5,7 +5,6 @@ import { useLenisScroll } from "../../hooks/useLenisScroll";
 import { gsap } from "gsap";
 import Footer from "../../components/Footer/Footer";
 import WorkBentoGrid from "../../components/Work/WorkBentoGrid";
-import MarioGame from "../../components/MarioGame/MarioGame";
 import PokemonIntro from "../../components/PokemonIntro/PokemonIntro";
 import "./Home.css";
 
@@ -41,11 +40,35 @@ const Home = () => {
   const heroTitleRef = useRef(null);
   const bioRef = useRef(null);
   const landingCatRef = useRef(null);
+  const gameScaleWrapRef = useRef(null);
+  const gameIframeRef = useRef(null);
   const workGridRef = useRef(null);
 
   useEffect(() => {
     setPokemonIntroDone(!isGoogleCreative);
   }, [isGoogleCreative]);
+
+  // Pac-Man embed has a fixed native size; scale it down to fit whatever
+  // width the hero column actually has, instead of letting it clip/scroll.
+  useEffect(() => {
+    const wrap = gameScaleWrapRef.current;
+    const iframe = gameIframeRef.current;
+    if (!wrap || !iframe) return undefined;
+
+    const NATIVE_W = 812;
+    const NATIVE_H = 720;
+
+    function applyScale() {
+      const scale = wrap.clientWidth / NATIVE_W;
+      iframe.style.transform = `scale(${scale})`;
+      wrap.style.height = `${NATIVE_H * scale}px`;
+    }
+
+    applyScale();
+    const ro = new ResizeObserver(applyScale);
+    ro.observe(wrap);
+    return () => ro.disconnect();
+  }, []);
 
   // Landing: rise-from-baseline for title and bio (same style as Play), start on mount to avoid lag
   useEffect(() => {
@@ -158,38 +181,44 @@ const Home = () => {
         <section id="landing" className="home-landing">
           <div className="home-landing-content page-content-shell">
             <div className="home-landing-grid">
-              <div className="home-landing-inner">
-                <h1 ref={heroTitleRef} className="home-hero">
-                  <span className="home-hero-line">
-                    <span className="home-hero-line-inner">
-                      Hi, I am Lakshman, a{" "}
-                      <em>UX Researcher and Designer</em>
-                    </span>
+              <h1 ref={heroTitleRef} className="home-hero">
+                <span className="home-hero-line">
+                  <span className="home-hero-line-inner">
+                    Hi, I am Lakshman, a{" "}
+                    <em>UX Researcher and Designer</em>
                   </span>
-                  <span className="home-hero-line">
-                    <span className="home-hero-line-inner">
-                      turning research into tested, interactive prototypes.
-                    </span>
+                </span>
+                <span className="home-hero-line">
+                  <span className="home-hero-line-inner">
+                    turning research into tested, interactive prototypes.
                   </span>
-                </h1>
-                <p ref={bioRef} className="home-bio">
-                  <span className="home-bio-line">
-                    <span className="home-bio-line-inner">
-                      {isGoogleCreative ? (
-                        <>
-                          I love building and experimenting — asking{" "}
-                          <strong>'what if?'</strong> through tools, artifacts,
-                          and everything in between.
-                        </>
-                      ) : (
-                        HERO_BIO_LINE
-                      )}
-                    </span>
+                </span>
+              </h1>
+              <p ref={bioRef} className="home-bio">
+                <span className="home-bio-line">
+                  <span className="home-bio-line-inner">
+                    {isGoogleCreative ? (
+                      <>
+                        I love building and experimenting — asking{" "}
+                        <strong>'what if?'</strong> through tools, artifacts,
+                        and everything in between.
+                      </>
+                    ) : (
+                      HERO_BIO_LINE
+                    )}
                   </span>
-                </p>
-              </div>
+                </span>
+              </p>
               <div ref={landingCatRef} className="home-landing-cat">
-                <MarioGame />
+                <div ref={gameScaleWrapRef} className="home-landing-cat-game-wrap">
+                  <iframe
+                    ref={gameIframeRef}
+                    className="home-landing-cat-game"
+                    src="/pac-man-master/build/index.html"
+                    title="Pac-Man"
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
           </div>
