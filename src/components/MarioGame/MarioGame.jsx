@@ -8,14 +8,17 @@ const BOUNCE_VELOCITY = -7;
 const MOVE_SPEED = 2.6;
 const MAX_FALL = 14;
 const CHUNK_WIDTH = TILE * 16;
-const SPEED_UP_SCORE = 4000;
+const SPEED_UP_SCORE = 800;
 const SPEED_UP_MULTIPLIER = 1.5;
+const MORE_OBSTACLES_SCORE = 300;
 const MARIO_W = 26;
 const MARIO_H = 30;
 const GOOMBA_W = 28;
 const GOOMBA_H = 26;
 const COIN_SIZE = 20;
 const SQUISH_FRAMES = 14;
+const SPIKE_W = TILE * 2;
+const SPIKE_H = 18;
 
 const ASSET_BASE = "/mario/";
 const SPRITES = {
@@ -101,13 +104,24 @@ function createLevel(groundY) {
     collected: false,
   }));
 
-  return { platforms, goombas, coins };
+  return { platforms, goombas, coins, spikes: [] };
 }
 
-function generateChunk(startX, groundY) {
+function generateChunk(startX, groundY, scoreVal) {
   const platforms = [];
   const goombas = [];
   const coins = [];
+  const spikes = [];
+  const hardMode = scoreVal >= MORE_OBSTACLES_SCORE;
+
+  if (hardMode && Math.random() < 0.45) {
+    spikes.push({
+      x: startX + 220 + Math.random() * (CHUNK_WIDTH - 320),
+      y: groundY - SPIKE_H,
+      w: SPIKE_W,
+      h: SPIKE_H,
+    });
+  }
 
   if (Math.random() < 0.7) {
     const hOff = [56, 68, 80][Math.floor(Math.random() * 3)];
@@ -138,23 +152,48 @@ function generateChunk(startX, groundY) {
     });
   }
 
-  if (Math.random() < 0.85) {
-    const minX = startX + 60;
-    const maxX = startX + CHUNK_WIDTH - 60;
-    goombas.push({
-      x: (minX + maxX) / 2,
-      minX,
-      maxX,
-      y: groundY - GOOMBA_H,
-      vx: 1.1,
-      alive: true,
-      squish: 0,
-      animTimer: 0,
-      animFrame: 0,
-    });
+  const goombaChance = hardMode ? 0.95 : 0.85;
+  if (Math.random() < goombaChance) {
+    // Past MORE_OBSTACLES_SCORE, chunks have a chance to split into two
+    // patrol lanes so two Goombas can occupy the same chunk for extra
+    // challenge, instead of always just the one.
+    if (hardMode && Math.random() < 0.5) {
+      const midX = startX + CHUNK_WIDTH / 2;
+      const lanes = [
+        { minX: startX + 60, maxX: midX - 20 },
+        { minX: midX + 20, maxX: startX + CHUNK_WIDTH - 60 },
+      ];
+      lanes.forEach((lane) => {
+        goombas.push({
+          x: (lane.minX + lane.maxX) / 2,
+          minX: lane.minX,
+          maxX: lane.maxX,
+          y: groundY - GOOMBA_H,
+          vx: 1.1 + Math.random() * 0.4,
+          alive: true,
+          squish: 0,
+          animTimer: 0,
+          animFrame: 0,
+        });
+      });
+    } else {
+      const minX = startX + 60;
+      const maxX = startX + CHUNK_WIDTH - 60;
+      goombas.push({
+        x: (minX + maxX) / 2,
+        minX,
+        maxX,
+        y: groundY - GOOMBA_H,
+        vx: 1.1,
+        alive: true,
+        squish: 0,
+        animTimer: 0,
+        animFrame: 0,
+      });
+    }
   }
 
-  return { platforms, goombas, coins };
+  return { platforms, goombas, coins, spikes };
 }
 
 function createMario(groundY) {
@@ -177,6 +216,20 @@ function drawCloud(ctx, x, y) {
   ctx.ellipse(x, y, 18, 10, 0, 0, Math.PI * 2);
   ctx.ellipse(x + 14, y - 4, 14, 10, 0, 0, Math.PI * 2);
   ctx.ellipse(x - 14, y + 2, 12, 8, 0, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+function drawSpikes(ctx, x, y, w, h) {
+  const teeth = Math.max(2, Math.round(w / 16));
+  const toothW = w / teeth;
+  ctx.fillStyle = "#6b6b6b";
+  ctx.beginPath();
+  ctx.moveTo(x, y + h);
+  for (let i = 0; i < teeth; i++) {
+    ctx.lineTo(x + i * toothW + toothW / 2, y);
+    ctx.lineTo(x + (i + 1) * toothW, y + h);
+  }
+  ctx.closePath();
   ctx.fill();
 }
 
@@ -237,7 +290,7 @@ const MarioGame = () => {
     let width = container.clientWidth;
     let height = container.clientHeight;
     let groundY = height - TILE;
-    let { platforms, goombas, coins } = createLevel(groundY);
+    let { platforms, goombas, coins, spikes } = createLevel(groundY);
     let mario = createMario(groundY);
     let camera = 0;
     let generatedUpTo = 2048;
@@ -318,10 +371,11 @@ const MarioGame = () => {
       // Endless level: keep building chunks ahead of Mario forever
       const lookahead = width + CHUNK_WIDTH * 2;
       while (generatedUpTo < mario.x + lookahead) {
-        const chunk = generateChunk(generatedUpTo, groundY);
+        const chunk = generateChunk(generatedUpTo, groundY, scoreVal);
         platforms.push(...chunk.platforms);
         goombas.push(...chunk.goombas);
         coins.push(...chunk.coins);
+        spikes.push(...chunk.spikes);
         generatedUpTo += CHUNK_WIDTH;
       }
 
@@ -383,6 +437,19 @@ const MarioGame = () => {
       }
       for (let i = coins.length - 1; i >= 0; i--) {
         if (coins[i].x + COIN_SIZE < pruneCutoff) coins.splice(i, 1);
+      }
+      for (let i = spikes.length - 1; i >= 0; i--) {
+        if (spikes[i].x + spikes[i].w < pruneCutoff) spikes.splice(i, 1);
+      }
+
+      for (const s of spikes) {
+        const overlapX = mario.x < s.x + s.w && mario.x + MARIO_W > s.x;
+        const overlapY = mario.y < s.y + s.h && mario.y + MARIO_H > s.y;
+        if (overlapX && overlapY) {
+          status = "lost";
+          setGameStatus("lost");
+          break;
+        }
       }
 
       for (const g of goombas) {
@@ -476,6 +543,10 @@ const MarioGame = () => {
           for (let i = 0; i < tilesAcross; i++) {
             ctx.drawImage(images.brick, p.x + i * TILE, p.y, TILE, TILE);
           }
+        }
+
+        for (const s of spikes) {
+          drawSpikes(ctx, s.x, s.y, s.w, s.h);
         }
 
         for (const c of coins) {
@@ -627,7 +698,7 @@ const MarioGame = () => {
         <div className="mario-overlay">
           <div className="mario-overlay-card">
             <h3>Game Over</h3>
-            <p>A Goomba got you! Score: {score}</p>
+            <p>A hazard got you! Score: {score}</p>
             <button
               type="button"
               className="mario-restart-btn"
