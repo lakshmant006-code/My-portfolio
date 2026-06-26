@@ -1,12 +1,12 @@
 .score {
-  color: white;
+  color: #1e1e1e;
 }
 .lives {
-  color: white;
-  padding-right: 15px;  
+  color: #1e1e1e;
+  padding-right: 15px;
 }
 .time {
-  color: white;
+  color: #1e1e1e;
 }
 
 .hud-data {

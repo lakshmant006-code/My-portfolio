@@ -44,12 +44,12 @@
 }
 
 .game-title {
-  color: white;
+  color: #1e1e1e;
   /*padding: 5px;*/
 }
 
 .game-screen {
-  color: white;
+  color: #1e1e1e;
   height: 600px;
   display: flex;
   align-items: center;
@@ -80,7 +80,7 @@
   }
 
   .game-screen {
-    color: white;
+    color: #1e1e1e;
     height: 100vh;
     display: flex;
     align-items: center;
@@ -128,6 +128,6 @@
   }
 
   .game-title {
-    color: white;
+    color: #1e1e1e;
   }
 }

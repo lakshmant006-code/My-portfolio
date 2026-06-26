@@ -217,6 +217,7 @@ const Home = () => {
                     src="/pac-man-master/build/index.html"
                     title="Pac-Man"
                     loading="lazy"
+                    scrolling="no"
                   />
                 </div>
               </div>
