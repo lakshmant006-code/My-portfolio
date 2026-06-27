@@ -6,6 +6,7 @@ import { gsap } from "gsap";
 import Footer from "../../components/Footer/Footer";
 import WorkBentoGrid from "../../components/Work/WorkBentoGrid";
 import PokemonIntro from "../../components/PokemonIntro/PokemonIntro";
+import MarioGame from "../../components/MarioGame/MarioGame";
 import "./Home.css";
 
 const HERO_BIO_LINE =
@@ -40,35 +41,11 @@ const Home = () => {
   const heroTitleRef = useRef(null);
   const bioRef = useRef(null);
   const landingCatRef = useRef(null);
-  const gameScaleWrapRef = useRef(null);
-  const gameIframeRef = useRef(null);
   const workGridRef = useRef(null);
 
   useEffect(() => {
     setPokemonIntroDone(!isGoogleCreative);
   }, [isGoogleCreative]);
-
-  // Pac-Man embed has a fixed native size; scale it down to fit whatever
-  // width the hero column actually has, instead of letting it clip/scroll.
-  useEffect(() => {
-    const wrap = gameScaleWrapRef.current;
-    const iframe = gameIframeRef.current;
-    if (!wrap || !iframe) return undefined;
-
-    const NATIVE_W = 812;
-    const NATIVE_H = 720;
-
-    function applyScale() {
-      const scale = wrap.clientWidth / NATIVE_W;
-      iframe.style.transform = `scale(${scale})`;
-      wrap.style.height = `${NATIVE_H * scale}px`;
-    }
-
-    applyScale();
-    const ro = new ResizeObserver(applyScale);
-    ro.observe(wrap);
-    return () => ro.disconnect();
-  }, []);
 
   // Landing: rise-from-baseline for title and bio (same style as Play), start on mount to avoid lag
   useEffect(() => {
@@ -210,16 +187,7 @@ const Home = () => {
                 </span>
               </p>
               <div ref={landingCatRef} className="home-landing-cat">
-                <div ref={gameScaleWrapRef} className="home-landing-cat-game-wrap">
-                  <iframe
-                    ref={gameIframeRef}
-                    className="home-landing-cat-game"
-                    src="/pac-man-master/build/index.html"
-                    title="Pac-Man"
-                    loading="lazy"
-                    scrolling="no"
-                  />
-                </div>
+                <MarioGame />
               </div>
             </div>
           </div>

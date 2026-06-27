@@ -39,7 +39,7 @@
     "cat";
   row-gap: 0;
   column-gap: 16px;
-  align-items: start;
+  align-items: stretch;
   width: 100%;
 }
 
@@ -77,8 +77,8 @@
   }
 }
 
-/* Desktop/tablet: text left, game right; game spans the full text-column
-   height and top-aligns — it's far taller than the heading alone. */
+/* Desktop/tablet: text left, game right; game stretches to fill the
+   full text-column height (it sizes itself to whatever it's given). */
 @media (min-width: 768px) {
   .home-landing-grid {
     grid-template-columns: minmax(0, 28rem) 1fr;
@@ -86,7 +86,7 @@
       "title cat"
       "bio   cat";
     column-gap: 16px;
-    align-items: start;
+    align-items: stretch;
   }
 }
 
@@ -126,25 +126,6 @@
   min-width: 0;
   overflow: visible;
   opacity: 0;
-}
-
-/* Pac-Man embed has a fixed 812x720 native size; the wrap reserves the
-   scaled-down height (set in JS) while overflow:hidden crops the iframe's
-   own unscaled box, and the iframe is scaled via transform to fit. */
-.home-landing-cat-game-wrap {
-  width: 100%;
-  max-width: 480px;
-  margin: 0 auto;
-  overflow: hidden;
-  border-radius: var(--bento-card-radius, 16px);
-}
-
-.home-landing-cat-game {
-  display: block;
-  width: 812px;
-  height: 720px;
-  border: none;
-  transform-origin: top left;
 }
 
 /* Desktop/tablet: room for tall scene anchored to bottom */
