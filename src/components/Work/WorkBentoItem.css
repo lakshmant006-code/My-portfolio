@@ -106,8 +106,18 @@
 .work-bento-image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   background-color: #2a2a2a;
+}
+
+.work-bento-item[data-project-id="quizai-approval-flow"] .work-bento-image {
+  background-color: #e7d7d9;
+}
+.work-bento-item[data-project-id="dandi-bio-smart-wearable"] .work-bento-image {
+  background-color: #8ecbb0;
+}
+.work-bento-item[data-project-id="moodle-pain-detection"] .work-bento-image {
+  background-color: #333333;
 }
 
 /* Ensure video controls are hidden */
