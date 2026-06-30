@@ -93,7 +93,7 @@ body.dg-scroll-lock {
 @media (min-width: 1025px) {
   .quizai-see-next-grid,
   .venmo-see-next-grid,
-  .moodle-see-next-grid,
+  .time-management-see-next-grid,
   .dandi-see-next-grid,
   .wholefoods-see-next-grid {
     grid-template-columns: repeat(3, 1fr);

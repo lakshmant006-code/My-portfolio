@@ -795,7 +795,7 @@ const VenmoCaseStudy = () => {
             data-case-study-nav-boundary
           >
             <Link
-              to="/moodle"
+              to="/time-management"
               className="venmo-see-next-card-link"
               onMouseEnter={() => setIsHoveringSeeNextCard(true)}
               onMouseLeave={() => setIsHoveringSeeNextCard(false)}
@@ -806,7 +806,7 @@ const VenmoCaseStudy = () => {
               >
                 <div className="venmo-see-next-image-container">
                   <video
-                    src="/work/moodle/thumbnail.mp4"
+                    src="/work/time-management/thumbnail.mp4"
                     className="venmo-see-next-image"
                     autoPlay
                     loop

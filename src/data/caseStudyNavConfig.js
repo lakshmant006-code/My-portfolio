@@ -22,15 +22,15 @@ export const caseStudyNavConfig = {
       { id: "venmo-see-next", label: "See Next" },
     ],
   },
-  moodle: {
+  "time-management": {
     accentColor: "#1900FF",
     sections: [
-      { id: "moodle-context", label: "Research" },
-      { id: "moodle-research", label: "Ideation" },
+      { id: "time-management-context", label: "Research" },
+      { id: "time-management-research", label: "Ideation" },
       { id: "solution-section", label: "Development" },
-      { id: "moodle-solutions", label: "Solutions" },
-      { id: "moodle-takeaways", label: "Takeaways" },
-      { id: "moodle-see-next", label: "See Next" },
+      { id: "time-management-solutions", label: "Solutions" },
+      { id: "time-management-takeaways", label: "Takeaways" },
+      { id: "time-management-see-next", label: "See Next" },
     ],
   },
   dandi: {

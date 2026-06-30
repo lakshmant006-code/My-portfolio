@@ -43,9 +43,6 @@ const QuizAICaseStudy = () => {
   const designApproachHighFiTitleRef = useRef(null);
   const designApproachHighFiContentRef = useRef(null);
   const designApproachHighFiImagesRef = useRef(null);
-  const designApproach3TitleRef = useRef(null);
-  const designApproach3ContentRef = useRef(null);
-  const designApproach3ImageRef = useRef(null);
   const solution1TitleRef = useRef(null);
   const solution1ContentRef = useRef(null);
   const solution1VideoRef = useRef(null);
@@ -178,11 +175,6 @@ const QuizAICaseStudy = () => {
     createScrollAnimation(designApproachHighFiTitleRef);
     createScrollAnimation(designApproachHighFiContentRef, 0.1);
     createScrollAnimation(designApproachHighFiImagesRef, 0.2);
-    // Design Approach 3
-    createScrollAnimation(designApproach3TitleRef);
-    createScrollAnimation(designApproach3ContentRef, 0.1);
-    createScrollAnimation(designApproach3ImageRef, 0.2);
-
     // Solution Section
     // Solution 1
     createScrollAnimation(solution1TitleRef);
@@ -570,36 +562,6 @@ const QuizAICaseStudy = () => {
               />
             </div>
           </div>
-
-          {/* Design Approach #3 */}
-          <div className="quizai-design-approach-item">
-            <CaseStudyStatement
-              ref={designApproach3ContentRef}
-              className="quizai-design-approach-statement"
-            >
-              <CaseStudyStatementHeadline
-                as="h4"
-                ref={designApproach3TitleRef}
-              >
-                Validating Through Iteration
-              </CaseStudyStatementHeadline>
-              <CaseStudyStatementBody>
-                Over 3 weeks of weekly validation sessions with users and
-                stakeholders, I iterated my designs over 4 critical areas based
-                on the feedback I received:
-              </CaseStudyStatementBody>
-            </CaseStudyStatement>
-            <div
-              className="quizai-design-approach-image-container"
-              ref={designApproach3ImageRef}
-            >
-              <img
-                src="/work/quizai/iteration-grid.png"
-                alt="Iteration Grid"
-                className="quizai-design-approach-image"
-              />
-            </div>
-          </div>
         </div>
       </section>
 
@@ -731,7 +693,7 @@ const QuizAICaseStudy = () => {
             data-case-study-nav-boundary
           >
             <Link
-              to="/moodle"
+              to="/time-management"
               className="quizai-see-next-card-link"
               onMouseEnter={() => setIsHoveringSeeNextCard(true)}
               onMouseLeave={() => setIsHoveringSeeNextCard(false)}
@@ -742,7 +704,7 @@ const QuizAICaseStudy = () => {
               >
                 <div className="quizai-see-next-image-container">
                   <video
-                    src="/work/moodle/thumbnail.mp4"
+                    src="/work/time-management/thumbnail.mp4"
                     className="quizai-see-next-image"
                     style={{ aspectRatio: "1920 / 1438" }}
                     autoPlay

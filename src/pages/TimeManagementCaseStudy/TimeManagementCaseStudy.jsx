@@ -14,11 +14,11 @@ import {
   CaseStudyStatementBody,
   CaseStudyStatementHeadline,
 } from "../../components/CaseStudyStatement/CaseStudyStatement";
-import "./MoodleCaseStudy.css";
+import "./TimeManagementCaseStudy.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MoodleCaseStudy = () => {
+const TimeManagementCaseStudy = () => {
   useScrollReset();
   const [isHoveringSeeNextCard, setIsHoveringSeeNextCard] = useState(false);
   const { scrollToElement } = useLenisScroll();
@@ -27,7 +27,7 @@ const MoodleCaseStudy = () => {
   const metricRefs = useRef([]);
 
   // Refs for scroll animations
-  const contextWhatIsMoodleRef = useRef(null);
+  const contextWhatIsTimeManagementRef = useRef(null);
   const contextMyRoleRef = useRef(null);
   const userFlowImageRef = useRef(null);
   const contextImpactTitleRef = useRef(null);
@@ -53,7 +53,7 @@ const MoodleCaseStudy = () => {
   const seeNextCardsRefs = useRef([]);
 
   const handleSkipToSolution = () => {
-    scrollToElement(document.getElementById("moodle-solutions"), {
+    scrollToElement(document.getElementById("time-management-solutions"), {
       duration: 1.2,
     });
   };
@@ -127,7 +127,7 @@ const MoodleCaseStudy = () => {
     };
 
     // Context Section
-    createScrollAnimation(contextWhatIsMoodleRef);
+    createScrollAnimation(contextWhatIsTimeManagementRef);
     createScrollAnimation(contextMyRoleRef, 0.1);
     createScrollAnimation(userFlowImageRef, 0.1);
     createScrollAnimation(contextImpactTitleRef, 0.2);
@@ -205,39 +205,39 @@ const MoodleCaseStudy = () => {
   }, []);
 
   return (
-    <div className="moodle-case-study">
+    <div className="time-management-case-study">
       <CursorPill isHovering={isHoveringSeeNextCard} text="View case study" />
-      <CaseStudyLayout projectId="moodle">
+      <CaseStudyLayout projectId="time-management">
         {/* Hero Section */}
-        <section className="moodle-hero-section">
+        <section className="time-management-hero-section">
           {/* Hero Before Image - Visual welcome */}
-          <div className="moodle-hero-image-container moodle-hero-before">
+          <div className="time-management-hero-image-container time-management-hero-before">
             <img
-              src="/work/moodle/iMac_Mockup_3.png"
+              src="/work/time-management/iMac_Mockup_3.png"
               alt="Time Management"
-              className="moodle-hero-image"
+              className="time-management-hero-image"
               style={{ height: "600px" }}
             />
           </div>
 
           {/* Hero Text Content */}
-          <div className="moodle-hero-content">
+          <div className="time-management-hero-content">
             {/* Left Column */}
-            <div className="moodle-hero-left">
-              <h1 className="moodle-hero-title">Time Management</h1>
-              <p className="moodle-hero-category">
+            <div className="time-management-hero-left">
+              <h1 className="time-management-hero-title">Time Management</h1>
+              <p className="time-management-hero-category">
                 Time tracking Web Application
               </p>
-              <div className="moodle-hero-details">
-                <div className="moodle-hero-detail-item">
-                  <div className="moodle-hero-detail-label">TIMELINE</div>
-                  <div className="moodle-hero-detail-value">
+              <div className="time-management-hero-details">
+                <div className="time-management-hero-detail-item">
+                  <div className="time-management-hero-detail-label">TIMELINE</div>
+                  <div className="time-management-hero-detail-value">
                     Feb — March 2020
                   </div>
                 </div>
-                <div className="moodle-hero-detail-item">
-                  <div className="moodle-hero-detail-label">ROLE</div>
-                  <div className="moodle-hero-detail-value">
+                <div className="time-management-hero-detail-item">
+                  <div className="time-management-hero-detail-label">ROLE</div>
+                  <div className="time-management-hero-detail-value">
                     UX Researcher
                     <br />
                     UX Designer
@@ -247,9 +247,9 @@ const MoodleCaseStudy = () => {
                     Full Stack Developer
                   </div>
                 </div>
-                <div className="moodle-hero-detail-item">
-                  <div className="moodle-hero-detail-label">TOOLS</div>
-                  <div className="moodle-hero-detail-value">
+                <div className="time-management-hero-detail-item">
+                  <div className="time-management-hero-detail-label">TOOLS</div>
+                  <div className="time-management-hero-detail-value">
                     Figma
                     <br />
                     VS Code
@@ -263,30 +263,30 @@ const MoodleCaseStudy = () => {
             </div>
 
             {/* Right Column */}
-            <div className="moodle-hero-right">
-              <p className="moodle-hero-subtitle">
+            <div className="time-management-hero-right">
+              <p className="time-management-hero-subtitle">
                 This is a web application that allows the company to track
                 their employees' productivity and helps analyze the insights
                 and increase employees' productivity.
               </p>
-              <div className="moodle-hero-tags">
-                <span className="moodle-hero-tag">Human Interface Design</span>
-                <span className="moodle-hero-tag">UX Research</span>
-                <span className="moodle-hero-tag">Data Application</span>
-                <span className="moodle-hero-tag">Web Development</span>
+              <div className="time-management-hero-tags">
+                <span className="time-management-hero-tag">Human Interface Design</span>
+                <span className="time-management-hero-tag">UX Research</span>
+                <span className="time-management-hero-tag">Data Application</span>
+                <span className="time-management-hero-tag">Web Development</span>
               </div>
               <button
-                className="moodle-skip-to-solution-btn"
+                className="time-management-skip-to-solution-btn"
                 onClick={handleSkipToSolution}
               >
-                <div className="moodle-skip-icon-container">
+                <div className="time-management-skip-icon-container">
                   <svg
                     width="20"
                     height="20"
                     viewBox="0 0 20 20"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="moodle-skip-arrow"
+                    className="time-management-skip-arrow"
                   >
                     <path
                       d="M10 5V15M10 15L5 10M10 15L15 10"
@@ -297,38 +297,38 @@ const MoodleCaseStudy = () => {
                     />
                   </svg>
                 </div>
-                <span className="moodle-skip-text">SKIP TO SOLUTIONS</span>
+                <span className="time-management-skip-text">SKIP TO SOLUTIONS</span>
               </button>
             </div>
           </div>
 
           {/* Hero After Image - After all text */}
-          <div className="moodle-hero-image-container moodle-hero-after">
+          <div className="time-management-hero-image-container time-management-hero-after">
             <img
-              src="/work/moodle/hero.png"
+              src="/work/time-management/hero.png"
               alt="Time Management"
-              className="moodle-hero-image"
+              className="time-management-hero-image"
               style={{ height: "400px" }}
             />
           </div>
         </section>
 
         {/* Context Section */}
-        <section id="moodle-context" className="moodle-context-section">
-          <div className="moodle-context-content">
+        <section id="time-management-context" className="time-management-context-section">
+          <div className="time-management-context-content">
             {/* Top Row - Two Columns */}
-            <div className="moodle-context-top">
-              <div className="moodle-context-item" ref={contextWhatIsMoodleRef}>
-                <h2 className="moodle-context-title">Goal</h2>
-                <p className="moodle-context-description">
+            <div className="time-management-context-top">
+              <div className="time-management-context-item" ref={contextWhatIsTimeManagementRef}>
+                <h2 className="time-management-context-title">Goal</h2>
+                <p className="time-management-context-description">
                   The goal is to create an intuitive and easy experience for
                   the company to track and oversee the logins and the work
                   load of their employees.
                 </p>
               </div>
-              <div className="moodle-context-item" ref={contextMyRoleRef}>
-                <h2 className="moodle-context-title">User Research</h2>
-                <p className="moodle-context-description">
+              <div className="time-management-context-item" ref={contextMyRoleRef}>
+                <h2 className="time-management-context-title">User Research</h2>
+                <p className="time-management-context-description">
                   The application was something I was pretty confident of
                   from the start. The client gave me all the requirements,
                   and I immediately started giving him ideas, but he wanted a{" "}
@@ -339,7 +339,7 @@ const MoodleCaseStudy = () => {
                   principles in designing the web application and started
                   designing in Figma.
                 </p>
-                <p className="moodle-context-description">
+                <p className="time-management-context-description">
                   But before that, I had to decide the different roles of
                   employees that would be using the application. Then I
                   defined the user flow and came up with a development plan
@@ -350,56 +350,56 @@ const MoodleCaseStudy = () => {
             </div>
 
             {/* User Flow Diagram */}
-            <div className="moodle-userflow-image-container" ref={userFlowImageRef}>
+            <div className="time-management-userflow-image-container" ref={userFlowImageRef}>
               <img
-                src="/work/moodle/user-flow.png"
+                src="/work/time-management/user-flow.png"
                 alt="Time Management Requirements, User Flow, and Roles Diagram"
-                className="moodle-userflow-image"
+                className="time-management-userflow-image"
                 style={{ aspectRatio: "1360 / 438" }}
               />
             </div>
 
             {/* Bottom Row - Impact Metrics */}
-            <div className="moodle-context-impact" ref={impactSectionRef}>
-              <h3 className="moodle-impact-title" ref={contextImpactTitleRef}>
+            <div className="time-management-context-impact" ref={impactSectionRef}>
+              <h3 className="time-management-impact-title" ref={contextImpactTitleRef}>
                 Impact
               </h3>
-              <div className="moodle-impact-metrics">
+              <div className="time-management-impact-metrics">
                 <div
-                  className="moodle-impact-metric"
+                  className="time-management-impact-metric"
                   ref={(el) => (contextImpactMetricsRefs.current[0] = el)}
                 >
                   <div
-                    className="moodle-impact-value"
+                    className="time-management-impact-value"
                     ref={(el) => (metricRefs.current[0] = el)}
                   >
                     28-0
                   </div>
-                  <div className="moodle-impact-label">AGE GROUP</div>
+                  <div className="time-management-impact-label">AGE GROUP</div>
                 </div>
                 <div
-                  className="moodle-impact-metric"
+                  className="time-management-impact-metric"
                   ref={(el) => (contextImpactMetricsRefs.current[1] = el)}
                 >
                   <div
-                    className="moodle-impact-value"
+                    className="time-management-impact-value"
                     ref={(el) => (metricRefs.current[1] = el)}
                   >
                     0%
                   </div>
-                  <div className="moodle-impact-label">USAGE</div>
+                  <div className="time-management-impact-label">USAGE</div>
                 </div>
                 <div
-                  className="moodle-impact-metric"
+                  className="time-management-impact-metric"
                   ref={(el) => (contextImpactMetricsRefs.current[2] = el)}
                 >
                   <div
-                    className="moodle-impact-value"
+                    className="time-management-impact-value"
                     ref={(el) => (metricRefs.current[2] = el)}
                   >
                     0%
                   </div>
-                  <div className="moodle-impact-label">
+                  <div className="time-management-impact-label">
                     INCREASE IN PRODUCTIVITY
                   </div>
                 </div>
@@ -407,9 +407,9 @@ const MoodleCaseStudy = () => {
             </div>
 
             {/* Context Statement Section */}
-            <div className="moodle-context-statement">
+            <div className="time-management-context-statement">
               <h3
-                className="moodle-context-statement-title"
+                className="time-management-context-statement-title"
                 ref={contextStatementTitleRef}
               >
                 REQUIREMENTS & USERS
@@ -419,27 +419,27 @@ const MoodleCaseStudy = () => {
                 variant="wide"
               >
                 <CaseStudyStatementBody>
-                  <span className="moodle-requirements-label">
+                  <span className="time-management-requirements-label">
                     REQUIREMENTS
                   </span>
                   <img
-                    src="/work/moodle/frame-145.png"
+                    src="/work/time-management/frame-145.png"
                     alt="Time Management Requirements"
-                    className="moodle-requirements-image"
+                    className="time-management-requirements-image"
                     style={{ aspectRatio: "1336 / 400" }}
                   />
                 </CaseStudyStatementBody>
                 <CaseStudyStatementBody>
-                  <span className="moodle-requirements-label">USERS</span>
+                  <span className="time-management-requirements-label">USERS</span>
                   <img
-                    src="/work/moodle/frame-147.png"
+                    src="/work/time-management/frame-147.png"
                     alt="Time Management Users"
-                    className="moodle-requirements-image"
+                    className="time-management-requirements-image"
                     style={{ aspectRatio: "1460 / 340" }}
                   />
                 </CaseStudyStatementBody>
                 <CaseStudyStatementBody>
-                  <span className="moodle-requirements-label">
+                  <span className="time-management-requirements-label">
                     MOTIVATIONS
                   </span>
                   <br />
@@ -447,18 +447,18 @@ const MoodleCaseStudy = () => {
                   single application to save time.
                 </CaseStudyStatementBody>
                 <CaseStudyStatementBody>
-                  <span className="moodle-requirements-label">
+                  <span className="time-management-requirements-label">
                     PAINPOINTS
                   </span>
                 </CaseStudyStatementBody>
               </CaseStudyStatement>
-              <div className="moodle-painpoints-tags">
-                <span className="moodle-painpoint-tag">Lack of good UX</span>
-                <span className="moodle-painpoint-tag">
+              <div className="time-management-painpoints-tags">
+                <span className="time-management-painpoint-tag">Lack of good UX</span>
+                <span className="time-management-painpoint-tag">
                   Better user flow
                 </span>
-                <span className="moodle-painpoint-tag">Save time</span>
-                <span className="moodle-painpoint-tag">
+                <span className="time-management-painpoint-tag">Save time</span>
+                <span className="time-management-painpoint-tag">
                   Security concerns
                 </span>
               </div>
@@ -467,9 +467,9 @@ const MoodleCaseStudy = () => {
         </section>
 
         {/* Research Section */}
-        <section id="moodle-research" className="moodle-research-section">
-          <div className="moodle-research-content">
-            <h3 className="moodle-research-title" ref={researchTitleRef}>
+        <section id="time-management-research" className="time-management-research-section">
+          <div className="time-management-research-content">
+            <h3 className="time-management-research-title" ref={researchTitleRef}>
               IDEATION
             </h3>
 
@@ -502,61 +502,61 @@ const MoodleCaseStudy = () => {
               </CaseStudyStatementBody>
             </CaseStudyStatement>
 
-            <div className="moodle-ideation-subsection">
-              <h4 className="moodle-ideation-subheading">Color Palette</h4>
-              <p className="moodle-ideation-text">
+            <div className="time-management-ideation-subsection">
+              <h4 className="time-management-ideation-subheading">Color Palette</h4>
+              <p className="time-management-ideation-text">
                 This project adopted a minimalistic visual style, using
                 primary blue and white to build the brand and also convey
                 trust. I also followed the 60-30-10 rule to maintain a
                 better visual balance.
               </p>
-              <div className="moodle-swatch-row">
-                <div className="moodle-swatch">
+              <div className="time-management-swatch-row">
+                <div className="time-management-swatch">
                   <div
-                    className="moodle-swatch-block"
+                    className="time-management-swatch-block"
                     style={{ background: "#1A56DB" }}
                   />
-                  <div className="moodle-swatch-hex">#1A56DB</div>
-                  <div className="moodle-swatch-label">PRIMARY</div>
+                  <div className="time-management-swatch-hex">#1A56DB</div>
+                  <div className="time-management-swatch-label">PRIMARY</div>
                 </div>
-                <div className="moodle-swatch">
+                <div className="time-management-swatch">
                   <div
-                    className="moodle-swatch-block moodle-swatch-block-bordered"
+                    className="time-management-swatch-block time-management-swatch-block-bordered"
                     style={{ background: "#FFFFFF" }}
                   />
-                  <div className="moodle-swatch-hex">#FFFFFF</div>
-                  <div className="moodle-swatch-label">PRIMARY</div>
+                  <div className="time-management-swatch-hex">#FFFFFF</div>
+                  <div className="time-management-swatch-label">PRIMARY</div>
                 </div>
-                <div className="moodle-swatch">
+                <div className="time-management-swatch">
                   <div
-                    className="moodle-swatch-block"
+                    className="time-management-swatch-block"
                     style={{ background: "#000000" }}
                   />
-                  <div className="moodle-swatch-hex">#000000</div>
-                  <div className="moodle-swatch-label">SECONDARY</div>
+                  <div className="time-management-swatch-hex">#000000</div>
+                  <div className="time-management-swatch-label">SECONDARY</div>
                 </div>
-                <div className="moodle-swatch">
+                <div className="time-management-swatch">
                   <div
-                    className="moodle-swatch-block"
+                    className="time-management-swatch-block"
                     style={{ background: "#D9D9D9" }}
                   />
-                  <div className="moodle-swatch-hex">#D9D9D9</div>
-                  <div className="moodle-swatch-label">SECONDARY</div>
+                  <div className="time-management-swatch-hex">#D9D9D9</div>
+                  <div className="time-management-swatch-label">SECONDARY</div>
                 </div>
               </div>
             </div>
 
-            <div className="moodle-ideation-subsection">
-              <h4 className="moodle-ideation-subheading">Typography</h4>
-              <p className="moodle-ideation-text">
+            <div className="time-management-ideation-subsection">
+              <h4 className="time-management-ideation-subheading">Typography</h4>
+              <p className="time-management-ideation-text">
                 I used San Serif for this web application for its easy to
                 understand, approachable design that aligns with the
                 application's clean and emerging aesthetic.
               </p>
               <img
-                src="/work/moodle/frame-156.png"
+                src="/work/time-management/frame-156.png"
                 alt="Time Management Typography"
-                className="moodle-type-sample-image"
+                className="time-management-type-sample-image"
                 style={{ aspectRatio: "807 / 575" }}
               />
             </div>
@@ -564,19 +564,19 @@ const MoodleCaseStudy = () => {
         </section>
 
         {/* Development Section */}
-        <section id="solution-section" className="moodle-solution-section">
-          <div className="moodle-solution-content">
-            <h3 className="moodle-solution-title" ref={solutionTitleRef}>
+        <section id="solution-section" className="time-management-solution-section">
+          <div className="time-management-solution-content">
+            <h3 className="time-management-solution-title" ref={solutionTitleRef}>
               DEVELOPMENT
             </h3>
 
             <div
-              className="moodle-solution-visual-identity-content"
+              className="time-management-solution-visual-identity-content"
               ref={solutionVisualIdentityContentRef}
             >
-              <p className="moodle-solution-visual-identity-text">
+              <p className="time-management-solution-visual-identity-text">
                 I love{" "}
-                <span className="moodle-solution-visual-identity-medium-bold">
+                <span className="time-management-solution-visual-identity-medium-bold">
                   designing applications
                 </span>{" "}
                 and seeing them come alive. But I'll tell you, development is
@@ -585,9 +585,9 @@ const MoodleCaseStudy = () => {
                 work, and how to code while still maintaining the UI, so it
                 doesn't compromise the client's vision.
               </p>
-              <p className="moodle-solution-visual-identity-text">
+              <p className="time-management-solution-visual-identity-text">
                 In this process I also learned how to{" "}
-                <span className="moodle-solution-visual-identity-medium-bold">
+                <span className="time-management-solution-visual-identity-medium-bold">
                   vibe code
                 </span>
                 . Although I don't use AI for idea generation, using it as a
@@ -596,58 +596,58 @@ const MoodleCaseStudy = () => {
               </p>
             </div>
 
-            <div className="moodle-solution-subsection">
-              <h4 className="moodle-solution-subheading">
+            <div className="time-management-solution-subsection">
+              <h4 className="time-management-solution-subheading">
                 Low Fidelity Prototypes
               </h4>
-              <div className="moodle-wireframe-container">
+              <div className="time-management-wireframe-container">
                 <iframe
-                  src="/work/moodle/wireframe-lofi-prototypes.html"
+                  src="/work/time-management/wireframe-lofi-prototypes.html"
                   title="Lo-Fi Wireframes – Time Management"
-                  className="moodle-wireframe-frame"
+                  className="time-management-wireframe-frame"
                   style={{ height: "1130px" }}
                   scrolling="no"
                 />
               </div>
             </div>
 
-            <div className="moodle-solution-subsection">
-              <h4 className="moodle-solution-subheading">
+            <div className="time-management-solution-subsection">
+              <h4 className="time-management-solution-subheading">
                 High Fidelity Prototypes
               </h4>
-              <div className="moodle-hifi-gallery">
+              <div className="time-management-hifi-gallery">
                 <img
-                  src="/work/moodle/final-login.png"
+                  src="/work/time-management/final-login.png"
                   alt="High-fidelity Login screen"
-                  className="moodle-hifi-image"
+                  className="time-management-hifi-image"
                   style={{ aspectRatio: "1440 / 1024" }}
                 />
                 <img
-                  src="/work/moodle/final-client-registration.png"
+                  src="/work/time-management/final-client-registration.png"
                   alt="High-fidelity Register New Client screen"
-                  className="moodle-hifi-image"
+                  className="time-management-hifi-image"
                   style={{ aspectRatio: "1440 / 1668" }}
                 />
                 <img
-                  src="/work/moodle/final-admin-client-registration.png"
+                  src="/work/time-management/final-admin-client-registration.png"
                   alt="High-fidelity Register New Client screen, admin variant"
-                  className="moodle-hifi-image"
+                  className="time-management-hifi-image"
                   style={{ aspectRatio: "1440 / 1484" }}
                 />
                 <img
-                  src="/work/moodle/final-user-dashboard.png"
+                  src="/work/time-management/final-user-dashboard.png"
                   alt="High-fidelity User Dashboard screen"
-                  className="moodle-hifi-image"
+                  className="time-management-hifi-image"
                   style={{ aspectRatio: "1440 / 1024" }}
                 />
                 <img
-                  src="/work/moodle/final-admin-dashboard.png"
+                  src="/work/time-management/final-admin-dashboard.png"
                   alt="High-fidelity Admin Dashboard screen"
-                  className="moodle-hifi-image"
+                  className="time-management-hifi-image"
                   style={{ aspectRatio: "1440 / 1024" }}
                 />
               </div>
-              <p className="moodle-hifi-caption">
+              <p className="time-management-hifi-caption">
                 These high-fidelity screens show the final, coded product: a
                 branded login gate, two variations of the Register New Client
                 form that capture company details, billing, and portal
@@ -661,10 +661,10 @@ const MoodleCaseStudy = () => {
               </p>
             </div>
 
-            <div id="moodle-solutions">
-            <div className="moodle-solution-item">
+            <div id="time-management-solutions">
+            <div className="time-management-solution-item">
               <h4
-                className="moodle-solution-item-title"
+                className="time-management-solution-item-title"
                 ref={solutionItem1TitleRef}
               >
                 Solution #1: Centralized Organization & User Management
@@ -672,17 +672,17 @@ const MoodleCaseStudy = () => {
               <CaseStudyStatement ref={solutionItem1ContentRef}>
                 <CaseStudyStatementHeadline>
                   Organization details and the full team roster live in{" "}
-                  <span className="moodle-accent-text">one admin view</span>.
+                  <span className="time-management-accent-text">one admin view</span>.
                 </CaseStudyStatementHeadline>
               </CaseStudyStatement>
-              <div className="moodle-solution-media">
+              <div className="time-management-solution-media">
                 <div
-                  className="moodle-solution-video-container"
+                  className="time-management-solution-video-container"
                   ref={solutionItem1VideoRef}
                 >
                   <video
-                    src="/work/moodle/organization-user-management.mp4"
-                    className="moodle-solution-video"
+                    src="/work/time-management/organization-user-management.mp4"
+                    className="time-management-solution-video"
                     style={{ aspectRatio: "1920 / 1080" }}
                     autoPlay
                     loop
@@ -691,12 +691,12 @@ const MoodleCaseStudy = () => {
                   />
                 </div>
                 <p
-                  className="moodle-solution-caption"
+                  className="time-management-solution-caption"
                   ref={solutionItem1CaptionRef}
                 >
                   Admins can edit organization details and manage the entire
                   user roster from one screen, with the table{" "}
-                  <span className="moodle-solution-caption-semi-bold">
+                  <span className="time-management-solution-caption-semi-bold">
                     updating live
                   </span>{" "}
                   as records change. This pulled what used to be scattered
@@ -706,9 +706,9 @@ const MoodleCaseStudy = () => {
               </div>
             </div>
 
-            <div className="moodle-solution-item">
+            <div className="time-management-solution-item">
               <h4
-                className="moodle-solution-item-title"
+                className="time-management-solution-item-title"
                 ref={solutionItem2TitleRef}
               >
                 Solution #2: Employee Skill Tracking
@@ -716,20 +716,20 @@ const MoodleCaseStudy = () => {
               <CaseStudyStatement ref={solutionItem2ContentRef}>
                 <CaseStudyStatementHeadline>
                   Every employee profile tracks{" "}
-                  <span className="moodle-accent-text">
+                  <span className="time-management-accent-text">
                     real skills and proficiency
                   </span>
                   .
                 </CaseStudyStatementHeadline>
               </CaseStudyStatement>
-              <div className="moodle-solution-media">
+              <div className="time-management-solution-media">
                 <div
-                  className="moodle-solution-video-container"
+                  className="time-management-solution-video-container"
                   ref={solutionItem2VideoRef}
                 >
                   <video
-                    src="/work/moodle/employee-skill-tracking.mp4"
-                    className="moodle-solution-video"
+                    src="/work/time-management/employee-skill-tracking.mp4"
+                    className="time-management-solution-video"
                     style={{ aspectRatio: "1892 / 864" }}
                     autoPlay
                     loop
@@ -738,7 +738,7 @@ const MoodleCaseStudy = () => {
                   />
                 </div>
                 <p
-                  className="moodle-solution-caption"
+                  className="time-management-solution-caption"
                   ref={solutionItem2CaptionRef}
                 >
                   Every user profile includes a Skills section where admins
@@ -746,7 +746,7 @@ const MoodleCaseStudy = () => {
                   address and employment details in the same form. This was
                   one of the more interesting ideas to come out of
                   ideation:{" "}
-                  <span className="moodle-solution-caption-semi-bold">
+                  <span className="time-management-solution-caption-semi-bold">
                     giving employees a clear view of where they stood
                   </span>{" "}
                   so they could focus on what they were actually lacking.
@@ -758,16 +758,16 @@ const MoodleCaseStudy = () => {
         </section>
 
         {/* Key Takeaways Section */}
-        <section id="moodle-takeaways" className="moodle-takeaways-section">
-          <div className="moodle-takeaways-content">
-            <h3 className="moodle-takeaways-title" ref={takeawaysTitleRef}>
+        <section id="time-management-takeaways" className="time-management-takeaways-section">
+          <div className="time-management-takeaways-content">
+            <h3 className="time-management-takeaways-title" ref={takeawaysTitleRef}>
               PROJECT TAKEAWAYS
             </h3>
             <div
-              className="moodle-takeaways-item"
+              className="time-management-takeaways-item"
               ref={(el) => (takeawaysItemsRefs.current[0] = el)}
             >
-              <p className="moodle-takeaways-description">
+              <p className="time-management-takeaways-description">
                 Working in this application has really pushed my limits on
                 how to execute a Web Application from the most early stages
                 of designing to execution.
@@ -777,40 +777,40 @@ const MoodleCaseStudy = () => {
         </section>
 
         {/* See Next Section */}
-        <section id="moodle-see-next" className="moodle-see-next-section">
-          <div className="moodle-see-next-content">
-            <h3 className="moodle-see-next-title" ref={seeNextTitleRef}>
+        <section id="time-management-see-next" className="time-management-see-next-section">
+          <div className="time-management-see-next-content">
+            <h3 className="time-management-see-next-title" ref={seeNextTitleRef}>
               SEE NEXT
             </h3>
             <div
-              className="moodle-see-next-grid"
+              className="time-management-see-next-grid"
               ref={seeNextGridRef}
               data-case-study-nav-boundary
             >
               <Link
                 to="/venmo"
-                className="moodle-see-next-card-link"
+                className="time-management-see-next-card-link"
                 onMouseEnter={() => setIsHoveringSeeNextCard(true)}
                 onMouseLeave={() => setIsHoveringSeeNextCard(false)}
               >
                 <div
-                  className="moodle-see-next-card"
+                  className="time-management-see-next-card"
                   ref={(el) => (seeNextCardsRefs.current[0] = el)}
                 >
-                  <div className="moodle-see-next-image-container">
+                  <div className="time-management-see-next-image-container">
                     <video
                       src="/work/venmo/thumbnail.mp4"
-                      className="moodle-see-next-image"
+                      className="time-management-see-next-image"
                       autoPlay
                       loop
                       muted
                       playsInline
                     />
                   </div>
-                  <h4 className="moodle-see-next-card-title">
+                  <h4 className="time-management-see-next-card-title">
                     Redesigning Venmo's Privacy Controls
                   </h4>
-                  <p className="moodle-see-next-card-description">
+                  <p className="time-management-see-next-card-description">
                     Transforming Venmo's public-by-default privacy model to help
                     users make informed choices without confusion.
                   </p>
@@ -818,28 +818,28 @@ const MoodleCaseStudy = () => {
               </Link>
               <Link
                 to="/quizai"
-                className="moodle-see-next-card-link"
+                className="time-management-see-next-card-link"
                 onMouseEnter={() => setIsHoveringSeeNextCard(true)}
                 onMouseLeave={() => setIsHoveringSeeNextCard(false)}
               >
                 <div
-                  className="moodle-see-next-card"
+                  className="time-management-see-next-card"
                   ref={(el) => (seeNextCardsRefs.current[1] = el)}
                 >
-                  <div className="moodle-see-next-image-container">
+                  <div className="time-management-see-next-image-container">
                     <video
                       src="/work/quizai/thumbnail.mp4"
-                      className="moodle-see-next-image"
+                      className="time-management-see-next-image"
                       autoPlay
                       loop
                       muted
                       playsInline
                     />
                   </div>
-                  <h4 className="moodle-see-next-card-title">
+                  <h4 className="time-management-see-next-card-title">
                     Rebuilding QuizAI's Approval Flow
                   </h4>
-                  <p className="moodle-see-next-card-description">
+                  <p className="time-management-see-next-card-description">
                     Redesigning approval workflows with smarter logic and
                     clearer audit trails for improved enterprise usability.
                   </p>
@@ -847,18 +847,18 @@ const MoodleCaseStudy = () => {
               </Link>
               <Link
                 to="/dandi"
-                className="moodle-see-next-card-link"
+                className="time-management-see-next-card-link"
                 onMouseEnter={() => setIsHoveringSeeNextCard(true)}
                 onMouseLeave={() => setIsHoveringSeeNextCard(false)}
               >
                 <div
-                  className="moodle-see-next-card"
+                  className="time-management-see-next-card"
                   ref={(el) => (seeNextCardsRefs.current[2] = el)}
                 >
-                  <div className="moodle-see-next-image-container">
+                  <div className="time-management-see-next-image-container">
                     <video
                       src="/work/dandi/thumbnail.mp4"
-                      className="moodle-see-next-image"
+                      className="time-management-see-next-image"
                       autoPlay
                       loop
                       muted
@@ -866,10 +866,10 @@ const MoodleCaseStudy = () => {
                       aria-label="Dandi: A Bio-Smart Wearable for PCOS — preview"
                     />
                   </div>
-                  <h4 className="moodle-see-next-card-title">
+                  <h4 className="time-management-see-next-card-title">
                     Dandi: A Bio-Smart Wearable for PCOS
                   </h4>
-                  <p className="moodle-see-next-card-description">
+                  <p className="time-management-see-next-card-description">
                     Making hormonal health accessible for women through
                     emotionally-resonant design and real-time biosensing.
                   </p>
@@ -884,4 +884,4 @@ const MoodleCaseStudy = () => {
   );
 };
 
-export default MoodleCaseStudy;
+export default TimeManagementCaseStudy;

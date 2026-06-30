@@ -963,7 +963,7 @@ const WholeFoodsCaseStudy = () => {
           </h3>
           <div className="wholefoods-see-next-grid" ref={seeNextGridRef}>
             <Link
-              to="/moodle"
+              to="/time-management"
               className="wholefoods-see-next-card-link"
               onMouseEnter={() => setIsHoveringSeeNextCard(true)}
               onMouseLeave={() => setIsHoveringSeeNextCard(false)}
@@ -974,7 +974,7 @@ const WholeFoodsCaseStudy = () => {
               >
                 <div className="wholefoods-see-next-image-container">
                   <video
-                    src="/work/moodle/thumbnail.mp4"
+                    src="/work/time-management/thumbnail.mp4"
                     className="wholefoods-see-next-image"
                     autoPlay
                     loop

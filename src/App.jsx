@@ -10,7 +10,7 @@ import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Work from "./pages/Work/Work";
 import VenmoCaseStudy from "./pages/VenmoCaseStudy/VenmoCaseStudy";
-import MoodleCaseStudy from "./pages/MoodleCaseStudy/MoodleCaseStudy";
+import TimeManagementCaseStudy from "./pages/TimeManagementCaseStudy/TimeManagementCaseStudy";
 import WholeFoodsCaseStudy from "./pages/WholeFoodsCaseStudy/WholeFoodsCaseStudy";
 import QuizAICaseStudy from "./pages/QuizAICaseStudy/QuizAICaseStudy";
 import DandiCaseStudy from "./pages/DandiCaseStudy/DandiCaseStudy";
@@ -83,7 +83,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/work" element={<Work />} />
             <Route path="/venmo" element={<VenmoCaseStudy />} />
-            <Route path="/moodle" element={<MoodleCaseStudy />} />
+            <Route path="/time-management" element={<TimeManagementCaseStudy />} />
             <Route path="/wholefoods" element={<WholeFoodsCaseStudy />} />
             <Route path="/quizai" element={<QuizAICaseStudy />} />
             <Route path="/dandi" element={<DandiCaseStudy />} />

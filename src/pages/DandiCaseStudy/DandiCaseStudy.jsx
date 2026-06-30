@@ -617,7 +617,7 @@ const DandiCaseStudy = () => {
               </div>
             </Link>
             <Link
-              to="/moodle"
+              to="/time-management"
               className="dandi-see-next-card-link"
               onMouseEnter={() => setIsHoveringSeeNextCard(true)}
               onMouseLeave={() => setIsHoveringSeeNextCard(false)}
@@ -630,7 +630,7 @@ const DandiCaseStudy = () => {
               >
                 <div className="dandi-see-next-image-container">
                   <video
-                    src="/work/moodle/thumbnail.mp4"
+                    src="/work/time-management/thumbnail.mp4"
                     className="dandi-see-next-image"
                     autoPlay
                     loop

@@ -1,7 +1,7 @@
 /** Desktop grid placement for “all” play projects (`/` and `/google-creative`). */
 export const allPlayPositions = {
   "block-party": { col: 1, rowStart: 1, rowEnd: 4, colSpan: 2 },
-  "floral-jukebox": { col: 3, rowStart: 1, rowEnd: 2 },
+  concentrix: { col: 3, rowStart: 1, rowEnd: 2 },
   "draw-canvas": { col: 3, rowStart: 2, rowEnd: 4 },
   "picture-distortion": { col: 1, rowStart: 6, rowEnd: 8 },
   "cat-box": { col: 1, rowStart: 10, rowEnd: 11 },

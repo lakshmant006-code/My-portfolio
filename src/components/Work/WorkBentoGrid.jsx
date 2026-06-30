@@ -35,14 +35,14 @@ const workProjects = [
     category: "case-study",
   },
   {
-    id: "moodle-pain-detection",
+    id: "time-management-pain-detection",
     title: "Time Management: A Productivity Tracking Web App",
     role: "UX Researcher, Full Stack Developer",
     tags: ["UX Research", "Web Development"],
     summary:
       "Helping a company track employee productivity through an intuitive, easy-to-navigate time management dashboard.",
-    video: "/work/moodle/thumbnail.mp4",
-    thumbnailImage: "/work/moodle/thumbnail-frame.jpg",
+    video: "/work/time-management/thumbnail.mp4",
+    thumbnailImage: "/work/time-management/thumbnail-frame.jpg",
     category: "case-study",
   },
   {
@@ -60,7 +60,7 @@ const workProjects = [
 
 const routeMap = {
   "venmo-privacy-controls": "/venmo",
-  "moodle-pain-detection": "/moodle",
+  "time-management-pain-detection": "/time-management",
   "quizai-approval-flow": "/quizai",
   "dandi-bio-smart-wearable": "/dandi",
 };
@@ -91,7 +91,7 @@ function WorkCard({
 
   const isClickable =
     project.id === "venmo-privacy-controls" ||
-    project.id === "moodle-pain-detection" ||
+    project.id === "time-management-pain-detection" ||
     project.id === "quizai-approval-flow" ||
     project.id === "dandi-bio-smart-wearable";
 

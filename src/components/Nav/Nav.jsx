@@ -93,7 +93,7 @@ const Nav = () => {
   // Nav fade-in: same timing on all non–case-study pages; case studies show nav immediately
   const CASE_STUDY_PATHS = [
     "/venmo",
-    "/moodle",
+    "/time-management",
     "/wholefoods",
     "/quizai",
     "/dandi",

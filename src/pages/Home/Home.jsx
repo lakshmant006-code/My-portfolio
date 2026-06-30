@@ -5,6 +5,7 @@ import { useLenisScroll } from "../../hooks/useLenisScroll";
 import { gsap } from "gsap";
 import Footer from "../../components/Footer/Footer";
 import WorkBentoGrid from "../../components/Work/WorkBentoGrid";
+import PlayBentoGridNatural from "../../components/Work/PlayBentoGrid";
 import PokemonIntro from "../../components/PokemonIntro/PokemonIntro";
 import MarioGame from "../../components/MarioGame/MarioGame";
 import "./Home.css";
@@ -141,6 +142,24 @@ const Home = () => {
     </section>
   );
 
+  const playSection = (
+    <section id="play" className="home-play">
+      <div className="home-play-inner page-content-shell">
+        <PlayBentoGridNatural
+          sectionIntro={
+            <div className="home-play-section-intro">
+              <h2 className="home-play-title">Playground</h2>
+              <p className="home-play-subtitle">
+                Side projects and interactive experiments I build just for
+                fun.
+              </p>
+            </div>
+          }
+        />
+      </div>
+    </section>
+  );
+
   return (
     <>
       {isGoogleCreative && !pokemonIntroDone ? (
@@ -194,6 +213,8 @@ const Home = () => {
         </section>
 
         {workSection}
+
+        {playSection}
 
         <Footer />
       </main>
