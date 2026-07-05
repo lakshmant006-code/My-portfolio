@@ -37,6 +37,9 @@ src/pages/OlderHome/
 src/components/Ball/
 src/components/GridBackground.jsx
 
+# Large media files (over GitHub's 100 MB limit)
+public/projects/concentrix/concentrix.mp4
+
 
 
 
