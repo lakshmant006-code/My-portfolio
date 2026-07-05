@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useMemo } from "react";
+﻿import React, { useRef, useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -753,7 +753,7 @@ const QuizAICaseStudy = () => {
               </div>
             </Link>
             <Link
-              to="/dandi"
+              to="/hiku"
               className="quizai-see-next-card-link"
               onMouseEnter={() => setIsHoveringSeeNextCard(true)}
               onMouseLeave={() => setIsHoveringSeeNextCard(false)}
@@ -764,21 +764,21 @@ const QuizAICaseStudy = () => {
               >
                 <div className="quizai-see-next-image-container">
                   <video
-                    src="/work/dandi/thumbnail.mp4"
+                    src="/work/Hiku/thumbnail.mp4"
                     className="quizai-see-next-image"
                     autoPlay
                     loop
                     muted
                     playsInline
-                    aria-label="Dandi: A Bio-Smart Wearable for PCOS — preview"
+                    aria-label="Hiku: A Mobile Application for Hiking Enthusiasts — preview"
                   />
                 </div>
                 <h4 className="quizai-see-next-card-title">
-                  Dandi: A Bio-Smart Wearable for PCOS
+                  Hiku: A Mobile Application for Hiking Enthusiasts
                 </h4>
                 <p className="quizai-see-next-card-description">
-                  Making hormonal health accessible for women through
-                  emotionally-resonant design and real-time biosensing.
+                  Connecting hiking enthusiasts through community, shared
+                  experiences, and a convenient way to buy or rent outdoor gear.
                 </p>
               </div>
             </Link>
@@ -793,3 +793,4 @@ const QuizAICaseStudy = () => {
 };
 
 export default QuizAICaseStudy;
+

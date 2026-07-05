@@ -33,15 +33,15 @@ export const caseStudyNavConfig = {
       { id: "time-management-see-next", label: "See Next" },
     ],
   },
-  dandi: {
+  hiku: {
     accentColor: "#3A9269",
     sections: [
-      { id: "dandi-context", label: "Context" },
-      { id: "dandi-where-we-began", label: "User Research" },
-      { id: "dandi-what-we-found", label: "Audience" },
+      { id: "hiku-context", label: "Context" },
+      { id: "hiku-where-we-began", label: "User Research" },
+      { id: "hiku-what-we-found", label: "Audience" },
       { id: "solution-section", label: "Features" },
-      { id: "dandi-takeaways", label: "Takeaways" },
-      { id: "dandi-see-next", label: "See Next" },
+      { id: "hiku-takeaways", label: "Takeaways" },
+      { id: "hiku-see-next", label: "See Next" },
     ],
   },
   blockparty: {

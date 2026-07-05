@@ -94,7 +94,7 @@ body.dg-scroll-lock {
   .quizai-see-next-grid,
   .venmo-see-next-grid,
   .time-management-see-next-grid,
-  .dandi-see-next-grid,
+  .hiku-see-next-grid,
   .wholefoods-see-next-grid {
     grid-template-columns: repeat(3, 1fr);
   }

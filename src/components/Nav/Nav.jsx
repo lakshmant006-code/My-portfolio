@@ -18,7 +18,7 @@ const Nav = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const lenis = useLenis();
-  const { scrollToTop } = useLenisScroll();
+  const { scrollToTop, scrollToElement } = useLenisScroll();
   const circleRefs = useRef([]);
   const tlRefs = useRef([]);
   const activeTweenRefs = useRef([]);
@@ -33,6 +33,7 @@ const Nav = () => {
 
   const navItems = [
     { label: "work", href: "/", isLink: true },
+    { label: "playground", href: "/", isLink: true },
     { label: "about", href: "/about", isLink: true },
     {
       label: "flower",
@@ -96,7 +97,7 @@ const Nav = () => {
     "/time-management",
     "/wholefoods",
     "/quizai",
-    "/dandi",
+    "/hiku",
     "/blockparty",
   ];
   const NAV_FADE_DELAY = isDefaultHomePath(location.pathname)
@@ -353,6 +354,20 @@ const Nav = () => {
     }
   };
 
+  const handlePlaygroundClick = (e) => {
+    e.preventDefault();
+    const scrollToPlay = () => {
+      const el = document.getElementById("play");
+      if (el) scrollToElement(el, { duration: 1.2, offset: -80 });
+    };
+    if (location.pathname === "/") {
+      scrollToPlay();
+    } else {
+      navigate("/");
+      setTimeout(scrollToPlay, 300);
+    }
+  };
+
   const handleResumeClick = (e) => {
     e.preventDefault();
     window.open(
@@ -476,13 +491,13 @@ const Nav = () => {
           </Link>
           <ul className="pill-list desktop-only" ref={navItemsRef}>
             {navItems.map((item, i) => (
-              <li key={item.href || `item-${i}`}>
+              <li key={item.label}>
                 <Link
                   to={item.href}
                   className={`pill${item.image ? " pill-flower" : ""}${isNavItemActive(item) ? " pill-active" : ""}`}
                   onMouseEnter={() => handleEnter(i)}
                   onMouseLeave={() => handleLeave(i)}
-                  onClick={item.label === "work" ? handleWorkClick : undefined}
+                  onClick={item.label === "work" ? handleWorkClick : item.label === "playground" ? handlePlaygroundClick : undefined}
                 >
                   <span
                     className="hover-circle"
@@ -513,13 +528,15 @@ const Nav = () => {
       <div className="mobile-menu-popover" ref={mobileMenuRef}>
         <ul className="mobile-menu-list">
           {navItems.map((item, i) => (
-            <li key={item.href || `mobile-item-${i}`}>
+            <li key={`mobile-${item.label}`}>
               <Link
                 to={item.href}
                 className={`mobile-menu-link${isNavItemActive(item) ? " mobile-menu-link-active" : ""}`}
                 onClick={(e) => {
                   if (item.label === "work") {
                     handleWorkClick(e);
+                  } else if (item.label === "playground") {
+                    handlePlaygroundClick(e);
                   }
                   setIsMobileMenuOpen(false);
                   toggleMobileMenu();

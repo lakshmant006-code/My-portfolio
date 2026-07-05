@@ -13,7 +13,7 @@ import VenmoCaseStudy from "./pages/VenmoCaseStudy/VenmoCaseStudy";
 import TimeManagementCaseStudy from "./pages/TimeManagementCaseStudy/TimeManagementCaseStudy";
 import WholeFoodsCaseStudy from "./pages/WholeFoodsCaseStudy/WholeFoodsCaseStudy";
 import QuizAICaseStudy from "./pages/QuizAICaseStudy/QuizAICaseStudy";
-import DandiCaseStudy from "./pages/DandiCaseStudy/DandiCaseStudy";
+import HikuCaseStudy from "./pages/HikuCaseStudy/HikuCaseStudy";
 import PixelCatPage from "./pages/PixelCat/PixelCat";
 import PlantYourFlower from "./pages/PlantYourFlower/PlantYourFlower";
 import BlockPartyCaseStudy from "./pages/BlockPartyCaseStudy/BlockPartyCaseStudy";
@@ -86,7 +86,7 @@ function App() {
             <Route path="/time-management" element={<TimeManagementCaseStudy />} />
             <Route path="/wholefoods" element={<WholeFoodsCaseStudy />} />
             <Route path="/quizai" element={<QuizAICaseStudy />} />
-            <Route path="/dandi" element={<DandiCaseStudy />} />
+            <Route path="/hiku" element={<HikuCaseStudy />} />
             <Route path="/pixel-cat" element={<PixelCatPage />} />
             <Route path="/flower" element={<PlantYourFlower />} />
             <Route path="/blockparty" element={<BlockPartyCaseStudy />} />

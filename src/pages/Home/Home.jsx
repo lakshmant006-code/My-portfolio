@@ -150,8 +150,7 @@ const Home = () => {
             <div className="home-play-section-intro">
               <h2 className="home-play-title">Playground</h2>
               <p className="home-play-subtitle">
-                Side projects and interactive experiments I build just for
-                fun.
+                Side projects I build for fun using Figma and Cursor.
               </p>
             </div>
           }

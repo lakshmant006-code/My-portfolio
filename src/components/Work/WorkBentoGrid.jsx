@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+﻿import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import CursorPill from "../CursorPill/CursorPill";
 import "./WorkBentoGrid.css";
@@ -24,14 +24,14 @@ const workProjects = [
     category: "case-study",
   },
   {
-    id: "dandi-bio-smart-wearable",
+    id: "hiku-bio-smart-wearable",
     title: "Hiku: A Mobile Application for Hiking Enthusiasts",
     role: "UX Researcher, UX Designer",
     tags: ["Mobile", "Outdoor Recreation"],
     summary:
       "Connecting hiking and camping enthusiasts through community, shared experiences, and a convenient way to buy or rent outdoor gear.",
-    video: "/work/dandi/thumbnail.mp4",
-    thumbnailImage: "/work/dandi/thumbnail-frame.png",
+    video: "/work/Hiku/thumbnail.mp4",
+    thumbnailImage: "/work/Hiku/thumbnail-frame.png",
     category: "case-study",
   },
   {
@@ -62,7 +62,7 @@ const routeMap = {
   "venmo-privacy-controls": "/venmo",
   "time-management-pain-detection": "/time-management",
   "quizai-approval-flow": "/quizai",
-  "dandi-bio-smart-wearable": "/dandi",
+  "hiku-bio-smart-wearable": "/hiku",
 };
 
 /** Single work card (full layout on Work page; compact footer on Home) */
@@ -93,7 +93,7 @@ function WorkCard({
     project.id === "venmo-privacy-controls" ||
     project.id === "time-management-pain-detection" ||
     project.id === "quizai-approval-flow" ||
-    project.id === "dandi-bio-smart-wearable";
+    project.id === "hiku-bio-smart-wearable";
 
   const videoSource = project.video;
   const useThumbnailImage = isMobile && project.thumbnailImage;
@@ -300,3 +300,4 @@ const WorkBentoGrid = ({
 };
 
 export default WorkBentoGrid;
+

@@ -77,7 +77,7 @@
 
 /* Dandi: give text panel more room on small screens (award line adds height) */
 @media (max-width: 768px) {
-  .work-bento-item.case-study-card[data-project-id="dandi-bio-smart-wearable"]
+  .work-bento-item.case-study-card[data-project-id="hiku-bio-smart-wearable"]
     .work-bento-image-container {
     height: 38%;
   }
@@ -113,7 +113,7 @@
 .work-bento-item[data-project-id="quizai-approval-flow"] .work-bento-image {
   background-color: #e7d7d9;
 }
-.work-bento-item[data-project-id="dandi-bio-smart-wearable"] .work-bento-image {
+.work-bento-item[data-project-id="hiku-bio-smart-wearable"] .work-bento-image {
   background-color: #8ecbb0;
 }
 .work-bento-item[data-project-id="time-management-pain-detection"] .work-bento-image {
