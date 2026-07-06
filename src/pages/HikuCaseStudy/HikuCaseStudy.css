@@ -647,14 +647,10 @@
   width: 100%;
 }
 
-/* Constrain the app-screens wrapper to iPhone width */
-.hiku-app-screens-container .hiku-app-screens-wrapper {
-  width: min(390px, 100%);
-}
-
 .hiku-app-screens-frame {
-  width: 100%;
-  max-width: 100%;
+  width: min(390px, 100%);
+  max-width: 390px;
+  margin: 0 auto;
   border-radius: 16px;
   pointer-events: none;
   display: block;
