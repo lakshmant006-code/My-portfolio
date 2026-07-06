@@ -494,7 +494,6 @@ const HikuCaseStudy = () => {
                   src="/work/Hiku/wireframe-lofi-prototypes.html"
                   title="Lo-Fi Wireframes – Hiking App"
                   className="hiku-wireframe-frame"
-                  style={{ height: "760px" }}
                   scrolling="no"
                 />
                 <div
@@ -529,7 +528,6 @@ const HikuCaseStudy = () => {
                   src="/work/Hiku/Hiku%20Design%20System/ui_kits/hiku-app/index.html"
                   title="Hiku Mobile App Screens"
                   className="hiku-wireframe-frame hiku-app-screens-frame"
-                  style={{ height: "900px" }}
                   scrolling="no"
                 />
                 <div

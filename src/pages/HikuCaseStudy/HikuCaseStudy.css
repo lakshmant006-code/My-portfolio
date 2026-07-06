@@ -633,6 +633,8 @@
   border: none;
   border-radius: 8px;
   pointer-events: none;
+  /* Height scales proportionally to container (360px design width → 760px design height) */
+  height: min(760px, calc(100vw * 2.11));
 }
 
 .hiku-app-screens-container {
@@ -645,10 +647,13 @@
 }
 
 .hiku-app-screens-frame {
+  width: 100%;
   max-width: 100%;
   border-radius: 16px;
   pointer-events: none;
   display: block;
+  /* Height caps at 900px on desktop, shrinks to 80vh on smaller screens */
+  height: min(900px, 80vh);
 }
 
 .hiku-app-screens-overlay {
