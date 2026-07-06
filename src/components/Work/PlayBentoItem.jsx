@@ -286,6 +286,7 @@ const NaturalPlayBentoItem = React.forwardRef(function NaturalPlayBentoItem(
                 preload="none"
                 onCanPlay={setMediaLoadedDeferred}
                 onLoadedData={setMediaLoadedDeferred}
+                onError={setMediaLoadedDeferred}
                 className="natural-play-bento-media-video"
               />
             </div>
