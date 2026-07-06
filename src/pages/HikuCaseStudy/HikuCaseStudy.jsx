@@ -489,27 +489,12 @@ const HikuCaseStudy = () => {
               visual design began.
             </p>
             <div className="hiku-wireframe-container">
-              <div className="hiku-app-screens-wrapper">
-                <iframe
-                  src="/work/Hiku/wireframe-lofi-prototypes.html"
-                  title="Lo-Fi Wireframes – Hiking App"
-                  className="hiku-wireframe-frame"
-                  scrolling="no"
-                />
-                <div
-                  className="hiku-app-screens-overlay"
-                  onClick={(e) => {
-                    const frame = e.currentTarget.previousElementSibling;
-                    if (!frame || !frame.contentDocument) return;
-                    const rect = frame.getBoundingClientRect();
-                    const el = frame.contentDocument.elementFromPoint(
-                      e.clientX - rect.left,
-                      e.clientY - rect.top
-                    );
-                    if (el) el.click();
-                  }}
-                />
-              </div>
+              <iframe
+                src="/work/Hiku/wireframe-lofi-prototypes.html"
+                title="Lo-Fi Wireframes – Hiking App"
+                className="hiku-wireframe-frame"
+                scrolling="no"
+              />
             </div>
           </div>
 
