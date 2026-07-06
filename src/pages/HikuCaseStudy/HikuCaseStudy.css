@@ -638,12 +638,18 @@
 }
 
 .hiku-app-screens-container {
-  display: block;
+  display: flex;
+  justify-content: center;
 }
 
 .hiku-app-screens-wrapper {
   position: relative;
   width: 100%;
+}
+
+/* Constrain the app-screens wrapper to iPhone width */
+.hiku-app-screens-container .hiku-app-screens-wrapper {
+  width: min(390px, 100%);
 }
 
 .hiku-app-screens-frame {
@@ -652,8 +658,9 @@
   border-radius: 16px;
   pointer-events: none;
   display: block;
-  /* Height caps at 900px on desktop, shrinks to 80vh on smaller screens */
-  height: min(900px, 80vh);
+  /* iPhone 14 aspect ratio (390×844) — scales down on narrow viewports */
+  aspect-ratio: 390 / 844;
+  height: auto;
 }
 
 .hiku-app-screens-overlay {
