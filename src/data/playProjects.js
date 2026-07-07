@@ -40,6 +40,23 @@ export const playProjects = [
     ],
   },
   {
+    id: "ascii-studio",
+    size: "short",
+    theme: "white",
+    tags: ["ASCII Art", "Creative Coding"],
+    category: "digital",
+    media: {
+      video: "/projects/ascii-studio/ascii%20art.mp4",
+    },
+    actions: [
+      {
+        type: "live",
+        tooltip: "View App",
+        url: "https://ascii-studio-one.vercel.app/",
+      },
+    ],
+  },
+  {
     id: "sketches",
     size: "short",
     theme: "white",
