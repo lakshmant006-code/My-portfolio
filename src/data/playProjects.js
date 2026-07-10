@@ -47,6 +47,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: "/projects/ascii-studio/ascii%20art.mp4",
+      poster: "/projects/ascii-studio/poster.jpg",
     },
     actions: [
       {
