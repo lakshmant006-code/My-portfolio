@@ -15,7 +15,7 @@ import WholeFoodsCaseStudy from "./pages/WholeFoodsCaseStudy/WholeFoodsCaseStudy
 import QuizAICaseStudy from "./pages/QuizAICaseStudy/QuizAICaseStudy";
 import HikuCaseStudy from "./pages/HikuCaseStudy/HikuCaseStudy";
 import PixelCatPage from "./pages/PixelCat/PixelCat";
-import PlantYourFlower from "./pages/PlantYourFlower/PlantYourFlower";
+import Particles from "./pages/Particles/Particles";
 import BlockPartyCaseStudy from "./pages/BlockPartyCaseStudy/BlockPartyCaseStudy";
 import NotFound from "./pages/NotFound/NotFound";
 import "./App.css";
@@ -88,7 +88,7 @@ function App() {
             <Route path="/quizai" element={<QuizAICaseStudy />} />
             <Route path="/hiku" element={<HikuCaseStudy />} />
             <Route path="/pixel-cat" element={<PixelCatPage />} />
-            <Route path="/flower" element={<PlantYourFlower />} />
+            <Route path="/particles" element={<Particles />} />
             <Route path="/blockparty" element={<BlockPartyCaseStudy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
