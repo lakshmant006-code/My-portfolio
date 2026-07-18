@@ -1,8 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { initParticleFace } from "./particleFaceScene";
-import imageA from "../../assets/img/david particle reduction i.png";
-import imageB from "../../assets/img/david particle reduction f.png";
 import "./ParticleFace.css";
+
+const MODELS = [
+  { key: "david", url: "/models/david-particles.bin" },
+  { key: "dragon", url: "/models/dragon-particles.bin" },
+  { key: "elder-tree", url: "/models/elder-tree-particles.bin" },
+  { key: "apple", url: "/models/apple-particles.bin" },
+  { key: "guest-01", url: "/models/guest-01-particles.bin" },
+  { key: "guest-02", url: "/models/guest-02-particles.bin" },
+];
+
+const CYCLE_INTERVAL_MS = 8000;
 
 export default function ParticleFace() {
   const containerRef = useRef(null);
@@ -14,8 +23,18 @@ export default function ParticleFace() {
     if (!container) return undefined;
 
     let cancelled = false;
+    let cycleTimeout = null;
+    let modelIndex = 0;
 
-    initParticleFace(container, { imageUrlA: imageA, imageUrlB: imageB })
+    function scheduleNextModel() {
+      cycleTimeout = setTimeout(() => {
+        modelIndex = (modelIndex + 1) % MODELS.length;
+        sceneRef.current?.switchModel(MODELS[modelIndex].url);
+        scheduleNextModel();
+      }, CYCLE_INTERVAL_MS);
+    }
+
+    initParticleFace(container, { modelUrl: MODELS[0].url })
       .then((scene) => {
         if (cancelled) {
           scene.destroy();
@@ -25,6 +44,7 @@ export default function ParticleFace() {
         requestAnimationFrame(() => {
           if (!cancelled) setIsVisible(true);
         });
+        scheduleNextModel();
       })
       .catch((err) => {
         console.error("[ParticleFace]", err);
@@ -32,6 +52,7 @@ export default function ParticleFace() {
 
     return () => {
       cancelled = true;
+      clearTimeout(cycleTimeout);
       setIsVisible(false);
       sceneRef.current?.destroy();
       sceneRef.current = null;
@@ -39,11 +60,8 @@ export default function ParticleFace() {
   }, []);
 
   return (
-    <div
-      className={`particle-face${isVisible ? " particle-face--visible" : ""}`}
-      ref={containerRef}
-      data-lenis-prevent-wheel
-      data-lenis-prevent-touch
-    />
+    <div className={`particle-face${isVisible ? " particle-face--visible" : ""}`}>
+      <div className="particle-face-canvas" ref={containerRef} />
+    </div>
   );
 }
