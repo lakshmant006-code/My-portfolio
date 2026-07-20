@@ -243,6 +243,7 @@ const MarioGame = () => {
   const [score, setScore] = useState(0);
   const [showHint, setShowHint] = useState(true);
   const [gameStatus, setGameStatus] = useState("playing");
+  const [deathCause, setDeathCause] = useState(null);
   const [restartKey, setRestartKey] = useState(0);
 
   useEffect(() => {
@@ -404,6 +405,7 @@ const MarioGame = () => {
         if (overlapX && overlapY) {
           status = "lost";
           setGameStatus("lost");
+          setDeathCause("spike");
           break;
         }
       }
@@ -438,6 +440,7 @@ const MarioGame = () => {
           } else {
             status = "lost";
             setGameStatus("lost");
+            setDeathCause("goomba");
             break;
           }
         }
@@ -591,6 +594,7 @@ const MarioGame = () => {
     setScore(0);
     setShowHint(true);
     setGameStatus("playing");
+    setDeathCause(null);
     setRestartKey((k) => k + 1);
   }, []);
 
@@ -651,7 +655,12 @@ const MarioGame = () => {
         <div className="mario-overlay">
           <div className="mario-overlay-card">
             <h3>Game Over</h3>
-            <p>A hazard got you! Score: {score}</p>
+            <p>
+              {deathCause === "goomba"
+                ? "A Goomba got you!"
+                : "A hazard got you!"}{" "}
+              Score: {score}
+            </p>
             <button
               type="button"
               className="mario-restart-btn"

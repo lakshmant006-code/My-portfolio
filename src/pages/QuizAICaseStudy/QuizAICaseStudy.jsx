@@ -208,7 +208,7 @@ const QuizAICaseStudy = () => {
         <div className="quizai-hero-image-container quizai-hero-before">
           <img
             src="/work/quizai/hero-before.png"
-            alt="Quiz AI Approval Flow Redesign"
+            alt="QuizAI landing page mockup on a laptop screen"
             className="quizai-hero-image"
           />
         </div>
@@ -286,7 +286,7 @@ const QuizAICaseStudy = () => {
         <div className="quizai-hero-image-container quizai-hero-after">
           <img
             src="/work/quizai/hero-new.png"
-            alt="Quiz AI Approval Flow Redesign"
+            alt="QuizAI landing page, dashboard, and AI study assistant screens"
             className="quizai-hero-image"
           />
         </div>

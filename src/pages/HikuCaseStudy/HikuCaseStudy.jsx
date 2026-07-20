@@ -586,11 +586,11 @@ const HikuCaseStudy = () => {
                   />
                 </div>
                 <h4 className="hiku-see-next-card-title">
-                  Rebuilding QuizAI&apos;s Approval Flow
+                  QuizAI: AI-Powered Notetaking App
                 </h4>
                 <p className="hiku-see-next-card-description">
-                  Redesigning approval workflows with smarter logic and clearer
-                  audit trails for improved enterprise usability.
+                  Helping students turn uploaded notes into personalized
+                  quizzes and summaries through a centralized study dashboard.
                 </p>
               </div>
             </Link>
