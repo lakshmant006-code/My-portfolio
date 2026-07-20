@@ -77,7 +77,6 @@ const Nav = () => {
     "/wholefoods",
     "/quizai",
     "/hiku",
-    "/blockparty",
   ];
   const NAV_FADE_DELAY = isDefaultHomePath(location.pathname)
     ? LANDING_NAV_DELAY
@@ -446,7 +445,7 @@ const Nav = () => {
           <Link to="/" onClick={handleLogoClick} className="logo-link">
             <img
               src={isMobileMenuOpen ? lightLogo : darkLogo}
-              alt="Beverly Yip"
+              alt="Lakshman Thota"
               className="logo-image"
             />
           </Link>
