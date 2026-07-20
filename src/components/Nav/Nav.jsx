@@ -38,14 +38,8 @@ const Nav = () => {
   ];
 
   const handleLogoClick = (e) => {
-    if (isHomePath(location.pathname)) {
-      e.preventDefault();
-      window.history.pushState(null, "", location.pathname);
-      scrollToTop({ duration: 1.2 });
-    } else {
-      navigate("/");
-      setTimeout(() => scrollToTop({ duration: 1.2 }), 100);
-    }
+    e.preventDefault();
+    navigate("/particles");
   };
 
   const isNavItemActive = (item) => {
@@ -442,7 +436,7 @@ const Nav = () => {
     >
       <div className="page-content-shell">
         <div className="flex items-center justify-between py-5 z-[1000] gap-6 lg:h-16 relative min-h-[32px]">
-          <Link to="/" onClick={handleLogoClick} className="logo-link">
+          <Link to="/particles" onClick={handleLogoClick} className="logo-link">
             <img
               src={isMobileMenuOpen ? lightLogo : darkLogo}
               alt="Lakshman Thota"

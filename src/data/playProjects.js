@@ -29,7 +29,7 @@ export const playProjects = [
     category: "digital",
     media: {
       video: "/projects/morph-idea/morph%20idea.mp4",
-      poster: "/projects/morph-idea/poster.jpg",
+      eager: true,
     },
     actions: [
       {

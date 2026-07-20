@@ -120,6 +120,7 @@ const NaturalPlayBentoItem = React.forwardRef(function NaturalPlayBentoItem(
 
   const isBlack = theme === "black";
   const hasVideo = media?.video;
+  const isEager = !!media?.eager;
   const hasPoster = hasVideo && media?.poster;
   const hasImage = media?.image || media?.thumbnail;
   const hasIframe = media?.iframe;
@@ -172,6 +173,12 @@ const NaturalPlayBentoItem = React.forwardRef(function NaturalPlayBentoItem(
 
   useEffect(() => {
     if (posterOnly || !showVideoBlock || !media?.video) return;
+    // Eager videos: src is already set, just play immediately
+    if (isEager) {
+      const video = videoRef.current;
+      if (video) video.play().catch(() => {});
+      return;
+    }
     const container = videoContainerRef.current;
     if (!container) return;
 
@@ -201,7 +208,7 @@ const NaturalPlayBentoItem = React.forwardRef(function NaturalPlayBentoItem(
       observer.disconnect();
       videoRef.current?.pause();
     };
-  }, [posterOnly, showVideoBlock, media?.video]);
+  }, [posterOnly, showVideoBlock, media?.video, isEager]);
 
   useEffect(() => {
     if (!hasIframe) return;
@@ -278,12 +285,13 @@ const NaturalPlayBentoItem = React.forwardRef(function NaturalPlayBentoItem(
             <div className="natural-play-bento-media-stack">
               <video
                 ref={videoRef}
-                data-src={media.video}
+                {...(isEager
+                  ? { src: media.video, preload: "auto", autoPlay: true }
+                  : { "data-src": media.video, preload: "none" })}
                 poster={hasPoster ? media.poster : undefined}
                 loop
                 muted
                 playsInline
-                preload="none"
                 onCanPlay={setMediaLoadedDeferred}
                 onLoadedData={setMediaLoadedDeferred}
                 onError={setMediaLoadedDeferred}
