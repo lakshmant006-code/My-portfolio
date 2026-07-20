@@ -12,6 +12,7 @@ import {
 import "./Nav.css";
 import darkLogo from "../../assets/img/dark-logo.png";
 import lightLogo from "../../assets/img/light-logo.png";
+import spiralIcon from "../../assets/img/spiraL.png";
 
 const Nav = () => {
   const location = useLocation();
@@ -38,8 +39,14 @@ const Nav = () => {
   ];
 
   const handleLogoClick = (e) => {
-    e.preventDefault();
-    navigate("/particles");
+    if (isHomePath(location.pathname)) {
+      e.preventDefault();
+      window.history.pushState(null, "", location.pathname);
+      scrollToTop({ duration: 1.2 });
+    } else {
+      navigate("/");
+      setTimeout(() => scrollToTop({ duration: 1.2 }), 100);
+    }
   };
 
   const isNavItemActive = (item) => {
@@ -55,14 +62,25 @@ const Nav = () => {
     return false;
   };
 
-  const renderPillLabel = (item) => (
-    <>
-      <span className="pill-label">{item.label}</span>
-      <span className="pill-label-hover" aria-hidden="true">
-        {item.label}
-      </span>
-    </>
-  );
+  const renderPillLabel = (item) => {
+    if (item.label === "particles") {
+      return (
+        <img
+          src={spiralIcon}
+          alt="Particles"
+          className="nav-spiral-icon"
+        />
+      );
+    }
+    return (
+      <>
+        <span className="pill-label">{item.label}</span>
+        <span className="pill-label-hover" aria-hidden="true">
+          {item.label}
+        </span>
+      </>
+    );
+  };
 
   // Nav fade-in: same timing on all non–case-study pages; case studies show nav immediately
   const CASE_STUDY_PATHS = [
@@ -436,7 +454,7 @@ const Nav = () => {
     >
       <div className="page-content-shell">
         <div className="flex items-center justify-between py-5 z-[1000] gap-6 lg:h-16 relative min-h-[32px]">
-          <Link to="/particles" onClick={handleLogoClick} className="logo-link">
+          <Link to="/" onClick={handleLogoClick} className="logo-link">
             <img
               src={isMobileMenuOpen ? lightLogo : darkLogo}
               alt="Lakshman Thota"
@@ -496,7 +514,12 @@ const Nav = () => {
                   toggleMobileMenu();
                 }}
               >
-                {item.label}
+                {item.label === "particles" ? (
+                  <span className="mobile-particles-link">
+                    <img src={spiralIcon} alt="" className="nav-spiral-icon" aria-hidden="true" />
+                    particles
+                  </span>
+                ) : item.label}
               </Link>
             </li>
           ))}
